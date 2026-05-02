@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ITQAAN — A halal creative agency offering web design and graphic design done with excellence. UAE-based, worldwide delivery.">
+  <title>ITQAAN — Design Done With Excellence</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ════════════ LIGHTBOX ════════════ -->
+<div id="lightbox" role="dialog" aria-modal="true">
+  <span id="lightbox-close" aria-label="Close">✕</span>
+  <img id="lightbox-img" alt="Project preview">
+</div>
+
+<!-- ════════════ NAVIGATION ════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <a href="#hero" class="nav-logo">
+    ITQAAN
+    <span>إِتْقَان · Creative Agency</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#work"     class="nav-a">Work</a></li>
+    <li><a href="#services" class="nav-a">Services</a></li>
+    <li><a href="#about"    class="nav-a">About</a></li>
+    <li><a href="#websites" class="nav-a">Projects</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Talk</a>
+  <button class="nav-ham" id="nav-ham" aria-label="Toggle menu" aria-expanded="false">☰</button>
+</nav>
+
+<!-- Mobile drawer -->
+<div class="nav-mobile" id="nav-mobile" role="menu">
+  <a href="#work"     class="nav-a" onclick="closeMobileNav()">Work</a>
+  <a href="#services" class="nav-a" onclick="closeMobileNav()">Services</a>
+  <a href="#about"    class="nav-a" onclick="closeMobileNav()">About</a>
+  <a href="#websites" class="nav-a" onclick="closeMobileNav()">Projects</a>
+  <a href="#contact"  class="nav-mobile-cta" onclick="closeMobileNav()">Let's Talk</a>
+</div>
+
+<main>
+
+<!-- ════════════ HERO ════════════ -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-inner">
+
+    <div class="hero-badge reveal" style="--d:0s">
+      <span class="hero-badge-dot"></span>
+      UAE-based · Available worldwide
+    </div>
+
+    <h1 class="hero-h1 reveal" style="--d:.06s">
+      Design done<br>
+      with <span class="hw-wrap">excellence.
+        <svg class="hw-svg" viewBox="0 0 340 26" preserveAspectRatio="none" aria-hidden="true">
+          <path class="hw-path" d="M 4 20 C 40 8, 80 22, 120 15 C 160 8, 200 21, 240 14 C 275 8, 308 19, 336 13"/>
+        </svg>
+      </span>
+    </h1>
+
+    <p class="hero-sub reveal" style="--d:.18s">
+      <strong>Web Design · Graphic Design · Brand Identity</strong><br>
+      Every pixel placed with purpose — because Allah loves those who do their work with itqaan.
+    </p>
+
+    <div class="hero-btns reveal" style="--d:.28s">
+      <a href="https://wa.me/923165252296?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20ITQAAN."
+         target="_blank" rel="noopener" class="btn-primary">
+        Start a Project
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+      <a href="#work" class="btn-secondary">
+        See the Work
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/>
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════════ TICKER ════════════ -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-inner">
+    <div class="ticker-group">
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Web Design</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Graphic Design</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Brand Identity</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">إِتْقَان</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">100% Halal</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">UAE Based</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Worldwide Delivery</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Done With Excellence</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Conversion Focused</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Muslim Business Friendly</span>
+    </div>
+    <div class="ticker-group" aria-hidden="true">
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Web Design</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Graphic Design</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Brand Identity</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">إِتْقَان</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">100% Halal</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">UAE Based</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Worldwide Delivery</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Done With Excellence</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Conversion Focused</span>
+      <span class="ticker-item ticker-dot">✦</span><span class="ticker-item">Muslim Business Friendly</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════ STATS ════════════ -->
+<section id="stats" aria-label="Key stats">
+  <div class="stats-grid">
+    <div class="stat-item reveal">
+      <div class="stat-num">10<span>+</span></div>
+      <div class="stat-label">Years in the creative space</div>
+    </div>
+    <div class="stat-item reveal" style="--d:.1s">
+      <div class="stat-num"><span>∞</span></div>
+      <div class="stat-label">Brands served across the Muslim world</div>
+    </div>
+    <div class="stat-item reveal" style="--d:.2s">
+      <div class="stat-num">100<span>%</span></div>
+      <div class="stat-label">Halal — always, without compromise</div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ SERVICES ════════════ -->
+<section id="services">
+  <div class="inner">
+    <p class="section-label reveal">What we do</p>
+    <h2 class="section-h2 reveal">Built to perform.<br>Designed to convert.</h2>
+    <p class="section-sub reveal">Every service is rooted in the principle of itqaan — excellence in every detail, every pixel, every decision.</p>
+
+    <div class="services-grid">
+
+      <div class="svc-card reveal">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 21V9"/>
+          </svg>
+        </div>
+        <div class="svc-name">Web Design</div>
+        <div class="svc-desc">High-converting websites and landing pages built from scratch. Fast, responsive, and designed to turn visitors into paying clients.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Landing Pages</span>
+          <span class="svc-tag">Business Sites</span>
+          <span class="svc-tag">Custom Code</span>
+          <span class="svc-tag">Mobile First</span>
+        </div>
+      </div>
+
+      <div class="svc-card reveal" style="--d:.07s">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/>
+          </svg>
+        </div>
+        <div class="svc-name">Graphic Design</div>
+        <div class="svc-desc">Scroll-stopping visuals, social media content, and print materials that represent your brand with pride and precision.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Social Media</span>
+          <span class="svc-tag">Print</span>
+          <span class="svc-tag">Posters</span>
+          <span class="svc-tag">Motion</span>
+        </div>
+      </div>
+
+      <div class="svc-card reveal" style="--d:.14s">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div class="svc-name">Brand Identity</div>
+        <div class="svc-desc">Complete brand systems — logo, colour palette, typography, and brand guidelines that give your business a strong, lasting identity.</div>
+        <div class="svc-tags">
+          <span class="svc-tag">Logo Design</span>
+          <span class="svc-tag">Brand System</span>
+          <span class="svc-tag">Guidelines</span>
+          <span class="svc-tag">Strategy</span>
+        </div>
+      </div>
+
+      <div class="svc-card svc-more reveal" style="--d:.21s"
+           onclick="window.open('https://wa.me/923165252296?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20know%20more%20about%20your%20services.','_blank','noopener')">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8">
+            <circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/>
+          </svg>
+        </div>
+        <div class="svc-name">And more...</div>
+        <div class="svc-desc">Pitch decks, product photography direction, email templates, and anything else your brand needs to grow. Let's talk.</div>
+        <a class="svc-more-link">
+          Discuss your project
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ WORK / POSTER STACK ════════════ -->
+<section id="work">
+  <div class="inner">
+    <p class="section-label reveal">Design work</p>
+    <h2 class="section-h2 reveal">Visual &amp; graphic design</h2>
+    <p class="section-sub reveal" style="margin-bottom:32px">Click the front card to browse. Click twice to view full size.</p>
+
+    <div class="pstack-wrap reveal">
+      <div class="pstack-outer">
+        <div class="pstack" id="pstack">
+          <div class="pstack-card" data-pos="front" data-idx="0">
+            <div class="pstack-placeholder" id="pp-0">
+              <span>Coming Soon</span>
+            </div>
+            <div class="pstack-card-over">
+              <span class="pstack-card-badge">Brand Work</span>
+              <span class="pstack-card-hint">Click to browse designs</span>
+            </div>
+          </div>
+          <div class="pstack-card" data-pos="middle" data-idx="1">
+            <div class="pstack-placeholder" id="pp-1">
+              <span>Coming Soon</span>
+            </div>
+            <div class="pstack-card-over">
+              <span class="pstack-card-badge">Web Design</span>
+              <span class="pstack-card-hint">Click to browse</span>
+            </div>
+          </div>
+          <div class="pstack-card" data-pos="back" data-idx="2">
+            <div class="pstack-placeholder" id="pp-2">
+              <span>Coming Soon</span>
+            </div>
+            <div class="pstack-card-over">
+              <span class="pstack-card-badge">Graphic Design</span>
+              <span class="pstack-card-hint">Click to browse</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="pstack-hint">
+        <span class="pstack-hint-arrow">☞</span>
+        Click to browse · Click twice to view full size
+      </p>
+
+      <div class="pstack-dots" id="pstack-dots">
+        <div class="pstack-dot active"></div>
+        <div class="pstack-dot"></div>
+        <div class="pstack-dot"></div>
+      </div>
+
+      <a href="https://wa.me/923165252296?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20see%20more%20of%20your%20design%20work."
+         target="_blank" rel="noopener" class="pg-more">
+        See more design work — let's talk
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ LIVE WORK / PROJECTS ════════════ -->
+<section id="websites">
+  <div class="inner" style="text-align:center">
+    <p class="section-label reveal">Live Projects</p>
+    <h2 class="section-h2 reveal" style="max-width:600px;margin-left:auto;margin-right:auto">Websites built and live.</h2>
+    <p class="section-sub reveal" style="margin:0 auto 16px">Real projects, real clients — click any card to preview the site.</p>
+
+    <!-- Live preview strip -->
+    <div class="preview-strip reveal">
+
+      <div class="preview-card" data-url="https://royalthobes.com/">
+        <div class="preview-frame-wrap">
+          <iframe class="preview-frame" src="about:blank" data-src="https://royalthobes.com/" title="Royal Thobes" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay">
+            <a href="https://royalthobes.com/" target="_blank" rel="noopener" class="preview-visit">
+              Visit site
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="preview-meta">
+          <span class="preview-dot"></span>
+          <div class="preview-text">
+            <span class="preview-name">Royal Thobes</span>
+            <span class="preview-tag">E-Commerce · Fashion</span>
+          </div>
+          <a href="https://royalthobes.com/" target="_blank" rel="noopener" class="preview-arrow">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="preview-card" data-url="https://tadabburkids.com/">
+        <div class="preview-frame-wrap">
+          <iframe class="preview-frame" src="about:blank" data-src="https://tadabburkids.com/" title="Tadabbur Kids" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay">
+            <a href="https://tadabburkids.com/" target="_blank" rel="noopener" class="preview-visit">
+              Visit site
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="preview-meta">
+          <span class="preview-dot"></span>
+          <div class="preview-text">
+            <span class="preview-name">Tadabbur Kids</span>
+            <span class="preview-tag">Islamic Ed · Children</span>
+          </div>
+          <a href="https://tadabburkids.com/" target="_blank" rel="noopener" class="preview-arrow">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="preview-card" data-url="https://mathtutorinsights.com/">
+        <div class="preview-frame-wrap">
+          <iframe class="preview-frame" src="about:blank" data-src="https://mathtutorinsights.com/" title="Math Tutor Insights" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay">
+            <a href="https://mathtutorinsights.com/" target="_blank" rel="noopener" class="preview-visit">
+              Visit site
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="preview-meta">
+          <span class="preview-dot"></span>
+          <div class="preview-text">
+            <span class="preview-name">MathTutor Insights</span>
+            <span class="preview-tag">Education · Services</span>
+          </div>
+          <a href="https://mathtutorinsights.com/" target="_blank" rel="noopener" class="preview-arrow">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="preview-card" data-url="https://shayanqureshi-174b4.web.app/">
+        <div class="preview-frame-wrap">
+          <iframe class="preview-frame" src="about:blank" data-src="https://shayanqureshi-174b4.web.app/" title="Portfolio" loading="lazy" sandbox="allow-scripts allow-same-origin"></iframe>
+          <div class="preview-overlay">
+            <a href="https://shayanqureshi-174b4.web.app/" target="_blank" rel="noopener" class="preview-visit">
+              Visit site
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+        <div class="preview-meta">
+          <span class="preview-dot"></span>
+          <div class="preview-text">
+            <span class="preview-name">Personal Portfolio</span>
+            <span class="preview-tag">Portfolio · Web App</span>
+          </div>
+          <a href="https://shayanqureshi-174b4.web.app/" target="_blank" rel="noopener" class="preview-arrow">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="site-more reveal">
+      <span class="site-more-dot"></span>
+      more projects on the way
+      <span class="site-more-dot"></span>
+    </p>
+  </div>
+</section>
+
+<!-- ════════════ TESTIMONIALS ════════════ -->
+<section id="proof">
+  <div class="tc-header">
+    <div class="inner">
+      <p class="section-label reveal">Client Reviews</p>
+      <h2 class="section-h2 reveal">What our clients say.</h2>
+      <p class="section-sub reveal">Real feedback from real people we've had the honour of working with.</p>
+    </div>
+  </div>
+  <div class="tc-wrap">
+    <div class="tc-row tc-row-1" id="tc-r1"></div>
+    <div class="tc-row tc-row-2" id="tc-r2"></div>
+  </div>
+</section>
+
+<!-- ════════════ ABOUT ════════════ -->
+<section id="about">
+  <div class="inner">
+    <div class="about-grid">
+
+      <div class="about-img-wrap reveal">
+        <div class="about-img-frame">
+          <!-- Replace with your photo later: <img class="about-img" src="images/photo.jpg" alt="Shayan — Founder of ITQAAN"> -->
+          <div class="about-img-placeholder">
+            <span>✦</span>
+            <span>Photo coming soon</span>
+          </div>
+        </div>
+        <div class="about-img-badge">
+          Founder, ITQAAN
+          <span>UAE · Building since 2015</span>
+        </div>
+      </div>
+
+      <div class="about-text reveal" style="--d:.12s">
+        <p class="section-label">About</p>
+        <h2 class="section-h2">Design rooted<br>in purpose.</h2>
+
+        <p>I'm Shayan — a designer and web developer with <strong>over 10 years</strong> in the creative industry, working with brands across the Muslim world and beyond.</p>
+
+        <p>I started ITQAAN because I believe the work we put out into the world should reflect our values. Not just aesthetically — but in the care, the intention, and the standard we hold ourselves to.</p>
+
+        <div class="hadith-block">
+          <p>"Indeed, Allah loves that when one of you does something, he does it with <em>itqaan</em> — with excellence and thoroughness."</p>
+          <cite>— Prophet Muhammad ﷺ</cite>
+        </div>
+
+        <p>That's the standard we build to. Whether it's a landing page, a logo, or a full brand identity — <strong>every project gets our full attention</strong>, because that's what your business deserves.</p>
+
+        <p>We specialise in serving <strong>service businesses, Muslim brands, and entrepreneurs</strong> who want a digital presence that actually converts — not just looks nice.</p>
+
+        <div class="about-chips">
+          <span class="chip">Web Design</span>
+          <span class="chip">Graphic Design</span>
+          <span class="chip">Brand Identity</span>
+          <span class="chip">HTML · CSS · JS</span>
+          <span class="chip">Tailwind CSS</span>
+          <span class="chip">Conversion Focused</span>
+          <span class="chip">100% Halal</span>
+          <span class="chip">UAE Based</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ CONTACT ════════════ -->
+<section id="contact">
+  <div class="contact-box reveal">
+    <p class="section-label" style="text-align:center">Get in touch</p>
+    <h2 class="section-h2" style="text-align:center">Let's build something<br>excellent.</h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 40px">
+      Have a project in mind? Slide to message us on WhatsApp and we'll get back to you fast — بإذن الله.
+    </p>
+
+    <!-- Slide to WhatsApp -->
+    <div class="wa-slide" id="wa-slide" role="button" aria-label="Slide to message on WhatsApp" tabindex="0">
+      <div class="wa-slide-fill" id="wa-slide-fill"></div>
+      <div class="wa-slide-handle" id="wa-slide-handle" tabindex="-1">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="white">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.59z"/>
+        </svg>
+      </div>
+      <span class="wa-slide-label" id="wa-slide-label">Slide to message</span>
+      <span class="wa-slide-done"  id="wa-slide-done">Opening ✓</span>
+    </div>
+
+    <p class="contact-or">or</p>
+
+    <a href="mailto:shayanshehzadqureshi@gmail.com" class="contact-email">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      shayanshehzadqureshi@gmail.com
+    </a>
+  </div>
+</section>
+
+</main>
+
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="footer-logo">
+    ITQAAN
+    <span>إِتْقَان · Creative Agency</span>
+  </div>
+  <p class="footer-copy">© 2025 ITQAAN · UAE · Built with excellence.</p>
+</footer>
+
+<!-- ════════════ JAVASCRIPT ════════════ -->
+<script src="js/main.js"></script>
+
+</body>
+</html>
