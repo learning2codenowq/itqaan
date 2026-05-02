@@ -226,33 +226,7 @@ document.addEventListener('click', e => {
 })();
 
 /* ────────────────────────────────────────────
-   6. LIVE PREVIEW IFRAMES — lazy load on hover
-──────────────────────────────────────────── */
-(function () {
-  const cards = document.querySelectorAll('.preview-card');
-
-  cards.forEach(card => {
-    const iframe = card.querySelector('.preview-frame');
-    if (!iframe) return;
-    let loaded = false;
-
-    // Load iframe when card enters viewport
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting && !loaded) {
-          loaded = true;
-          iframe.src = iframe.dataset.src;
-          obs.unobserve(card);
-        }
-      });
-    }, { threshold: 0.1 });
-
-    obs.observe(card);
-  });
-})();
-
-/* ────────────────────────────────────────────
-   7. SLIDE TO WHATSAPP
+   6. SLIDE TO WHATSAPP
 ──────────────────────────────────────────── */
 (function () {
   const container = document.getElementById('wa-slide');
