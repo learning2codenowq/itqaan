@@ -117,17 +117,25 @@ document.addEventListener('click', e => {
    5. POSTER STACK
 ──────────────────────────────────────────── */
 (function () {
-  /* 
-    When you have design work images, add them here like:
-    { src: 'images/work/project-1.jpg', label: 'Brand Identity' }
-    
-    For now the cards show placeholders.
-    The stack interaction still works — click to cycle, double-click for lightbox.
-  */
   const posters = [
-    { src: '', label: 'Brand Work — coming soon' },
-    { src: '', label: 'Web Design — coming soon' },
-    { src: '', label: 'Graphic Design — coming soon' },
+    {
+      src:     'images/work/brand-identity.png',
+      label:   'Brand Identity',
+      hint:    'Click to browse · double-click to expand',
+      fit:     'cover'
+    },
+    {
+      src:     'images/work/tadabbur-screenshot.png',
+      label:   'Web Design',
+      hint:    'Click to browse · double-click to expand',
+      fit:     'cover'
+    },
+    {
+      src:     'images/work/carousel-post.png',
+      label:   'Graphic Design',
+      hint:    'Click to browse · double-click to expand',
+      fit:     'contain'   // portrait 4:5 — contain prevents cropping
+    },
   ];
 
   const stack   = document.getElementById('pstack');
@@ -138,6 +146,26 @@ document.addEventListener('click', e => {
   let clickCount = 0;
   let clickTimer = null;
   const TOTAL = posters.length;
+
+  // Inject images into cards on init
+  cards.forEach((card, i) => {
+    const p = posters[i];
+    const inner = card.querySelector('.pstack-placeholder') || card;
+    if (p && p.src) {
+      // Replace placeholder with real image
+      const img = document.createElement('img');
+      img.src = p.src;
+      img.alt = p.label;
+      img.style.cssText = `width:100%;height:100%;object-fit:${p.fit || 'cover'};object-position:center top;display:block;`;
+      const ph = card.querySelector('.pstack-placeholder');
+      if (ph) ph.replaceWith(img);
+    }
+    // Update the overlay label
+    const badge = card.querySelector('.pstack-card-badge');
+    if (badge && p) badge.textContent = p.label;
+    const hint = card.querySelector('.pstack-card-hint');
+    if (hint && p) hint.textContent = p.hint || 'Click to browse';
+  });
 
   function applyPositions() {
     cards.forEach((c, i) => { c.dataset.pos = positions[i]; });

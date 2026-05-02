@@ -531,6 +531,12 @@ section { padding: 80px 48px; }
   color: var(--ink-light); letter-spacing: 0.06em;
 }
 
+/* Portrait images (contain fit) get a warm tinted bg */
+.pstack-card img[style*="contain"] {
+  background: var(--ivory-dark);
+  padding: 12px;
+}
+
 @media (max-width: 900px) {
   .preview-strip { grid-template-columns: repeat(2, 1fr); }
 }
