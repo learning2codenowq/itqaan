@@ -272,22 +272,22 @@ document.addEventListener('click', e => {
     }, 2600);
   }
 
-  handle.addEventListener('pointerdown', e => {
-    if (completed) return;
+  function dragStart(clientX) {
+    if (completed) return false;
     MAX_DRAG  = container.getBoundingClientRect().width - HANDLE_W;
     THRESHOLD = MAX_DRAG * 0.86;
-    startX = e.clientX - currentX;
-    handle.setPointerCapture(e.pointerId);
+    startX = clientX - currentX;
     handle.style.transition = 'none';
     fill.style.transition   = 'none';
-  });
+    return true;
+  }
 
-  handle.addEventListener('pointermove', e => {
+  function dragMove(clientX) {
     if (startX === null) return;
-    setPos(e.clientX - startX);
-  });
+    setPos(clientX - startX);
+  }
 
-  handle.addEventListener('pointerup', () => {
+  function dragEnd() {
     if (startX === null) return;
     startX = null;
     if (currentX >= THRESHOLD) {
@@ -297,10 +297,36 @@ document.addEventListener('click', e => {
       fill.style.transition   = 'transform 0.4s cubic-bezier(0.22,1,0.36,1)';
       setPos(0);
     }
+  }
+
+  // Mouse / stylus (pointer events, skip touch to avoid double-fire)
+  handle.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'touch') return;
+    if (!dragStart(e.clientX)) return;
+    handle.setPointerCapture(e.pointerId);
+  });
+  handle.addEventListener('pointermove', e => {
+    if (e.pointerType === 'touch') return;
+    dragMove(e.clientX);
+  });
+  handle.addEventListener('pointerup', e => {
+    if (e.pointerType === 'touch') return;
+    dragEnd();
+  });
+  handle.addEventListener('pointercancel', e => {
+    if (e.pointerType === 'touch') return;
+    startX = null; setPos(0);
   });
 
-  handle.addEventListener('pointercancel', () => {
-    startX = null;
-    setPos(0);
-  });
+  // Touch (mobile) — preventDefault stops the browser treating the swipe as a scroll,
+  // which was causing pointercancel to fire and reset the slider mid-drag.
+  handle.addEventListener('touchstart', e => {
+    if (dragStart(e.touches[0].clientX)) e.preventDefault();
+  }, { passive: false });
+  handle.addEventListener('touchmove', e => {
+    dragMove(e.touches[0].clientX);
+    e.preventDefault();
+  }, { passive: false });
+  handle.addEventListener('touchend', () => dragEnd());
+  handle.addEventListener('touchcancel', () => { startX = null; setPos(0); });
 })();
