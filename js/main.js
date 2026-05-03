@@ -65,25 +65,13 @@ document.addEventListener('click', e => {
       name: 'Shabiib A.',
       role: 'MathTutor Insights',
       init: 'S',
-      text: '"Working with Shayan was a seamless experience. He understood the vision immediately and delivered a site that <span class="tc-hl">exceeded every expectation</span>. Professional, fast, and genuinely cares about the result."'
+      text: '"Alhamdulilah it was a really good experience working with Shayan. He modified aspects of the website I required and gave it a better structure. Within a week after completion I\'ve received a few leads so far alhamdulilah. He is also very <span class="tc-hl">communicative and attentive to detail</span> which is key."'
     },
     {
-      name: 'Client',
-      role: 'Royal Thobes',
-      init: 'R',
-      text: '"The attention to detail in our e-commerce site was outstanding. Every section was <span class="tc-hl">thoughtfully designed</span> with our customers in mind. Highly recommend ITQAAN to any Muslim business."'
-    },
-    {
-      name: 'Client',
-      role: 'Tadabbur Kids',
+      name: 'Tadabbur Kids',
+      role: 'Islamic Ed · Children',
       init: 'T',
       text: '"ITQAAN brought our platform to life in a way that felt <span class="tc-hl">true to our values</span>. The design is beautiful, the site works perfectly, and the whole process was barakah-filled."'
-    },
-    {
-      name: 'Business Owner',
-      role: 'UAE — Service Business',
-      init: 'B',
-      text: '"Finally a designer who understands the Muslim market. The site <span class="tc-hl">converts visitors into clients</span> and looks premium doing it. The Itqaan philosophy really shows in the work."'
     }
   ];
 
@@ -107,8 +95,8 @@ document.addEventListener('click', e => {
 
   const r1 = document.getElementById('tc-r1');
   const r2 = document.getElementById('tc-r2');
-  const o1 = [0, 1, 2, 3, 0, 1, 2, 3];
-  const o2 = [2, 3, 0, 1, 2, 3, 0, 1];
+  const o1 = [0, 1, 0, 1, 0, 1, 0, 1];
+  const o2 = [1, 0, 1, 0, 1, 0, 1, 0];
   r1.innerHTML = o1.map(i => card(reviews[i])).join('');
   r2.innerHTML = o2.map(i => card(reviews[i])).join('');
 })();
