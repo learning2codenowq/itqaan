@@ -235,9 +235,9 @@ document.addEventListener('click', e => {
   const label     = document.getElementById('wa-slide-label');
   const done      = document.getElementById('wa-slide-done');
 
-  const HANDLE_W  = 58;
-  const MAX_DRAG  = 232;
-  const THRESHOLD = MAX_DRAG * 0.86;
+  const HANDLE_W = 58;
+  let MAX_DRAG   = container.getBoundingClientRect().width - HANDLE_W;
+  let THRESHOLD  = MAX_DRAG * 0.86;
 
   let startX    = null;
   let currentX  = 0;
@@ -257,13 +257,7 @@ document.addEventListener('click', e => {
     setPos(MAX_DRAG);
     label.style.opacity = '0';
     done.style.opacity  = '1';
-    const a = document.createElement('a');
-    a.href = 'https://wa.me/923165252296?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20ITQAAN.';
-    a.target = '_blank';
-    a.rel = 'noopener';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
+    window.open('https://wa.me/923165252296?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20ITQAAN.', '_blank', 'noopener');
     setTimeout(() => {
       handle.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1)';
       fill.style.transition   = 'transform 0.5s cubic-bezier(0.22,1,0.36,1)';
@@ -280,6 +274,8 @@ document.addEventListener('click', e => {
 
   handle.addEventListener('pointerdown', e => {
     if (completed) return;
+    MAX_DRAG  = container.getBoundingClientRect().width - HANDLE_W;
+    THRESHOLD = MAX_DRAG * 0.86;
     startX = e.clientX - currentX;
     handle.setPointerCapture(e.pointerId);
     handle.style.transition = 'none';
