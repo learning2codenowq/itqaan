@@ -257,7 +257,12 @@ document.addEventListener('click', e => {
     setPos(MAX_DRAG);
     label.style.opacity = '0';
     done.style.opacity  = '1';
-    window.open('https://wa.me/923165252296?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20ITQAAN.', '_blank', 'noopener');
+    const waUrl = 'https://wa.me/923165252296?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20ITQAAN.';
+    if (navigator.maxTouchPoints > 0) {
+      location.href = waUrl;
+    } else {
+      window.open(waUrl, '_blank', 'noopener');
+    }
     setTimeout(() => {
       handle.style.transition = 'transform 0.5s cubic-bezier(0.22,1,0.36,1)';
       fill.style.transition   = 'transform 0.5s cubic-bezier(0.22,1,0.36,1)';
