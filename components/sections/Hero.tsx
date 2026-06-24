@@ -268,15 +268,6 @@ export default function Hero() {
               padding: '0 64px 32px',
             }}
           >
-            <span style={{
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.6rem',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: 'var(--color-ink-28)',
-            }}>
-              Excellence in every detail
-            </span>
 
             <span style={{
               display: 'flex',

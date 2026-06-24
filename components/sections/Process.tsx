@@ -132,6 +132,9 @@ export default function Process() {
         @media (max-width: 600px) {
           #process { padding: 80px 24px !important; }
         }
+        @media (max-width: 900px) {
+          .process-left { position: static !important; top: auto !important; }
+        }
       `}</style>
 
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(50% 50% at 90% 50%, rgba(245,240,232,0.03) 0%, rgba(245,240,232,0) 70%)' }} />
@@ -141,7 +144,7 @@ export default function Process() {
         <div className="process-layout" style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: '96px', alignItems: 'start' }}>
 
           {/* Left — sticky label */}
-          <div style={{ position: 'sticky', top: '120px' }}>
+          <div className="process-left" style={{ position: 'sticky', top: '120px' }}>
             <Reveal style={{ marginBottom: '28px' }}>
               <p style={{ display: 'flex', alignItems: 'center', gap: '12px', fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-ink-48)', margin: 0 }}>
                 <span aria-hidden="true" style={{ display: 'inline-block', width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-ember)', flexShrink: 0 }} />
