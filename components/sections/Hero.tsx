@@ -254,62 +254,6 @@ export default function Hero() {
           )}
         </div>
 
-        {/* Bottom bar */}
-        {showContent && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 1.1 }}
-            style={{
-              position: 'relative', zIndex: 1,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
-              padding: '0 64px 32px',
-            }}
-          >
-
-            <span style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px',
-              fontFamily: 'var(--font-mono)',
-              fontSize: '0.6rem',
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              color: 'var(--color-ink-28)',
-            }}>
-              Scroll
-              {/* Pill */}
-              <span
-                aria-hidden="true"
-                style={{
-                  display: 'flex',
-                  alignItems: 'flex-start',
-                  justifyContent: 'center',
-                  width: '16px',
-                  height: '28px',
-                  borderRadius: '9999px',
-                  border: '1px solid rgba(245,240,232,0.18)',
-                  overflow: 'hidden',
-                }}
-              >
-                <motion.span
-                  style={{
-                    display: 'block',
-                    width: '1px',
-                    height: '6px',
-                    borderRadius: '9999px',
-                    background: 'rgba(245,240,232,0.48)',
-                    marginTop: '5px',
-                  }}
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
-                />
-              </span>
-            </span>
-          </motion.div>
-        )}
       </section>
 
       {/* CTA hover styles */}
