@@ -4,7 +4,11 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git pull *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(Get-ChildItem *)",
+      "Bash(git -C \"C:\\\\Users\\\\SHAYAN\\\\Desktop\\\\itqaan\" status)",
+      "Bash(git -C \"C:\\\\Users\\\\SHAYAN\\\\Desktop\\\\itqaan\" diff)",
+      "Bash(git *)"
     ]
   }
 }
