@@ -8,7 +8,6 @@ const EASE_EXPO = [0.22, 1, 0.36, 1] as const
 const links = [
   { label: 'Services', href: '#services' },
   { label: 'Process',  href: '#process'  },
-  { label: 'Pricing',  href: '#pricing'  },
 ]
 
 export default function Navbar() {
@@ -37,12 +36,12 @@ export default function Navbar() {
           font-size: 0.82rem;
           font-weight: 500;
           letter-spacing: 0.02em;
-          color: rgba(245,240,232,0.6);
+          color: rgba(178,213,229,0.6);
           transition: color 0.25s ease;
           text-decoration: none;
           white-space: nowrap;
         }
-        .nav-link:hover { color: rgba(245,240,232,1); }
+        .nav-link:hover { color: rgba(178,213,229,1); }
         .nav-cta-btn {
           display: inline-flex;
           align-items: center;
@@ -50,8 +49,8 @@ export default function Navbar() {
           margin-left: 4px;
           padding: 9px 18px;
           border-radius: 9999px;
-          background: rgba(245,240,232,1);
-          color: #0A0806;
+          background: rgba(178,213,229,1);
+          color: #020202;
           font-size: 0.82rem;
           font-weight: 600;
           letter-spacing: 0.02em;
@@ -61,24 +60,24 @@ export default function Navbar() {
           transition: box-shadow 0.3s ease;
         }
         .nav-cta-btn:hover {
-          box-shadow: 0 6px 28px rgba(245,240,232,0.22);
+          box-shadow: 0 6px 28px rgba(178,213,229,0.22);
         }
         .mobile-link {
           display: block;
           padding: 14px 4px;
           font-size: 1rem;
           font-weight: 500;
-          color: rgba(245,240,232,0.6);
-          border-bottom: 1px solid rgba(245,240,232,0.08);
+          color: rgba(178,213,229,0.6);
+          border-bottom: 1px solid rgba(178,213,229,0.08);
           text-decoration: none;
           transition: color 0.2s ease;
         }
-        .mobile-link:hover { color: rgba(245,240,232,1); }
+        .mobile-link:hover { color: rgba(178,213,229,1); }
         .ham-line {
           display: block;
           width: 18px;
           height: 1px;
-          background: rgba(245,240,232,0.8);
+          background: rgba(178,213,229,0.8);
           transition: transform 0.3s ease, opacity 0.3s ease;
         }
         @media (max-width: 767px) {
@@ -110,11 +109,11 @@ export default function Navbar() {
                 alignItems: 'center',
                 padding: '6px 6px 6px 8px',
                 borderRadius: '9999px',
-                border: '1px solid rgba(245,240,232,0.12)',
-                background: 'rgba(245,240,232,0.06)',
+                border: '1px solid rgba(178,213,229,0.12)',
+                background: 'rgba(178,213,229,0.06)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
-                boxShadow: '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(245,240,232,0.08)',
+                boxShadow: '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(178,213,229,0.08)',
                 gap: '2px',
               }}
             >
@@ -142,8 +141,8 @@ export default function Navbar() {
                 width: '42px',
                 height: '42px',
                 borderRadius: '9999px',
-                border: '1px solid rgba(245,240,232,0.12)',
-                background: 'rgba(245,240,232,0.06)',
+                border: '1px solid rgba(178,213,229,0.12)',
+                background: 'rgba(178,213,229,0.06)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
                 alignItems: 'center',
@@ -174,8 +173,8 @@ export default function Navbar() {
                     right: 0,
                     minWidth: '220px',
                     borderRadius: '16px',
-                    border: '1px solid rgba(245,240,232,0.1)',
-                    background: 'rgba(10,8,6,0.95)',
+                    border: '1px solid rgba(178,213,229,0.1)',
+                    background: 'rgba(2,2,2,0.95)',
                     backdropFilter: 'blur(24px)',
                     WebkitBackdropFilter: 'blur(24px)',
                     padding: '8px 16px 16px',
@@ -194,8 +193,8 @@ export default function Navbar() {
                       marginTop: '12px',
                       padding: '13px',
                       borderRadius: '9999px',
-                      background: 'rgba(245,240,232,1)',
-                      color: '#0A0806',
+                      background: 'rgba(178,213,229,1)',
+                      color: '#020202',
                       fontSize: '0.88rem',
                       fontWeight: 600,
                       textAlign: 'center',

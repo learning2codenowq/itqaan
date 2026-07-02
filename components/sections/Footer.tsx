@@ -4,7 +4,6 @@ const navLinks = [
   { label: 'Philosophy', href: '#philosophy' },
   { label: 'Services',   href: '#services'   },
   { label: 'Process',    href: '#process'    },
-  { label: 'Pricing',    href: '#pricing'    },
 ]
 
 const contactLinks = [
@@ -17,7 +16,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer style={{ position: 'relative', borderTop: '1px solid rgba(245,240,232,0.08)', padding: '64px 64px 40px', background: 'var(--color-void)' }}>
+    <footer style={{ position: 'relative', borderTop: '1px solid rgba(178,213,229,0.08)', padding: '64px 64px 40px', background: 'var(--color-void)' }}>
       <style>{`
         @media (max-width: 900px) {
           .footer-inner { padding: 48px 28px 32px !important; }
@@ -34,12 +33,12 @@ export default function Footer() {
           align-items: center;
           gap: 6px;
           font-size: 0.875rem;
-          color: rgba(245,240,232,0.48);
+          color: rgba(178,213,229,0.48);
           text-decoration: none;
           transition: color 0.25s ease;
           font-weight: 300;
         }
-        .footer-link:hover { color: rgba(245,240,232,0.9); }
+        .footer-link:hover { color: rgba(178,213,229,0.9); }
       `}</style>
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
@@ -48,7 +47,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="footer-brand">
             <a href="#hero" style={{ textDecoration: "none", display: "inline-flex", alignItems: "baseline", gap: "8px", marginBottom: "16px" }}>
-              <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(245,240,232,0.7)" }}>ITQAAN</span>
+              <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(178,213,229,0.7)" }}>ITQAAN</span>
               <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-ink-28)" }}>Creative Agency</span>
             </a>
             <p style={{ fontSize: '0.875rem', fontWeight: 300, lineHeight: 1.75, color: 'var(--color-ink-48)', maxWidth: '280px', margin: '0 0 24px' }}>
@@ -102,7 +101,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div style={{ paddingTop: '28px', borderTop: '1px solid rgba(245,240,232,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
+        <div style={{ paddingTop: '28px', borderTop: '1px solid rgba(178,213,229,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.12em', color: 'var(--color-ink-28)', margin: 0 }}>
             &copy; {year} ITQAAN. Built with excellence.
           </p>

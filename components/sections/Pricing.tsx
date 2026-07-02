@@ -68,8 +68,8 @@ function PricingCard({ plan, delay }: { plan: typeof plans[0]; delay: number }) 
         flexDirection: 'column',
         padding: '40px',
         borderRadius: '8px',
-        border: plan.featured ? '1px solid rgba(245,240,232,0.18)' : '1px solid rgba(245,240,232,0.08)',
-        background: plan.featured ? 'rgba(245,240,232,0.05)' : 'rgba(245,240,232,0.02)',
+        border: plan.featured ? '1px solid rgba(178,213,229,0.18)' : '1px solid rgba(178,213,229,0.08)',
+        background: plan.featured ? 'rgba(178,213,229,0.05)' : 'rgba(178,213,229,0.02)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
         position: 'relative',
@@ -79,15 +79,15 @@ function PricingCard({ plan, delay }: { plan: typeof plans[0]; delay: number }) 
         <div aria-hidden="true" style={{
           position: 'absolute', top: 0, left: 0, right: 0, height: '1px',
           background: plan.featured
-            ? 'linear-gradient(90deg, rgba(245,240,232,0) 0%, rgba(245,240,232,0.28) 50%, rgba(245,240,232,0) 100%)'
-            : 'linear-gradient(90deg, rgba(245,240,232,0) 0%, rgba(245,240,232,0.1) 50%, rgba(245,240,232,0) 100%)',
+            ? 'linear-gradient(90deg, rgba(178,213,229,0) 0%, rgba(178,213,229,0.28) 50%, rgba(178,213,229,0) 100%)'
+            : 'linear-gradient(90deg, rgba(178,213,229,0) 0%, rgba(178,213,229,0.1) 50%, rgba(178,213,229,0) 100%)',
         }} />
 
         {/* Radial glow for featured */}
         {plan.featured && (
           <div aria-hidden="true" style={{
             position: 'absolute', inset: 0, pointerEvents: 'none',
-            background: 'radial-gradient(80% 80% at 80% 10%, rgba(196,98,45,0.07) 0%, rgba(196,98,45,0) 70%)',
+            background: 'radial-gradient(80% 80% at 80% 10%, rgba(178,213,229,0.07) 0%, rgba(178,213,229,0) 70%)',
           }} />
         )}
 
@@ -103,7 +103,7 @@ function PricingCard({ plan, delay }: { plan: typeof plans[0]; delay: number }) 
             textTransform: 'uppercase',
             padding: '5px 12px',
             borderRadius: '9999px',
-            border: plan.featured ? '1px solid rgba(245,240,232,0.2)' : '1px solid rgba(245,240,232,0.1)',
+            border: plan.featured ? '1px solid rgba(178,213,229,0.2)' : '1px solid rgba(178,213,229,0.1)',
             color: plan.featured ? 'var(--color-ink)' : 'var(--color-ink-48)',
           }}>
             {plan.badge}
@@ -129,7 +129,7 @@ function PricingCard({ plan, delay }: { plan: typeof plans[0]; delay: number }) 
         </p>
 
         {/* Features */}
-        <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 40px', display: 'flex', flexDirection: 'column', gap: '12px', borderTop: '1px solid rgba(245,240,232,0.08)', paddingTop: '28px', flex: 1 }}>
+        <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 40px', display: 'flex', flexDirection: 'column', gap: '12px', borderTop: '1px solid rgba(178,213,229,0.08)', paddingTop: '28px', flex: 1 }}>
           {plan.features.map(f => (
             <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', fontSize: '0.875rem', color: 'var(--color-ink-72)', fontWeight: 300 }}>
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, marginTop: '3px' }} aria-hidden="true">
@@ -159,7 +159,7 @@ function PricingCard({ plan, delay }: { plan: typeof plans[0]; delay: number }) 
               transition: 'box-shadow 0.3s ease, border-color 0.3s ease',
               background: plan.featured ? 'var(--color-ink)' : 'transparent',
               color: plan.featured ? 'var(--color-void)' : 'var(--color-ink-72)',
-              border: plan.featured ? 'none' : '1px solid rgba(245,240,232,0.12)',
+              border: plan.featured ? 'none' : '1px solid rgba(178,213,229,0.12)',
             }}
           >
             {plan.cta}
@@ -194,15 +194,15 @@ export default function Pricing() {
         @media (max-width: 600px) {
           #pricing { padding: 80px 24px !important; }
         }
-        .pricing-cta-primary:hover { box-shadow: 0 8px 40px rgba(245,240,232,0.18); }
+        .pricing-cta-primary:hover { box-shadow: 0 8px 40px rgba(178,213,229,0.18); }
         .pricing-cta-secondary:hover {
-          border-color: rgba(245,240,232,0.24) !important;
-          color: rgba(245,240,232,1) !important;
+          border-color: rgba(178,213,229,0.24) !important;
+          color: rgba(178,213,229,1) !important;
         }
       `}</style>
 
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(60% 60% at 50% 0%, rgba(245,240,232,0.04) 0%, rgba(245,240,232,0) 70%)' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: '64px', right: '64px', height: '1px', background: 'linear-gradient(90deg, rgba(245,240,232,0) 0%, rgba(245,240,232,0.08) 50%, rgba(245,240,232,0) 100%)' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(60% 60% at 50% 0%, rgba(178,213,229,0.04) 0%, rgba(178,213,229,0) 70%)' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: '64px', right: '64px', height: '1px', background: 'linear-gradient(90deg, rgba(178,213,229,0) 0%, rgba(178,213,229,0.08) 50%, rgba(178,213,229,0) 100%)' }} />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 

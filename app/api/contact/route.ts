@@ -30,41 +30,41 @@ export async function POST(req: NextRequest) {
       replyTo: email,
       subject: `New inquiry from ${name} — ${business}`,
       html: `
-        <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 24px; background: #0A0806; color: #F5F0E8; border-radius: 8px;">
+        <div style="font-family: system-ui, sans-serif; max-width: 600px; margin: 0 auto; padding: 40px 24px; background: #020202; color: #F5F0E8; border-radius: 8px;">
 
-          <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid rgba(245,240,232,0.1);">
+          <div style="margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid rgba(178,213,229,0.1);">
             <p style="font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #C4622D; margin: 0 0 8px;">ITQAAN</p>
             <h1 style="font-size: 24px; font-weight: 700; margin: 0; color: #F5F0E8;">New Project Inquiry</h1>
           </div>
 
           <table style="width: 100%; border-collapse: collapse;">
             <tr>
-              <td style="padding: 12px 0; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.48); width: 120px; vertical-align: top; padding-top: 16px;">Name</td>
-              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 15px; color: #F5F0E8;">${name}</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(178,213,229,0.48); width: 120px; vertical-align: top; padding-top: 16px;">Name</td>
+              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 15px; color: #F5F0E8;">${name}</td>
             </tr>
             <tr>
-              <td style="padding: 12px 0; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.48); vertical-align: top; padding-top: 16px;">Email</td>
-              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 15px; color: #F5F0E8;"><a href="mailto:${email}" style="color: #C4622D;">${email}</a></td>
+              <td style="padding: 12px 0; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(178,213,229,0.48); vertical-align: top; padding-top: 16px;">Email</td>
+              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 15px; color: #F5F0E8;"><a href="mailto:${email}" style="color: #C4622D;">${email}</a></td>
             </tr>
             <tr>
-              <td style="padding: 12px 0; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.48); vertical-align: top; padding-top: 16px;">Business</td>
-              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 15px; color: #F5F0E8;">${business}</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(178,213,229,0.48); vertical-align: top; padding-top: 16px;">Business</td>
+              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 15px; color: #F5F0E8;">${business}</td>
             </tr>
             <tr>
-              <td style="padding: 12px 0; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.48); vertical-align: top; padding-top: 16px;">Service</td>
-              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 15px; color: #F5F0E8;">${service}</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(178,213,229,0.48); vertical-align: top; padding-top: 16px;">Service</td>
+              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 15px; color: #F5F0E8;">${service}</td>
             </tr>
             <tr>
-              <td style="padding: 12px 0; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.48); vertical-align: top; padding-top: 16px;">Budget</td>
-              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(245,240,232,0.08); font-size: 15px; color: #F5F0E8;">${budget || 'Not specified'}</td>
+              <td style="padding: 12px 0; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(178,213,229,0.48); vertical-align: top; padding-top: 16px;">Budget</td>
+              <td style="padding: 12px 0 12px 16px; border-bottom: 1px solid rgba(178,213,229,0.08); font-size: 15px; color: #F5F0E8;">${budget || 'Not specified'}</td>
             </tr>
             <tr>
-              <td style="padding: 16px 0 0; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.48); vertical-align: top;">Message</td>
-              <td style="padding: 16px 0 0 16px; font-size: 15px; color: rgba(245,240,232,0.8); line-height: 1.7;">${message.replace(/\n/g, '<br>')}</td>
+              <td style="padding: 16px 0 0; font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(178,213,229,0.48); vertical-align: top;">Message</td>
+              <td style="padding: 16px 0 0 16px; font-size: 15px; color: rgba(178,213,229,0.8); line-height: 1.7;">${message.replace(/\n/g, '<br>')}</td>
             </tr>
           </table>
 
-          <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(245,240,232,0.1); font-size: 11px; color: rgba(245,240,232,0.28); letter-spacing: 0.1em;">
+          <div style="margin-top: 40px; padding-top: 24px; border-top: 1px solid rgba(178,213,229,0.1); font-size: 11px; color: rgba(178,213,229,0.28); letter-spacing: 0.1em;">
             Sent via withitqaan.com contact form
           </div>
         </div>

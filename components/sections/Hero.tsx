@@ -1,8 +1,12 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import GeoPattern from '@/components/ui/GeoPattern'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const EASE_EXPO = [0.22, 1, 0.36, 1] as const
 
@@ -54,6 +58,10 @@ export default function Hero() {
   const [showContent, setShowContent] = useState(false)
   const prefersReduced = useReducedMotion()
 
+  const wrapperRef = useRef<HTMLDivElement>(null)
+  const geoRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
+
   useEffect(() => {
     if (prefersReduced) {
       setLoaderDone(true)
@@ -65,9 +73,38 @@ export default function Hero() {
     return () => { clearTimeout(t1); clearTimeout(t2) }
   }, [prefersReduced])
 
+  useEffect(() => {
+    if (!showContent || prefersReduced) return
+
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapperRef.current,
+          start: 'top top',
+          end: '+=100%',
+          scrub: 1,
+          pin: true,
+          anticipatePin: 1,
+          // Topmost pin — must refresh first so sections below measure with
+          // Hero's pin-spacer already in place (higher priority = refreshed earlier).
+          refreshPriority: 3,
+        },
+      })
+
+      tl.to(geoRef.current, { y: -80, ease: 'none' }, 0)
+        .to(contentRef.current, { y: -40, opacity: 0, ease: 'none' }, 0)
+
+      // This pin is created ~2.8s after the other sections' triggers (it waits
+      // for `showContent`). Inserting its pin-spacer shifts the document below,
+      // so re-measure every trigger to keep downstream start/end positions correct.
+      ScrollTrigger.refresh()
+    }, wrapperRef)
+
+    return () => ctx.revert()
+  }, [showContent, prefersReduced])
+
   return (
     <>
-      {/* ── Loader ── */}
       <AnimatePresence>
         {!loaderDone && (
           <motion.div
@@ -110,7 +147,7 @@ export default function Hero() {
                 fontSize: '0.62rem',
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
-                color: 'rgba(196,98,45,0.45)',
+                color: 'rgba(178,213,229,0.45)',
               }}
               variants={loaderLabelVariants}
               initial="hidden" animate="visible" exit="exit"
@@ -121,150 +158,110 @@ export default function Hero() {
         )}
       </AnimatePresence>
 
-      {/* ── Hero ── */}
-      <section
-        id="hero"
-        style={{
-          position: 'relative',
-          minHeight: '100svh',
-          display: 'flex',
-          flexDirection: 'column',
-          overflow: 'hidden',
-          background: 'var(--color-void)',
-        }}
-      >
-        {/* Background */}
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
-          <GeoPattern opacity={0.04} rotate />
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute', inset: 0,
-              background: 'radial-gradient(120% 120% at 50% 50%, rgba(10,8,6,0) 40%, rgba(10,8,6,0.92) 100%)',
-            }}
-          />
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute', inset: 0, pointerEvents: 'none',
-              background: 'radial-gradient(55% 55% at 15% 85%, rgba(196,98,45,0.09) 0%, rgba(196,98,45,0) 70%)',
-            }}
-          />
-        </div>
-
-        {/* Content — centred vertically, padded left */}
-        <div
+      <div ref={wrapperRef} style={{ position: 'relative' }}>
+        <section
+          id="hero"
           style={{
-            position: 'relative', zIndex: 1,
-            flex: 1,
+            position: 'relative',
+            minHeight: '100svh',
             display: 'flex',
-            alignItems: 'center',
-            padding: '96px 64px 0',
+            flexDirection: 'column',
+            overflow: 'hidden',
+            background: 'var(--color-void)',
           }}
         >
-          {showContent && (
-            <div style={{ width: '100%', maxWidth: '1100px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+          <div ref={geoRef} style={{ position: 'absolute', inset: 0, zIndex: 0 }}>
+            <GeoPattern opacity={0.04} rotate />
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute', inset: 0,
+                background: 'radial-gradient(120% 120% at 50% 50%, rgba(2,2,2,0) 40%, rgba(2,2,2,0.92) 100%)',
+              }}
+            />
+            <div
+              aria-hidden="true"
+              style={{
+                position: 'absolute', inset: 0, pointerEvents: 'none',
+                background: 'radial-gradient(55% 55% at 15% 85%, rgba(178,213,229,0.09) 0%, rgba(178,213,229,0) 70%)',
+              }}
+            />
+          </div>
 
-              {/* Headline */}
-              <h1 style={{
-                fontFamily: 'var(--font-display)',
-                fontSize: 'clamp(52px, 7vw, 110px)',
-                fontWeight: 800,
-                lineHeight: 1.0,
-                letterSpacing: '-0.03em',
-                color: 'var(--color-ink)',
-                margin: '0 0 32px',
-              }}>
-                <HeroLine delay={0.1}>Design done</HeroLine>
-                <HeroLine delay={0.2}>
-                  with{' '}
-                  <span style={{ color: 'var(--color-ember)' }}>excellence.</span>
-                </HeroLine>
-              </h1>
+          <div
+            style={{
+              position: 'relative', zIndex: 1,
+              flex: 1,
+              display: 'flex',
+              alignItems: 'center',
+              padding: '96px 64px 0',
+            }}
+          >
+            {showContent && (
+              <div ref={contentRef} style={{ width: '100%', maxWidth: '1100px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
-              {/* Subtext */}
-              <HeroFade delay={0.45} style={{ marginBottom: '48px', maxWidth: '460px' }}>
-                <p style={{
-                  fontSize: '1rem',
-                  fontWeight: 300,
-                  lineHeight: 1.75,
-                  color: 'var(--color-ink-48)',
-                  margin: 0,
+                <h1 style={{
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(52px, 7vw, 110px)',
+                  fontWeight: 800,
+                  lineHeight: 1.0,
+                  letterSpacing: '-0.03em',
+                  color: 'var(--color-ink)',
+                  margin: '0 0 32px',
                 }}>
-                  Web design, brand identity, and graphic design for Muslim
-                  businesses and service brands that want to look the part.
-                </p>
-              </HeroFade>
+                  <HeroLine delay={0.1}>Design done</HeroLine>
+                  <HeroLine delay={0.2}>
+                    with <span style={{ color: 'var(--color-ember)' }}>excellence.</span>
+                  </HeroLine>
+                </h1>
 
-              {/* CTAs */}
-              <HeroFade delay={0.6} style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                <HeroFade delay={0.45} style={{ marginBottom: '48px', maxWidth: '460px' }}>
+                  <p style={{
+                    fontSize: '1rem',
+                    fontWeight: 300,
+                    lineHeight: 1.75,
+                    color: 'var(--color-ink-48)',
+                    margin: 0,
+                  }}>
+                    Web design, brand identity, and graphic design for Muslim
+                    businesses and service brands that want to look the part.
+                  </p>
+                </HeroFade>
 
-                {/* Primary */}
-                <a
-                  href="#contact"
-                  className="hero-cta-primary"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '14px 28px',
-                    borderRadius: '9999px',
-                    background: 'var(--color-ink)',
-                    color: 'var(--color-void)',
-                    fontSize: '0.875rem',
-                    fontWeight: 600,
-                    letterSpacing: '0.02em',
-                    textDecoration: 'none',
-                    transition: 'box-shadow 0.3s ease',
-                    position: 'relative',
-                    overflow: 'hidden',
-                  }}
-                >
-                  Start a project
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
-                  </svg>
-                </a>
+                <HeroFade delay={0.6} style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                  <a href="#contact" className="hero-cta-primary"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      padding: '14px 28px',
+                      borderRadius: '9999px',
+                      background: 'var(--color-ink)',
+                      color: 'var(--color-void)',
+                      fontSize: '0.875rem',
+                      fontWeight: 600,
+                      letterSpacing: '0.02em',
+                      textDecoration: 'none',
+                      transition: 'box-shadow 0.3s ease',
+                      position: 'relative',
+                      overflow: 'hidden',
+                    }}
+                  >
+                    Start a project
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                      <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
+                    </svg>
+                  </a>
+                </HeroFade>
+              </div>
+            )}
+          </div>
+        </section>
+      </div>
 
-                {/* Secondary */}
-                <a
-                  href="#services"
-                  className="hero-cta-secondary"
-                  style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    padding: '14px 28px',
-                    borderRadius: '9999px',
-                    border: '1px solid rgba(245,240,232,0.18)',
-                    background: 'rgba(245,240,232,0.05)',
-                    color: 'rgba(245,240,232,0.6)',
-                    fontSize: '0.875rem',
-                    fontWeight: 500,
-                    letterSpacing: '0.02em',
-                    textDecoration: 'none',
-                    transition: 'border-color 0.3s, color 0.3s, background 0.3s',
-                  }}
-                >
-                  See our work
-                </a>
-
-              </HeroFade>
-            </div>
-          )}
-        </div>
-
-      </section>
-
-      {/* CTA hover styles */}
       <style>{`
         .hero-cta-primary:hover {
-          box-shadow: 0 8px 40px rgba(245,240,232,0.15);
-        }
-        .hero-cta-secondary:hover {
-          border-color: rgba(245,240,232,0.28) !important;
-          color: rgba(245,240,232,1) !important;
-          background: rgba(245,240,232,0.08) !important;
+          box-shadow: 0 8px 40px rgba(178,213,229,0.15);
         }
       `}</style>
     </>

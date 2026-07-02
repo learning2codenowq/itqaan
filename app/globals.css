@@ -3,21 +3,21 @@
 /* ── Custom theme tokens ── */
 @theme {
   /* Colors */
-  --color-void:      #0A0806;
-  --color-ink:       #F5F0E8;
-  --color-ember:     #C4622D;
+  --color-void:      #020202;
+--color-ink:       #B2D5E5;
+--color-ember:     #B2D5E5;
 
-  --color-ink-72:    rgba(245, 240, 232, 0.72);
-  --color-ink-48:    rgba(245, 240, 232, 0.48);
-  --color-ink-28:    rgba(245, 240, 232, 0.28);
-  --color-ink-18:    rgba(245, 240, 232, 0.18);
-  --color-ink-10:    rgba(245, 240, 232, 0.10);
-  --color-ink-8:     rgba(245, 240, 232, 0.08);
-  --color-ink-5:     rgba(245, 240, 232, 0.05);
-  --color-ink-3:     rgba(245, 240, 232, 0.03);
+--color-ink-72:    rgba(178, 213, 229, 0.72);
+--color-ink-48:    rgba(178, 213, 229, 0.48);
+--color-ink-28:    rgba(178, 213, 229, 0.28);
+--color-ink-18:    rgba(178, 213, 229, 0.18);
+--color-ink-10:    rgba(178, 213, 229, 0.10);
+--color-ink-8:     rgba(178, 213, 229, 0.08);
+--color-ink-5:     rgba(178, 213, 229, 0.05);
+--color-ink-3:     rgba(178, 213, 229, 0.03);
 
-  --color-ember-dim: rgba(196, 98, 45, 0.12);
-  --color-ember-18:  rgba(196, 98, 45, 0.18);
+--color-ember-dim: rgba(178, 213, 229, 0.12);
+--color-ember-18:  rgba(178, 213, 229, 0.18);
 
   /* Fonts */
   --font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -31,6 +31,14 @@
   --radius-pill: 9999px;
   --radius-card: 8px;
 }
+::selection {
+  background: var(--color-ember);
+  color: var(--color-void);
+}
+::-moz-selection {
+  background: var(--color-ember);
+  color: var(--color-void);
+}
 
 /* ── Base reset ── */
 *, *::before, *::after {
@@ -42,7 +50,8 @@
 html {
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
-  scroll-behavior: smooth;
+  /* No native `scroll-behavior: smooth` — Lenis handles smoothing, and native
+     smooth-scroll double-animates anchor jumps / ScrollTrigger scroll calls. */
 }
 
 body {
@@ -60,10 +69,6 @@ img, video { max-width: 100%; display: block; }
 a { text-decoration: none; color: inherit; }
 button { font-family: inherit; }
 
-::selection {
-  background: var(--color-ember);
-  color: var(--color-ink);
-}
 
 /* ── Scroll reveal utility ── */
 .reveal {

@@ -41,8 +41,8 @@ const inputStyle: React.CSSProperties = {
   width: '100%',
   padding: '12px 16px',
   borderRadius: '6px',
-  border: '1px solid rgba(245,240,232,0.1)',
-  background: 'rgba(245,240,232,0.04)',
+  border: '1px solid rgba(178,213,229,0.1)',
+  background: 'rgba(178,213,229,0.04)',
   color: 'var(--color-ink)',
   fontSize: '0.925rem',
   fontFamily: 'var(--font-body)',
@@ -95,18 +95,18 @@ export default function Contact() {
           .contact-two-col { grid-template-columns: 1fr !important; }
         }
         .contact-input:focus {
-          border-color: rgba(245,240,232,0.22) !important;
-          background: rgba(245,240,232,0.07) !important;
+          border-color: rgba(178,213,229,0.22) !important;
+          background: rgba(178,213,229,0.07) !important;
         }
-        .contact-input::placeholder { color: rgba(245,240,232,0.2); }
-        .contact-input option { background: #0A0806; color: #F5F0E8; }
-        .submit-btn:hover { box-shadow: 0 8px 40px rgba(245,240,232,0.16); }
+        .contact-input::placeholder { color: rgba(178,213,229,0.2); }
+        .contact-input option { background: #020202; color: #F5F0E8; }
+        .submit-btn:hover { box-shadow: 0 8px 40px rgba(178,213,229,0.16); }
         .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
       `}</style>
 
       {/* Glows */}
-      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(60% 60% at 50% 0%, rgba(245,240,232,0.05) 0%, rgba(245,240,232,0) 70%)' }} />
-      <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: '64px', right: '64px', height: '1px', background: 'linear-gradient(90deg, rgba(245,240,232,0) 0%, rgba(245,240,232,0.08) 50%, rgba(245,240,232,0) 100%)' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(60% 60% at 50% 0%, rgba(178,213,229,0.05) 0%, rgba(178,213,229,0) 70%)' }} />
+      <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: '64px', right: '64px', height: '1px', background: 'linear-gradient(90deg, rgba(178,213,229,0) 0%, rgba(178,213,229,0.08) 50%, rgba(178,213,229,0) 100%)' }} />
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div className="contact-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '96px', alignItems: 'start' }}>
@@ -168,7 +168,7 @@ export default function Contact() {
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
                 </svg>
                 Or message us on WhatsApp
-                <style>{`.wa-link:hover { color: rgba(245,240,232,0.8) !important; }`}</style>
+                <style>{`.wa-link:hover { color: rgba(178,213,229,0.8) !important; }`}</style>
               </a>
             </Reveal>
           </div>
@@ -178,21 +178,21 @@ export default function Contact() {
             <div style={{
               padding: '40px',
               borderRadius: '8px',
-              border: '1px solid rgba(245,240,232,0.1)',
-              background: 'rgba(245,240,232,0.03)',
+              border: '1px solid rgba(178,213,229,0.1)',
+              background: 'rgba(178,213,229,0.03)',
               backdropFilter: 'blur(12px)',
               WebkitBackdropFilter: 'blur(12px)',
               position: 'relative',
               overflow: 'hidden',
             }}>
               {/* Top shimmer */}
-              <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, rgba(245,240,232,0) 0%, rgba(245,240,232,0.14) 50%, rgba(245,240,232,0) 100%)' }} />
+              <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '1px', background: 'linear-gradient(90deg, rgba(178,213,229,0) 0%, rgba(178,213,229,0.14) 50%, rgba(178,213,229,0) 100%)' }} />
               {/* Ember glow */}
-              <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(70% 70% at 80% 10%, rgba(196,98,45,0.05) 0%, rgba(196,98,45,0) 70%)' }} />
+              <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(70% 70% at 80% 10%, rgba(178,213,229,0.05) 0%, rgba(178,213,229,0) 70%)' }} />
 
               {status === 'success' ? (
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '360px', textAlign: 'center', gap: '16px' }}>
-                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', border: '1px solid rgba(245,240,232,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px' }}>
+                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', border: '1px solid rgba(178,213,229,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '8px' }}>
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M20 6 9 17l-5-5" />
                     </svg>
