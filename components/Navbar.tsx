@@ -31,9 +31,9 @@ export default function Navbar() {
         .nav-link {
           display: inline-flex;
           align-items: center;
-          padding: 8px 16px;
+          padding: 11px 22px;
           border-radius: 9999px;
-          font-size: 0.82rem;
+          font-size: 0.95rem;
           font-weight: 500;
           letter-spacing: 0.02em;
           color: rgba(178,213,229,0.6);
@@ -45,13 +45,13 @@ export default function Navbar() {
         .nav-cta-btn {
           display: inline-flex;
           align-items: center;
-          gap: 6px;
-          margin-left: 4px;
-          padding: 9px 18px;
+          gap: 7px;
+          margin-left: 6px;
+          padding: 12px 26px;
           border-radius: 9999px;
           background: rgba(178,213,229,1);
           color: #020202;
-          font-size: 0.82rem;
+          font-size: 0.95rem;
           font-weight: 600;
           letter-spacing: 0.02em;
           text-decoration: none;
@@ -107,14 +107,14 @@ export default function Navbar() {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                padding: '6px 6px 6px 8px',
+                padding: '8px 8px 8px 10px',
                 borderRadius: '9999px',
                 border: '1px solid rgba(178,213,229,0.12)',
                 background: 'rgba(178,213,229,0.06)',
                 backdropFilter: 'blur(20px)',
                 WebkitBackdropFilter: 'blur(20px)',
                 boxShadow: '0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(178,213,229,0.08)',
-                gap: '2px',
+                gap: '3px',
               }}
             >
               {links.map(link => (
@@ -124,7 +124,7 @@ export default function Navbar() {
               ))}
               <a href="#contact" className="nav-cta-btn">
                 Start a project
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
                 </svg>
               </a>

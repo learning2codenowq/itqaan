@@ -211,7 +211,7 @@ export default function Hero() {
                 }}>
                   <HeroLine delay={0.1}>Design done</HeroLine>
                   <HeroLine delay={0.2}>
-                    with <span style={{ color: 'var(--color-ember)' }}>excellence.</span>
+                    with <span className="hero-excellence">excellence.</span>
                   </HeroLine>
                 </h1>
 
@@ -223,8 +223,9 @@ export default function Hero() {
                     color: 'var(--color-ink-48)',
                     margin: 0,
                   }}>
-                    Web design, brand identity, and graphic design for Muslim
-                    businesses and service brands that want to look the part.
+                    Web design, brand identity, and graphic design for
+                    established Muslim businesses that want a premium brand
+                    presence.
                   </p>
                 </HeroFade>
 
@@ -262,6 +263,34 @@ export default function Hero() {
       <style>{`
         .hero-cta-primary:hover {
           box-shadow: 0 8px 40px rgba(178,213,229,0.15);
+        }
+        /* "excellence" — glossy bright-to-candy gradient with a white shine
+           sweeping across it, so the word pops through luminance contrast
+           against the flat candy-blue of the rest of the heading.
+           Two layered backgrounds (both clipped to the text): a moving shine
+           highlight on top, a fixed vertical gloss underneath. No drop-shadow,
+           which previously clipped against the line's overflow-hidden wrapper. */
+        .hero-excellence {
+          background-image:
+            linear-gradient(110deg, transparent 42%, #ffffff 50%, transparent 58%),
+            linear-gradient(180deg, #ffffff 0%, #d3ecf7 42%, var(--color-ink) 100%);
+          background-size: 250% 100%, 100% 100%;
+          background-position: 140% 0, 0 0;
+          background-repeat: no-repeat;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          color: transparent;
+          animation: hero-excellence-shine 5.5s ease-in-out infinite;
+          animation-delay: 1.2s;
+        }
+        @keyframes hero-excellence-shine {
+          0%   { background-position: 140% 0, 0 0; }
+          42%  { background-position: -40% 0, 0 0; }
+          100% { background-position: -40% 0, 0 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .hero-excellence { animation: none; background-position: 50% 0, 0 0; }
         }
       `}</style>
     </>

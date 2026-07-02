@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import GeoPattern from '@/components/ui/GeoPattern'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -164,11 +165,36 @@ function ServiceRow({ service }: { service: typeof services[0] }) {
 }
 
 export default function Services() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const bgRef = useRef<HTMLDivElement>(null)
   const headerRef = useRef<HTMLDivElement>(null)
   const eyebrowRef = useRef<HTMLParagraphElement>(null)
   const line1Ref = useRef<HTMLDivElement>(null)
   const line2Ref = useRef<HTMLDivElement>(null)
   const introRef = useRef<HTMLParagraphElement>(null)
+
+  // Parallax accent: drift the geometric pattern slower than the scroll as the
+  // section passes through the viewport.
+  useEffect(() => {
+    if (!sectionRef.current || !bgRef.current) return
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        bgRef.current,
+        { yPercent: -10 },
+        {
+          yPercent: 10,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      )
+    }, sectionRef)
+    return () => ctx.revert()
+  }, [])
 
   useEffect(() => {
     if (!headerRef.current) return
@@ -196,6 +222,7 @@ export default function Services() {
 
   return (
     <section
+      ref={sectionRef}
       id="services"
       style={{ position: 'relative', padding: '140px 64px', background: 'var(--color-void)', overflow: 'hidden' }}
     >
@@ -208,6 +235,11 @@ export default function Services() {
           #services { padding: 80px 24px !important; }
         }
       `}</style>
+
+      {/* Parallax geometric accent */}
+      <div ref={bgRef} aria-hidden="true" style={{ position: 'absolute', top: '-18%', left: 0, right: 0, height: '136%', zIndex: 0, pointerEvents: 'none' }}>
+        <GeoPattern opacity={0.03} />
+      </div>
 
       <div aria-hidden="true" style={{ position: 'absolute', inset: 0, pointerEvents: 'none', background: 'radial-gradient(55% 55% at 80% 10%, rgba(178,213,229,0.04) 0%, rgba(178,213,229,0) 70%)' }} />
       <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: '64px', right: '64px', height: '1px', background: 'linear-gradient(90deg, rgba(178,213,229,0) 0%, rgba(178,213,229,0.08) 50%, rgba(178,213,229,0) 100%)' }} />

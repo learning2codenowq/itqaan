@@ -135,6 +135,21 @@ export default function Process() {
           const currentIndex = { value: 0 }
           const animating = { value: false }
 
+          // Initialise panels to the step-0 resting state up front so the pin
+          // engages on an already-correct layout (no flash of un-dimmed panels).
+          gsap.set(track, { xPercent: 0 })
+          numberRefs.current.forEach((n, i) => gsap.set(n, { scale: i === 0 ? 1 : 0.75 }))
+          bodyRefs.current.forEach((b, i) => gsap.set(b, { opacity: i === 0 ? 1 : 0.15, y: i === 0 ? 0 : 24 }))
+
+          // Snap Lenis exactly onto the pin boundary and halt it, so entering
+          // with scroll momentum can't leave a sub-pixel mismatch as the pin
+          // engages (that mismatch is the "clip" seen entering the section).
+          const freezeAt = (pos: number) => {
+            const l = getLenis()
+            l?.scrollTo(pos, { immediate: true, force: true })
+            l?.stop()
+          }
+
           function snapToStep(index: number, instant = false) {
             currentIndex.value = index
             setActiveIndex(index)
@@ -204,8 +219,8 @@ export default function Process() {
             // Lowest of the three pins — refreshed last, after Hero and
             // Philosophy have restored their pin-spacers above it.
             refreshPriority: 1,
-            onEnter: () => { snapToStep(0, true); observer.enable(); getLenis()?.stop() },
-            onEnterBack: () => { snapToStep(steps.length - 1, true); observer.enable(); getLenis()?.stop() },
+            onEnter: () => { snapToStep(0, true); observer.enable(); freezeAt(st.start + 1) },
+            onEnterBack: () => { snapToStep(steps.length - 1, true); observer.enable(); freezeAt(st.end - 1) },
             onLeave: () => { observer.disable(); getLenis()?.start() },
             onLeaveBack: () => { observer.disable(); getLenis()?.start() },
           })

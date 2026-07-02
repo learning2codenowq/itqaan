@@ -38,17 +38,27 @@ export default function Philosophy() {
           gsap.set(closingRef.current, { opacity: 0, y: 16 })
 
           const tl = gsap.timeline({
-            scrollTrigger: {
-              trigger: wrapperRef.current,
-              start: 'top top',
-              end: isDesktop ? '+=160%' : '+=80%',
-              scrub: 1,
-              pin: isDesktop,
-              anticipatePin: 1,
-              // Refresh after Hero, before Process, so its start measures with
-              // Hero's pin-spacer already in place.
-              refreshPriority: 2,
-            },
+            // Desktop: pinned, scrub-driven (the reveal tracks scroll position).
+            // Mobile: NOT pinned, so a scrub would race through the whole reveal
+            // in one short scroll. Instead play the timeline once at its own pace
+            // when the section enters view, so it always finishes.
+            scrollTrigger: isDesktop
+              ? {
+                  trigger: wrapperRef.current,
+                  start: 'top top',
+                  end: '+=160%',
+                  scrub: 1,
+                  pin: true,
+                  anticipatePin: 1,
+                  // Refresh after Hero, before Process, so its start measures
+                  // with Hero's pin-spacer already in place.
+                  refreshPriority: 2,
+                }
+              : {
+                  trigger: wrapperRef.current,
+                  start: 'top 75%',
+                  toggleActions: 'play none none none',
+                },
           })
 
           tl.to(eyebrowRef.current, { opacity: 1, duration: 0.5 })

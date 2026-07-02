@@ -1,7 +1,12 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useInView } from 'framer-motion'
+import gsap from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import GeoPattern from '@/components/ui/GeoPattern'
+
+gsap.registerPlugin(ScrollTrigger)
 
 const EASE_EXPO = [0.22, 1, 0.36, 1] as const
 
@@ -51,8 +56,32 @@ const inputStyle: React.CSSProperties = {
 }
 
 export default function Contact() {
+  const sectionRef = useRef<HTMLElement>(null)
+  const bgRef = useRef<HTMLDivElement>(null)
   const headingRef = useRef<HTMLHeadingElement>(null)
   const headingInView = useInView(headingRef, { once: true, margin: '-60px 0px' })
+
+  // Parallax accent: drift the geometric pattern as the section scrolls past.
+  useEffect(() => {
+    if (!sectionRef.current || !bgRef.current) return
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        bgRef.current,
+        { yPercent: -10 },
+        {
+          yPercent: 10,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top bottom',
+            end: 'bottom top',
+            scrub: true,
+          },
+        }
+      )
+    }, sectionRef)
+    return () => ctx.revert()
+  }, [])
 
   const [form, setForm] = useState({ name: '', email: '', business: '', service: '', budget: '', message: '' })
   const [status, setStatus] = useState<FormState>('idle')
@@ -82,9 +111,15 @@ export default function Contact() {
 
   return (
     <section
+      ref={sectionRef}
       id="contact"
       style={{ position: 'relative', padding: '140px 64px', background: 'var(--color-void)', overflow: 'hidden' }}
     >
+      {/* Parallax geometric accent */}
+      <div ref={bgRef} aria-hidden="true" style={{ position: 'absolute', top: '-18%', left: 0, right: 0, height: '136%', zIndex: 0, pointerEvents: 'none' }}>
+        <GeoPattern opacity={0.03} />
+      </div>
+
       <style>{`
         @media (max-width: 900px) {
           #contact { padding: 100px 28px !important; }
