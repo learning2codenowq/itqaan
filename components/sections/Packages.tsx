@@ -37,7 +37,7 @@ export default function Packages() {
               Packages
             </p>
             <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.02em', color: 'var(--color-ink)', margin: '0 0 20px' }}>
-              Clear prices. No surprises.
+              Transparent Pricing.
             </h2>
             <ScarcityBadge />
           </div>

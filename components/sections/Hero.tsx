@@ -6,6 +6,7 @@ import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import GeoPattern from '@/components/ui/GeoPattern'
+import HeroShowcase from '@/components/ui/HeroShowcase'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -198,14 +199,16 @@ export default function Hero() {
               padding: '96px 64px 0',
             }}
           >
+            <div className="hero-inner" style={{ width: '100%', maxWidth: '1480px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.08fr 0.92fr', gap: '48px', alignItems: 'center' }}>
+              <div>
             {showContent && (
-              <div ref={contentRef} style={{ width: '100%', maxWidth: '1100px', display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+              <div ref={contentRef} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
                 <h1 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(52px, 7vw, 110px)',
+                  fontSize: 'clamp(42px, 5.2vw, 86px)',
                   fontWeight: 800,
-                  lineHeight: 1.0,
+                  lineHeight: 1.03,
                   letterSpacing: '-0.03em',
                   color: 'var(--color-ink)',
                   margin: '0 0 32px',
@@ -257,6 +260,16 @@ export default function Hero() {
                 </HeroFade>
               </div>
             )}
+              </div>
+
+              <div className="hero-right">
+                {showContent && (
+                  <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, ease: EASE_EXPO, delay: 0.55 }}>
+                    <HeroShowcase />
+                  </motion.div>
+                )}
+              </div>
+            </div>
           </div>
         </section>
       </div>
@@ -264,6 +277,10 @@ export default function Hero() {
       <style>{`
         .hero-cta-primary:hover {
           box-shadow: 0 8px 40px rgba(178,213,229,0.15);
+        }
+        @media (max-width: 980px) {
+          .hero-inner { grid-template-columns: 1fr !important; }
+          .hero-right { display: none !important; }
         }
         /* "excellence" — glossy bright-to-candy gradient with a white shine
            sweeping across it, so the word pops through luminance contrast

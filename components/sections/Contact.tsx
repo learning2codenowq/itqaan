@@ -79,16 +79,13 @@ export default function Contact() {
 
             <h2 ref={headingRef} style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(32px, 4.4vw, 56px)', fontWeight: 700, lineHeight: 1.05, letterSpacing: '-0.02em', color: 'var(--color-ink)', margin: '0 0 24px' }}>
               <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                <motion.div initial={{ y: '110%' }} animate={headingInView ? { y: 0 } : {}} transition={{ duration: 0.85, ease: EASE_EXPO, delay: 0.05 }}>Get a fixed price,</motion.div>
-              </div>
-              <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-                <motion.div initial={{ y: '110%' }} animate={headingInView ? { y: 0 } : {}} transition={{ duration: 0.85, ease: EASE_EXPO, delay: 0.18 }}>not a guessing game.</motion.div>
+                <motion.div initial={{ y: '110%' }} animate={headingInView ? { y: 0 } : {}} transition={{ duration: 0.85, ease: EASE_EXPO, delay: 0.05 }}>Get a fixed price.</motion.div>
               </div>
             </h2>
 
             <Reveal delay={0.2} style={{ marginBottom: '36px' }}>
               <p style={{ fontSize: '1rem', fontWeight: 300, lineHeight: 1.8, color: 'var(--color-ink-48)', margin: 0, maxWidth: '380px' }}>
-                Answer a few quick questions, see a live estimate, and get a fixed-price proposal within two business days, inshaa Allah.
+                Answer a few quick questions, see a live estimate, and get a fixed-price proposal, inshaa Allah.
               </p>
             </Reveal>
 

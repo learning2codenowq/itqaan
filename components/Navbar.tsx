@@ -30,6 +30,38 @@ export default function Navbar() {
   return (
     <>
       <style>{`
+        .nav-brand {
+          position: fixed;
+          top: 30px;
+          left: 40px;
+          z-index: 40;
+          display: inline-flex;
+          align-items: baseline;
+          gap: 9px;
+          text-decoration: none;
+        }
+        .nav-brand-name {
+          font-family: var(--font-display);
+          font-size: 1.15rem;
+          font-weight: 800;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: var(--color-ink);
+          transition: color 0.25s ease;
+        }
+        .nav-brand:hover .nav-brand-name { color: var(--color-ember); }
+        .nav-brand-sub {
+          font-family: var(--font-mono);
+          font-size: 0.55rem;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: var(--color-ink-28);
+        }
+        @media (max-width: 767px) {
+          .nav-brand { top: 22px; left: 24px; }
+          .nav-brand-name { font-size: 1rem; }
+          .nav-brand-sub { display: none; }
+        }
         .nav-link {
           display: inline-flex;
           align-items: center;
@@ -87,6 +119,24 @@ export default function Navbar() {
           .nav-ham-btn { display: flex !important; }
         }
       `}</style>
+
+      <AnimatePresence>
+        {visible && (
+          <motion.a
+            key="brand"
+            href="#hero"
+            className="nav-brand"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5, ease: EASE_EXPO }}
+            aria-label="ITQAAN, back to top"
+          >
+            <span className="nav-brand-name">ITQAAN</span>
+            <span className="nav-brand-sub">Creative Agency</span>
+          </motion.a>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {visible && (

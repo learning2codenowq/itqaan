@@ -11,7 +11,7 @@ export const faqs = [
   },
   {
     q: 'How many revisions do I get?',
-    a: 'We revise until you are happy with the design, within the agreed scope. We would rather get it right than just call it done.',
+    a: 'We do not limit you to a fixed number of revision rounds. We keep refining the work within the agreed project scope until you are happy with the outcome.',
   },
   {
     q: 'Do I own everything?',

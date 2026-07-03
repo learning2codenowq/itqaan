@@ -7,15 +7,15 @@ const EASE = [0.22, 1, 0.36, 1] as const
 
 const guarantees = [
   {
-    title: 'Fixed price, no surprises',
+    title: 'Fixed price',
     desc: 'The price we agree on is the price you pay. No hidden fees, no scope games.',
     icon: (
       <><path d="M12 2 4 5v6c0 5 3.5 8 8 11 4.5-3 8-6 8-11V5l-8-3z" /><path d="m9 12 2 2 4-4" /></>
     ),
   },
   {
-    title: 'Revisions until you are happy',
-    desc: 'We keep refining until it feels right to you, not just until it is technically done.',
+    title: 'Not done until you are happy',
+    desc: 'Your feedback shapes the process, and we continue refining within the agreed project scope until you are happy with the outcome.',
     icon: (
       <><path d="M3 12a9 9 0 0 1 15-6.7L21 8" /><path d="M21 3v5h-5" /><path d="M21 12a9 9 0 0 1-15 6.7L3 16" /><path d="M3 21v-5h5" /></>
     ),
