@@ -30,7 +30,7 @@ const dmMono = DM_Mono({
 })
 
 /* ── Metadata ── */
-const SITE_TITLE = 'Custom Websites for Dubai Businesses | ITQAAN | From 997 AED'
+const SITE_TITLE = 'Websites for Dubai Businesses | ITQAAN | From 997 AED'
 const SITE_DESC =
   'Custom websites, brand identity, and graphic design for Muslim businesses in Dubai and the UAE. Fixed prices from 997 AED. Get a quote in under a minute.'
 
@@ -45,13 +45,13 @@ export const metadata: Metadata = {
     siteName: 'ITQAAN',
     locale: 'en_US',
     type: 'website',
-    images: [{ url: '/og-image.png', width: 1731, height: 909, alt: 'ITQAAN — custom websites for Dubai businesses, from 997 AED' }],
+    images: [{ url: '/og-image.webp', width: 1731, height: 909, alt: 'ITQAAN — websites for Dubai businesses, from 997 AED' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: SITE_TITLE,
     description: SITE_DESC,
-    images: ['/og-image.png'],
+    images: ['/og-image.webp'],
   },
   robots: { index: true, follow: true },
 }

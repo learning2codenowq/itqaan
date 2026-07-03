@@ -4,7 +4,7 @@ import Faq from '@/components/sections/Faq'
 import { faqs } from '@/lib/faq'
 
 export const metadata: Metadata = {
-  title: 'FAQ — ITQAAN | Custom Websites for Dubai Businesses',
+  title: 'FAQ — ITQAAN | Websites for Dubai Businesses',
   description: 'Answers to common questions about timelines, payment, ownership, hosting, and how we work. Fixed prices from 997 AED.',
 }
 
