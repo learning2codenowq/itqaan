@@ -1,7 +1,11 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Plus_Jakarta_Sans, DM_Sans, DM_Mono } from 'next/font/google'
 import './globals.css'
 import LenisProvider from '@/components/ui/LenisProvider'
+
+/* Google Analytics 4 measurement ID */
+const GA_ID = 'G-FZG9CL5KHH'
 
 /* ── Fonts ── */
 const plusJakarta = Plus_Jakarta_Sans({
@@ -26,25 +30,28 @@ const dmMono = DM_Mono({
 })
 
 /* ── Metadata ── */
+const SITE_TITLE = 'Custom Websites for Dubai Businesses | ITQAAN | From 997 AED'
+const SITE_DESC =
+  'Custom websites, brand identity, and graphic design for Muslim businesses in Dubai and the UAE. Fixed prices from 997 AED. Get a quote in under a minute.'
+
 export const metadata: Metadata = {
-  title: 'ITQAAN — Design Done With Excellence',
-  description:
-    'A halal creative agency offering web design, brand identity, and graphic design for Muslim businesses and service brands. UAE-based, worldwide delivery.',
+  title: SITE_TITLE,
+  description: SITE_DESC,
   metadataBase: new URL('https://withitqaan.com'),
   openGraph: {
-    title: 'ITQAAN — Design Done With Excellence',
-    description:
-      'Web design, brand identity, and graphic design for Muslim businesses that want to look the part.',
+    title: SITE_TITLE,
+    description: SITE_DESC,
     url: 'https://withitqaan.com',
     siteName: 'ITQAAN',
     locale: 'en_US',
     type: 'website',
+    images: [{ url: '/og-image.png', width: 1731, height: 909, alt: 'ITQAAN — custom websites for Dubai businesses, from 997 AED' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ITQAAN — Design Done With Excellence',
-    description:
-      'Web design, brand identity, and graphic design for Muslim businesses that want to look the part.',
+    title: SITE_TITLE,
+    description: SITE_DESC,
+    images: ['/og-image.png'],
   },
   robots: { index: true, follow: true },
 }
@@ -75,6 +82,17 @@ export default function RootLayout({
         <LenisProvider>
           {children}
         </LenisProvider>
+
+        {/* Google Analytics 4 */}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
+        <Script id="ga4-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_ID}');
+          `}
+        </Script>
       </body>
     </html>
   )

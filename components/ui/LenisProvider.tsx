@@ -45,7 +45,34 @@ export default function LenisProvider({
     // every ScrollTrigger so pinned/scrubbed start/end positions are correct.
     document.fonts?.ready.then(() => ScrollTrigger.refresh())
 
+    // In-page anchor navigation, routed through Lenis so it stays in sync.
+    // We flag `__navScrolling` + `__navTarget` so a pinned wheel-hijack section
+    // (Process) lets a nav-scroll pass straight through instead of trapping it.
+    const nav = window as unknown as { __navScrolling?: boolean; __navTarget?: string | null }
+    const onAnchorClick = (e: MouseEvent) => {
+      if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey) return
+      const a = (e.target as HTMLElement)?.closest('a')
+      const href = a?.getAttribute('href')
+      if (!href) return
+      let id: string | null = null
+      if (href.startsWith('#')) id = href.slice(1)
+      else if (href.startsWith('/#') && window.location.pathname === '/') id = href.slice(2)
+      if (!id) return
+      const el = document.getElementById(id)
+      if (!el) return
+      e.preventDefault()
+      nav.__navScrolling = true
+      nav.__navTarget = id
+      lenis.scrollTo(el, {
+        duration: 1.2,
+        force: true,
+        onComplete: () => { nav.__navScrolling = false; nav.__navTarget = null },
+      })
+    }
+    document.addEventListener('click', onAnchorClick)
+
     return () => {
+      document.removeEventListener('click', onAnchorClick)
       gsap.ticker.remove(raf)
       gsap.ticker.lagSmoothing(500, 33)
       lenis.off('scroll', ScrollTrigger.update)

@@ -3,6 +3,8 @@ import Hero from '@/components/sections/Hero'
 import Philosophy from '@/components/sections/Philosophy'
 import Services from '@/components/sections/Services'
 import Process from '@/components/sections/Process'
+import Packages from '@/components/sections/Packages'
+import Guarantees from '@/components/sections/Guarantees'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/sections/Footer'
 
@@ -14,6 +16,8 @@ export default function Home() {
       <Philosophy />
       <Services />
       <Process />
+      <Packages />
+      <Guarantees />
       <Contact />
       <Footer />
     </main>

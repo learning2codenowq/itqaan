@@ -1,13 +1,15 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const EASE_EXPO = [0.22, 1, 0.36, 1] as const
 
 const links = [
-  { label: 'Services', href: '#services' },
-  { label: 'Process',  href: '#process'  },
+  { label: 'Services', href: '/#services' },
+  { label: 'Process',  href: '/#process'  },
+  { label: 'Pricing',  href: '/#packages' },
 ]
 
 export default function Navbar() {
@@ -122,12 +124,12 @@ export default function Navbar() {
                   {link.label}
                 </a>
               ))}
-              <a href="#contact" className="nav-cta-btn">
-                Start a project
+              <Link href="/quote" className="nav-cta-btn">
+                Get a quote
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
                 </svg>
-              </a>
+              </Link>
             </nav>
 
             {/* Mobile hamburger */}
@@ -185,8 +187,8 @@ export default function Navbar() {
                       {link.label}
                     </a>
                   ))}
-                  <a
-                    href="#contact"
+                  <Link
+                    href="/quote"
                     onClick={() => setMobileOpen(false)}
                     style={{
                       display: 'block',
@@ -201,8 +203,8 @@ export default function Navbar() {
                       textDecoration: 'none',
                     }}
                   >
-                    Start a project
-                  </a>
+                    Get a quote
+                  </Link>
                 </motion.div>
               )}
             </AnimatePresence>

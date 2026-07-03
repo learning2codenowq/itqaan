@@ -1,15 +1,16 @@
 'use client'
 
 const navLinks = [
-  { label: 'Philosophy', href: '#philosophy' },
-  { label: 'Services',   href: '#services'   },
-  { label: 'Process',    href: '#process'    },
+  { label: 'Services', href: '#services' },
+  { label: 'Process',  href: '#process'  },
+  { label: 'Pricing',  href: '#packages' },
+  { label: 'FAQ',      href: '/faq'      },
 ]
 
 const contactLinks = [
-  { label: 'Start a project', href: '#contact' },
-  { label: 'WhatsApp',        href: 'https://wa.me/923165252296', external: true },
-  { label: 'Email us',        href: 'mailto:hello@withitqaan.com' },
+  { label: 'Get a quote', href: '/quote' },
+  { label: 'WhatsApp',    href: 'https://wa.me/923165252296', external: true },
+  { label: 'Email us',    href: 'mailto:hello@withitqaan.com' },
 ]
 
 export default function Footer() {
@@ -51,11 +52,9 @@ export default function Footer() {
               <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-ink-28)" }}>Creative Agency</span>
             </a>
             <p style={{ fontSize: '0.875rem', fontWeight: 300, lineHeight: 1.75, color: 'var(--color-ink-48)', maxWidth: '280px', margin: '0 0 24px' }}>
-              Web design, brand identity, and graphic design for Muslim businesses
-              that want to look the part.
-            </p>
-            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.62rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-ink-28)', margin: 0 }}>
-              100% Halal · Worldwide Delivery
+              Web design, brand identity, and graphic design
+              for established Muslim businesses that want
+              a premium brand presence.
             </p>
           </div>
 

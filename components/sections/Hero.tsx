@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -230,7 +231,7 @@ export default function Hero() {
                 </HeroFade>
 
                 <HeroFade delay={0.6} style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
-                  <a href="#contact" className="hero-cta-primary"
+                  <Link href="/quote" className="hero-cta-primary"
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
@@ -248,11 +249,11 @@ export default function Hero() {
                       overflow: 'hidden',
                     }}
                   >
-                    Start a project
+                    Get a quote
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
                     </svg>
-                  </a>
+                  </Link>
                 </HeroFade>
               </div>
             )}

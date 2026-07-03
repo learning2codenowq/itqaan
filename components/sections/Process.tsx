@@ -219,8 +219,17 @@ export default function Process() {
             // Lowest of the three pins — refreshed last, after Hero and
             // Philosophy have restored their pin-spacers above it.
             refreshPriority: 1,
-            onEnter: () => { snapToStep(0, true); observer.enable(); freezeAt(st.start + 1) },
-            onEnterBack: () => { snapToStep(steps.length - 1, true); observer.enable(); freezeAt(st.end - 1) },
+            onEnter: () => {
+              // Let an in-page nav-scroll heading elsewhere pass straight through.
+              const nav = window as unknown as { __navScrolling?: boolean; __navTarget?: string }
+              if (nav.__navScrolling && nav.__navTarget !== 'process') return
+              snapToStep(0, true); observer.enable(); freezeAt(st.start + 1)
+            },
+            onEnterBack: () => {
+              const nav = window as unknown as { __navScrolling?: boolean; __navTarget?: string }
+              if (nav.__navScrolling && nav.__navTarget !== 'process') return
+              snapToStep(steps.length - 1, true); observer.enable(); freezeAt(st.end - 1)
+            },
             onLeave: () => { observer.disable(); getLenis()?.start() },
             onLeaveBack: () => { observer.disable(); getLenis()?.start() },
           })
