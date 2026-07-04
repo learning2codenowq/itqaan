@@ -32,10 +32,10 @@ export type Option = {
 
 /* ── Step 1: primary need ── */
 export const primaryNeeds: Option[] = [
-  { id: 'website', label: 'A website',       desc: 'A new site, built from scratch' },
+  { id: 'website', label: 'A website',       desc: 'A new site or redesign existing website' },
   { id: 'brand',   label: 'Brand identity',  desc: 'Logo, colours, type, guidelines' },
-  { id: 'graphic', label: 'Graphic design',  desc: 'Social, print, pitch decks' },
-  { id: 'seo',     label: 'SEO & growth',    desc: 'Get found on Google' },
+  { id: 'graphic', label: 'Graphic design',  desc: 'Social Media posts, print, pitch decks, documents' },
+  { id: 'seo',     label: 'SEO & growth',    desc: 'Get found on Google and AI assistants' },
   { id: 'unsure',  label: 'Not sure yet',    desc: "Let's figure it out together" },
 ]
 
@@ -71,7 +71,7 @@ export const seoPlans: Option[] = [
 /* ── Step 3: website add-ons (multi-select) ── */
 export const addons: Option[] = [
   { id: 'brand', label: 'Logo & brand kit',  desc: 'Logo, colours, fonts',     price: 1497 },
-  { id: 'copy',  label: 'Copywriting',       desc: 'We write all the words',   price: 597 },
+  { id: 'copy',  label: 'Copywriting',       desc: 'Words that turn visitors into clients',   price: 597 },
   { id: 'seo',   label: 'SEO setup',         desc: 'Rank on Google and AI assistants', price: 797 },
 ]
 
@@ -84,7 +84,7 @@ export const EXTRA_PAGE_PRICE = 247
 /* ── Step 4: timeline (informational, no price change) ── */
 export const timelines: Option[] = [
   { id: 'flexible', label: "I'm flexible",       desc: 'No particular deadline' },
-  { id: 'soon',     label: 'Within 1 to 2 months', desc: 'A comfortable timeline' },
+  { id: 'soon',     label: 'Within 1 - 2 months', desc: 'A comfortable timeline' },
   { id: 'asap',     label: 'As soon as possible', desc: 'Priority, may add a rush fee' },
 ]
 

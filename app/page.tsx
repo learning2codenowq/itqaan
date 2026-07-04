@@ -1,6 +1,7 @@
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/sections/Hero'
 import Philosophy from '@/components/sections/Philosophy'
+import MobileProjects from '@/components/sections/MobileProjects'
 import Services from '@/components/sections/Services'
 import Process from '@/components/sections/Process'
 import Packages from '@/components/sections/Packages'
@@ -34,6 +35,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Philosophy />
+      <MobileProjects />
       <Services />
       <Process />
       <Packages />

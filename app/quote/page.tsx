@@ -5,8 +5,9 @@ import ScarcityBadge from '@/components/ui/ScarcityBadge'
 import { packages } from '@/lib/quote'
 
 export const metadata: Metadata = {
-  title: 'Get a quote — ITQAAN',
+  title: 'Get a quote, ITQAAN',
   description: 'Tell us what you need and get a fixed-price quote within 24 hours. Web design, brand identity, and graphic design for Muslim businesses.',
+  alternates: { canonical: '/quote' },
 }
 
 export default async function QuotePage({

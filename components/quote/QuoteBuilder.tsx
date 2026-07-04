@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { AnimatePresence, motion } from 'framer-motion'
 import {
@@ -36,7 +36,11 @@ type State = {
   business: string
   whatsapp: string
   message: string
+  hp: string // honeypot, must stay empty
 }
+
+// WhatsApp with a country code: needs at least 10 digits.
+const isValidWhatsapp = (v: string) => v.replace(/\D/g, '').length >= 10
 
 export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: string; choice?: string } }) {
   const [state, setState] = useState<State>({
@@ -49,8 +53,10 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
     extraPages: 0,
     care: false,
     timeline: null,
-    name: '', email: '', business: '', whatsapp: '', message: '',
+    name: '', email: '', business: '', whatsapp: '', message: '', hp: '',
   })
+  // Captured on mount; used server-side to reject implausibly fast (bot) submits.
+  const [startedAt] = useState(() => Date.now())
   // if a plan preselected the need + choice, skip straight to the step after the choice
   const [stepIndex, setStepIndex] = useState(initialPlan?.need && initialPlan?.choice ? 2 : 0)
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
@@ -59,6 +65,23 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
   const steps = stepsFor(state.need)
   const stepKey = steps[Math.min(stepIndex, steps.length - 1)]
   const set = <K extends keyof State>(k: K, v: State[K]) => setState(s => ({ ...s, [k]: v }))
+
+  /* ── GA4 funnel events ── */
+  const track = (event: string, params?: Record<string, unknown>) =>
+    (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('event', event, params)
+
+  // quote_start fires once, on the first real engagement.
+  const startedRef = useRef(false)
+  const markStart = (need: string | null) => {
+    if (startedRef.current) return
+    startedRef.current = true
+    track('quote_start', { need })
+  }
+  // Arriving via ?plan= means they already engaged from the Packages section.
+  useEffect(() => {
+    if (initialPlan?.need) markStart(initialPlan.need)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   /* ── live estimate ── */
   const estimate = useMemo(() => {
@@ -107,20 +130,28 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
       case 'seoPlan': return !!state.seoPlan
       case 'websiteAddons': return true
       case 'timeline': return !!state.timeline
-      case 'contact': return !!state.name && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email) && !!state.business
+      case 'contact': return !!state.name && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(state.email) && !!state.business && isValidWhatsapp(state.whatsapp)
       default: return false
     }
   })()
 
   const isLast = stepKey === 'contact'
 
-  const next = () => { if (canProceed && !isLast) setStepIndex(i => i + 1) }
+  const next = () => {
+    if (canProceed && !isLast) {
+      const target = steps[stepIndex + 1]
+      track('quote_step', { step: target, index: stepIndex + 1 })
+      setStepIndex(i => i + 1)
+    }
+  }
   const back = () => setStepIndex(i => Math.max(0, i - 1))
 
   const chooseNeed = (id: string) => {
+    markStart(id)
     // changing the primary need resets downstream choices
     setState(s => ({ ...s, need: id, siteType: null, brandScope: null, graphic: [], seoPlan: null, addons: [], extraPages: 0, care: false }))
     setStepIndex(1)
+    track('quote_step', { step: stepsFor(id)[1], index: 1 })
   }
 
   const toggle = (key: 'graphic' | 'addons', id: string) =>
@@ -133,6 +164,8 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          honeypot: state.hp,
+          startedAt,
           contact: { name: state.name, email: state.email, business: state.business, whatsapp: state.whatsapp, message: state.message },
           selections: {
             need: state.need, siteType: state.siteType, brandScope: state.brandScope,
@@ -145,9 +178,10 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Something went wrong.')
       setStatus('success')
-      // GA4 conversion event
-      const w = window as unknown as { gtag?: (...args: unknown[]) => void }
-      w.gtag?.('event', 'generate_lead', { currency: 'AED', value: estimate.oneOff })
+      // GA4 conversion event. Fall back to the monthly value for plans with no
+      // one-off (e.g. monthly SEO) so the lead value is never reported as 0.
+      const leadValue = estimate.oneOff > 0 ? estimate.oneOff : estimate.monthly
+      track('generate_lead', { currency: 'AED', value: leadValue, need: state.need })
     } catch (e: unknown) {
       setStatus('error')
       setError(e instanceof Error ? e.message : 'Something went wrong.')
@@ -288,11 +322,17 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
                   </div>
                   <div className="qb-two">
                     <Field label="Business name" required><input className="qb-input" value={state.business} onChange={e => set('business', e.target.value)} placeholder="Your business" /></Field>
-                    <Field label="WhatsApp (optional)"><input className="qb-input" value={state.whatsapp} onChange={e => set('whatsapp', e.target.value)} placeholder="+971 …" /></Field>
+                    <Field label="WhatsApp (with country code)" required><input className="qb-input" type="tel" inputMode="tel" value={state.whatsapp} onChange={e => set('whatsapp', e.target.value)} placeholder="+971 50 123 4567" /></Field>
                   </div>
                   <Field label="Anything else? (optional)">
                     <textarea className="qb-input" rows={3} value={state.message} onChange={e => set('message', e.target.value)} placeholder="Tell us anything that helps us quote accurately." style={{ resize: 'none', lineHeight: 1.6 }} />
                   </Field>
+                  {/* Honeypot: hidden from humans, catches bots that fill every field. */}
+                  <input
+                    type="text" tabIndex={-1} autoComplete="off" aria-hidden="true"
+                    value={state.hp} onChange={e => set('hp', e.target.value)}
+                    style={{ position: 'absolute', left: '-9999px', width: 1, height: 1, opacity: 0 }}
+                  />
                   {error && <p className="qb-error">{error}</p>}
                 </div>
               </Step>

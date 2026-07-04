@@ -3,6 +3,7 @@ import Script from 'next/script'
 import { Plus_Jakarta_Sans, DM_Sans, DM_Mono } from 'next/font/google'
 import './globals.css'
 import LenisProvider from '@/components/ui/LenisProvider'
+import WhatsAppFab from '@/components/ui/WhatsAppFab'
 
 /* Google Analytics 4 measurement ID */
 const GA_ID = 'G-FZG9CL5KHH'
@@ -38,6 +39,7 @@ export const metadata: Metadata = {
   title: SITE_TITLE,
   description: SITE_DESC,
   metadataBase: new URL('https://withitqaan.com'),
+  alternates: { canonical: '/' },
   openGraph: {
     title: SITE_TITLE,
     description: SITE_DESC,
@@ -82,6 +84,7 @@ export default function RootLayout({
         <LenisProvider>
           {children}
         </LenisProvider>
+        <WhatsAppFab />
 
         {/* Google Analytics 4 */}
         <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />

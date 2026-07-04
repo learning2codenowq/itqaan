@@ -135,6 +135,7 @@ export default function Contact() {
                 href="https://wa.me/923165252296?text=Assalamu%20Alaykum%2C%20I%20would%20like%20to%20discuss%20a%20project%20with%20ITQAAN."
                 target="_blank"
                 rel="noopener noreferrer"
+                data-wa-loc="contact_section"
                 className="wa-link"
                 style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', fontSize: '0.875rem', color: 'var(--color-ink-48)', fontWeight: 400, textDecoration: 'none', transition: 'color 0.25s ease' }}
               >

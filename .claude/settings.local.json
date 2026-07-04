@@ -8,7 +8,8 @@
       "Bash(Get-ChildItem *)",
       "Bash(git -C \"C:\\\\Users\\\\SHAYAN\\\\Desktop\\\\itqaan\" status)",
       "Bash(git -C \"C:\\\\Users\\\\SHAYAN\\\\Desktop\\\\itqaan\" diff)",
-      "Bash(git *)"
+      "Bash(git *)",
+      "PowerShell(npm run build 2>&1)"
     ]
   }
 }

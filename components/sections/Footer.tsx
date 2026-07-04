@@ -83,7 +83,7 @@ export default function Footer() {
                   <a
                     href={l.href}
                     className="footer-link"
-                    {...(l.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    {...(l.external ? { target: '_blank', rel: 'noopener noreferrer', 'data-wa-loc': 'footer' } : {})}
                   >
                     {l.label}
                     {l.external && (
