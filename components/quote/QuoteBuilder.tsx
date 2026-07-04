@@ -357,6 +357,21 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
             </button>
           )}
         </div>
+
+        {isLast && (
+          <div className="qb-reassure">
+            {[
+              { d: 'M12 8v4l3 2 M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z', text: 'Fixed quote on WhatsApp within 24 hours' },
+              { d: 'M20 6 9 17l-5-5', text: 'No payment and no obligation to proceed' },
+              { d: 'M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z M7 11V7a5 5 0 0 1 10 0v4', text: 'Your details stay private, never shared' },
+            ].map(item => (
+              <span key={item.text} className="qb-reassure-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--color-ember)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d={item.d} /></svg>
+                {item.text}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {/* ── Right: live estimate ── */}
@@ -499,6 +514,10 @@ const qbCss = `
   .qb-next { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; border-radius: 9999px; background: var(--color-ink); color: var(--color-void); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.02em; border: none; cursor: pointer; font-family: var(--font-body); transition: box-shadow 0.3s ease, opacity 0.2s ease; }
   .qb-next:hover { box-shadow: 0 8px 40px rgba(178,213,229,0.16); }
   .qb-next:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+
+  .qb-reassure { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--color-ink-8); }
+  .qb-reassure-item { display: inline-flex; align-items: center; gap: 9px; font-size: 0.8rem; font-weight: 300; color: var(--color-ink-48); }
+  .qb-reassure-item svg { flex-shrink: 0; }
 
   .qb-side { position: sticky; top: 40px; }
   @media (max-width: 900px) { .qb-side { position: static; } }

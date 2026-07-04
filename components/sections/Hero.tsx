@@ -7,24 +7,22 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import GeoPattern from '@/components/ui/GeoPattern'
 import HeroShowcase from '@/components/ui/HeroShowcase'
+import ItqaanCalligraphy from '@/components/ui/ItqaanCalligraphy'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const EASE_EXPO = [0.22, 1, 0.36, 1] as const
 
-const loaderArabicVariants = {
-  hidden:  { opacity: 0, y: 12 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: EASE_EXPO } },
-  exit:    { opacity: 0, y: -8, transition: { duration: 0.4, ease: EASE_EXPO } },
-}
+// The line and label follow the calligraphy draw-on (~1.4s), so their delays
+// sit after it rather than at loader start.
 const loaderLabelVariants = {
   hidden:  { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.5, ease: 'easeOut', delay: 0.4 } },
+  visible: { opacity: 1, transition: { duration: 0.5, ease: 'easeOut', delay: 1.5 } },
   exit:    { opacity: 0, transition: { duration: 0.3 } },
 }
 const loaderLineVariants = {
   hidden:  { scaleX: 0, opacity: 0 },
-  visible: { scaleX: 1, opacity: 0.4, transition: { duration: 0.55, ease: EASE_EXPO, delay: 0.25 } },
+  visible: { scaleX: 1, opacity: 0.4, transition: { duration: 0.55, ease: EASE_EXPO, delay: 1.25 } },
   exit:    { opacity: 0, transition: { duration: 0.3 } },
 }
 
@@ -94,7 +92,12 @@ export default function Hero() {
       })
 
       tl.to(geoRef.current, { y: -80, ease: 'none' }, 0)
-        .to(contentRef.current, { y: -40, opacity: 0, ease: 'none' }, 0)
+        .to(contentRef.current, { y: -40, opacity: 0, scale: 0.96, transformOrigin: 'left center', ease: 'none' }, 0)
+        // The showcase columns drift apart and dissolve as you scroll out, so
+        // the hero "opens" to let you through. Targets the .hero-colwrap
+        // wrappers, never .hero-col (its transform belongs to the marquee CSS).
+        .to('.hero-colwrap--up', { x: -44, y: -28, opacity: 0, ease: 'none' }, 0)
+        .to('.hero-colwrap--down', { x: 44, y: -28, opacity: 0, ease: 'none' }, 0)
 
       // This pin is created ~2.8s after the other sections' triggers (it waits
       // for `showContent`). Inserting its pin-spacer shifts the document below,
@@ -121,19 +124,7 @@ export default function Hero() {
             exit={{ y: '-100%', transition: { duration: 0.85, ease: EASE_EXPO } }}
           >
             <GeoPattern opacity={0.02} />
-            <motion.span
-              style={{
-                fontFamily: 'DigitalKhatt, serif',
-                fontSize: 'clamp(56px, 9vw, 100px)',
-                color: 'var(--color-ember)',
-                direction: 'rtl',
-                display: 'inline-block',
-              }}
-              variants={loaderArabicVariants}
-              initial="hidden" animate="visible" exit="exit"
-            >
-              إتقان
-            </motion.span>
+            <ItqaanCalligraphy style={{ height: 'clamp(56px, 9vw, 100px)', width: 'auto' }} />
             <motion.div
               style={{
                 height: '1px', width: '80px',

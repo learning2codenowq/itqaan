@@ -13,6 +13,7 @@
 
 export type LandingSection = { h2: string; body: string[] }
 export type LandingFaq = { q: string; a: string }
+export type RelatedLink = { label: string; href: string }
 
 export type Landing = {
   slug: string
@@ -25,6 +26,9 @@ export type Landing = {
   faqs: LandingFaq[]
   serviceName: string
   areaServed: string[]
+  // Internal links to sibling pages / articles, for SEO and to help readers and
+  // AI assistants discover related intent. Rendered at the foot of the page.
+  related?: RelatedLink[]
 }
 
 const VALUES_SECTION: LandingSection = {
@@ -86,6 +90,12 @@ export const landings: Landing[] = [
     ],
     serviceName: 'Web Design in Dubai',
     areaServed: ['Dubai', 'United Arab Emirates'],
+    related: [
+      { label: 'Web design in Abu Dhabi', href: '/web-design-abu-dhabi' },
+      { label: 'Web design across the UAE', href: '/web-design-uae' },
+      { label: 'Websites for Muslim businesses', href: '/websites-for-muslim-businesses' },
+      { label: 'How much does a website cost in Dubai?', href: '/blog/how-much-does-a-website-cost-in-dubai' },
+    ],
   },
   {
     slug: 'web-design-uae',
@@ -136,6 +146,12 @@ export const landings: Landing[] = [
     ],
     serviceName: 'Web Design in the UAE',
     areaServed: ['Dubai', 'Abu Dhabi', 'Sharjah', 'United Arab Emirates'],
+    related: [
+      { label: 'Web design in Dubai', href: '/web-design-dubai' },
+      { label: 'Web design in Abu Dhabi', href: '/web-design-abu-dhabi' },
+      { label: 'Websites for Quran academies', href: '/websites-for-quran-academies' },
+      { label: 'Do Muslim businesses need a website?', href: '/blog/do-muslim-businesses-need-a-website' },
+    ],
   },
   {
     slug: 'websites-for-muslim-businesses',
@@ -186,6 +202,124 @@ export const landings: Landing[] = [
     ],
     serviceName: 'Web Design for Muslim Businesses',
     areaServed: ['Dubai', 'United Arab Emirates', 'Worldwide'],
+    related: [
+      { label: 'Web design in Dubai', href: '/web-design-dubai' },
+      { label: 'Websites for Quran academies', href: '/websites-for-quran-academies' },
+      { label: 'What makes a website halal?', href: '/blog/what-makes-a-website-halal' },
+      { label: 'The problems we solve', href: '/problems-we-solve' },
+    ],
+  },
+  {
+    slug: 'web-design-abu-dhabi',
+    metaTitle: 'Web Design in Abu Dhabi for Muslim Businesses | ITQAAN | From 997 AED',
+    metaDescription:
+      'Custom web design in Abu Dhabi for Muslim businesses. Fixed prices from 997 AED, no riba, no hidden fees. Fast, mobile-first websites that turn visitors into customers. Get a quote in under a minute.',
+    eyebrow: 'Web design, Abu Dhabi',
+    h1: 'Web design in Abu Dhabi for Muslim businesses',
+    intro:
+      'In a capital where reputation matters, your website is often the first thing a customer judges you by. We design fast, mobile-first sites for Abu Dhabi businesses that make that first impression count, at a fixed price starting from 997 AED.',
+    sections: [
+      {
+        h2: 'Built for how Abu Dhabi searches',
+        body: [
+          'Most customers in Abu Dhabi will find you on their phone, on Google, and increasingly through AI assistants. If your site is slow or looks like a template, they move on before they see what you offer.',
+          'We design each site around your business and your customer, with a clean layout, quick loading, clear calls to action, and a direct line to your WhatsApp.',
+        ],
+      },
+      {
+        h2: 'What you get',
+        body: [
+          'A custom, mobile-first website. Copywriting help so the words actually sell. Basic SEO so Abu Dhabi customers can find you on Google. A contact and enquiry setup that sends leads straight to you.',
+          'One-page sites start from 997 AED and are often ready in days. Multi-page business sites and online stores are quoted clearly upfront, with no hidden costs.',
+        ],
+      },
+      VALUES_SECTION,
+      {
+        h2: 'Working with a remote designer',
+        body: [
+          'We serve Abu Dhabi clients remotely, which keeps overhead low and prices fair without cutting quality. Everything happens over WhatsApp, email, and screen shares, on your schedule.',
+          'You see the work as it develops, give feedback, and we refine it until you are happy before it goes live.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How much does a website cost in Abu Dhabi?',
+        a: 'With ITQAAN, a one-page website in Abu Dhabi starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Every price is fixed and agreed before we begin, with no hidden fees.',
+      },
+      {
+        q: 'Do you work with businesses in Abu Dhabi remotely?',
+        a: 'Yes. We serve Abu Dhabi businesses entirely remotely, over WhatsApp, email, and screen shares. You see the work at every stage and approve it before it goes live, and the price is fixed in writing before we start.',
+      },
+      {
+        q: 'How long does it take to build a website?',
+        a: 'A one-page site is usually ready in a few days. A multi-page business site takes one to two weeks, depending on how quickly you provide your content.',
+      },
+    ],
+    serviceName: 'Web Design in Abu Dhabi',
+    areaServed: ['Abu Dhabi', 'United Arab Emirates'],
+    related: [
+      { label: 'Web design in Dubai', href: '/web-design-dubai' },
+      { label: 'Web design across the UAE', href: '/web-design-uae' },
+      { label: 'Websites for Muslim businesses', href: '/websites-for-muslim-businesses' },
+      { label: 'How much does a website cost in Dubai?', href: '/blog/how-much-does-a-website-cost-in-dubai' },
+    ],
+  },
+  {
+    slug: 'websites-for-quran-academies',
+    metaTitle: 'Websites for Quran Academies & Islamic Teachers | ITQAAN | From 997 AED',
+    metaDescription:
+      'Web design for Quran academies, Islamic schools, and online Quran teachers in the UAE and worldwide. Fixed prices from 997 AED, no riba, no music or images of women. Fill more student places online.',
+    eyebrow: 'For Quran academies',
+    h1: 'Websites for Quran academies and Islamic teachers',
+    intro:
+      'Parents choosing a Quran teacher look you up before they ever message you. We build calm, trustworthy websites for Quran academies and online teachers that fill more student places, at a fixed price starting from 997 AED.',
+    sections: [
+      {
+        h2: 'Turn parents who are searching into enrolments',
+        body: [
+          'Most families now search online for Quran classes, hifz programmes, and tajweed teachers before they commit. If they cannot find a clear, reassuring website, they enrol with whoever they can.',
+          'We design each site around the parent: what your academy teaches, who your teachers are, how classes work, the fees, and a simple way to enrol or book a trial on WhatsApp.',
+        ],
+      },
+      {
+        h2: 'A presence that reflects the work',
+        body: [
+          'Teaching the Quran deserves a website that feels calm, respectful, and premium, not a cluttered template. Clean layout, quick loading, and clear words do most of the trust-building for you.',
+          'By default your site carries no music and no images of women, so it is something you are comfortable sharing with every family and every community.',
+        ],
+      },
+      VALUES_SECTION,
+      {
+        h2: 'Local and online academies, worldwide',
+        body: [
+          'Whether you teach from a masjid in Sharjah or run online classes for students across the world, the goal is the same: a site that makes you easy to find, easy to trust, and easy to enrol with.',
+          'We work remotely over WhatsApp, email, and screen shares, so your location never changes the price or the quality.',
+        ],
+      },
+    ],
+    faqs: [
+      {
+        q: 'How much does a website for a Quran academy cost?',
+        a: 'With ITQAAN, a one-page site for a Quran teacher or small academy starts from 997 AED, and a multi-page site with separate pages for programmes, teachers, and fees starts from 2,497 AED. Every price is fixed and agreed before we begin.',
+      },
+      {
+        q: 'Can the website help parents enrol students?',
+        a: 'Yes. We build a clear enrolment path into every site, usually a simple enquiry form and a direct WhatsApp button, so interested parents can book a trial or ask about places in one tap.',
+      },
+      {
+        q: 'Will the site respect Islamic values?',
+        a: 'Yes. By default your site carries no music and no images of women, the pricing is fixed with no riba or hidden fees, and you own everything when the project is done.',
+      },
+    ],
+    serviceName: 'Web Design for Quran Academies',
+    areaServed: ['Dubai', 'United Arab Emirates', 'Worldwide'],
+    related: [
+      { label: 'Websites for Muslim businesses', href: '/websites-for-muslim-businesses' },
+      { label: 'Web design across the UAE', href: '/web-design-uae' },
+      { label: 'What makes a website halal?', href: '/blog/what-makes-a-website-halal' },
+      { label: 'The problems we solve', href: '/problems-we-solve' },
+    ],
   },
 ]
 

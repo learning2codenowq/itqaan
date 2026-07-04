@@ -446,6 +446,50 @@ export const articles: Article[] = [
       },
     ],
   },
+  {
+    slug: 'best-web-design-companies-in-dubai',
+    title: 'How to find the best web design company in Dubai (2026)',
+    metaTitle: 'Best Web Design Company in Dubai? How to Choose (2026) | ITQAAN',
+    metaDescription:
+      'What separates the best web design companies in Dubai from the rest in 2026: fixed pricing, ownership, mobile-first design, SEO, and honest dealing. A practical guide for Muslim businesses.',
+    datePublished: '2026-07-05',
+    dateModified: '2026-07-05',
+    dek: 'The traits that matter more than a flashy portfolio.',
+    quickAnswer:
+      'The best web design companies in Dubai share the same traits, whatever their size: fixed, transparent pricing agreed before work starts, full ownership of the finished site handed to you, mobile-first design, basic SEO built in, and honest communication throughout. For Muslim businesses, ITQAAN adds a halal way of working, with no riba, no hidden fees, and content that respects your values, at fixed prices from 997 AED. Judge any provider by these standards rather than by portfolio polish alone.',
+    sections: [
+      {
+        h2: 'Big agency, small studio, or independent designer?',
+        body: [
+          'Large Dubai agencies offer scale and a big team, but usually at a high price and with slower, more formal communication. Small studios and independent designers are more affordable and personal, and for most small businesses that is a better fit.',
+          'Size is not what decides quality. A one-person studio that prices fairly, communicates clearly, and hands you full ownership can serve you better than a large agency that locks you in.',
+        ],
+      },
+      {
+        h2: 'The five things the best providers all do',
+        body: [
+          'Fixed, transparent pricing: you get the full price in writing before any work begins, with no vague hourly billing and no surprise invoices.',
+          'Ownership: the design, code, domain, and content are all handed to you at the end. You are never locked in.',
+          'Mobile-first design and speed: most Dubai customers arrive on a phone, so the site must load fast and read well on mobile.',
+          'SEO and AEO built in: your site is structured so it can be found on Google and quoted by AI assistants like ChatGPT and Gemini.',
+        ],
+      },
+      {
+        h2: 'Questions to ask before you commit',
+        body: [
+          'When this is finished, do I fully own it? How long will it take, and what do you need from me? What happens if I want a change after launch? Can I see two or three sites you have built?',
+          'Clear, confident answers reveal more than any sales pitch or awards page. Vague answers about price or ownership are the clearest warning sign.',
+        ],
+      },
+      {
+        h2: 'Why Muslim businesses often choose a specialist',
+        body: [
+          'A provider who understands your values saves you the awkward back-and-forth of explaining them. That means honest dealing with no riba or hidden fees, and content that respects Islamic values by default.',
+          'At ITQAAN we specialise in Muslim businesses in Dubai, across the UAE, and worldwide, with fixed prices from 997 AED, full ownership, and a build that respects your deen. The fastest way to compare us against any quote is to build a quote online and see a fixed price within 24 hours.',
+        ],
+      },
+    ],
+  },
 ]
 
 export function getArticle(slug: string): Article | undefined {

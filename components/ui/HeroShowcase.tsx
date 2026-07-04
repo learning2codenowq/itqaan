@@ -16,12 +16,17 @@ const colB = projects.filter((_, i) => i % 2 === 1)
 function Column({ imgs, variant }: { imgs: string[]; variant: 'up' | 'down' }) {
   const list = [...imgs, ...imgs] // duplicated for a seamless loop
   return (
-    <div className={`hero-col hero-col--${variant}`}>
-      {list.map((n, i) => (
-        <div className="hero-shot" key={`${n}-${i}`}>
-          <img src={`/projects/${n}.webp`} alt="" loading="eager" draggable={false} />
-        </div>
-      ))}
+    // The outer wrap exists so the Hero exit can GSAP-drift each column: the
+    // inner .hero-col's transform belongs to the CSS marquee animation, which
+    // would override any inline transform GSAP writes on it.
+    <div className={`hero-colwrap hero-colwrap--${variant}`}>
+      <div className={`hero-col hero-col--${variant}`}>
+        {list.map((n, i) => (
+          <div className="hero-shot" key={`${n}-${i}`}>
+            <img src={`/projects/${n}.webp`} alt="" loading="eager" draggable={false} />
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
@@ -42,12 +47,16 @@ export default function HeroShowcase() {
           -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
           mask-image: linear-gradient(to bottom, transparent 0%, #000 12%, #000 88%, transparent 100%);
         }
+        .hero-colwrap {
+          flex: 1;
+          min-width: 0;
+          will-change: transform, opacity;
+        }
         .hero-col {
           display: flex;
           flex-direction: column;
           gap: 18px;
-          flex: 1;
-          min-width: 0;
+          width: 100%;
           will-change: transform;
         }
         /* move by exactly one copy: -50% of the (duplicated) column, minus half a

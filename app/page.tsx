@@ -2,6 +2,7 @@ import Navbar from '@/components/Navbar'
 import Hero from '@/components/sections/Hero'
 import Philosophy from '@/components/sections/Philosophy'
 import MobileProjects from '@/components/sections/MobileProjects'
+import Problems from '@/components/sections/Problems'
 import Services from '@/components/sections/Services'
 import Process from '@/components/sections/Process'
 import Packages from '@/components/sections/Packages'
@@ -32,8 +33,38 @@ const orgSchema = {
   ],
   sameAs: ['https://wa.me/923165252296', 'https://www.instagram.com/withitqaan'],
   makesOffer: [
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web Design' } },
-    { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Brand Identity' } },
+    {
+      '@type': 'Offer',
+      name: 'One-page website',
+      priceCurrency: 'AED',
+      price: '997',
+      priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'AED', minPrice: '997' },
+      itemOffered: { '@type': 'Service', name: 'One-page website design' },
+    },
+    {
+      '@type': 'Offer',
+      name: 'Multi-page business website',
+      priceCurrency: 'AED',
+      price: '2497',
+      priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'AED', minPrice: '2497' },
+      itemOffered: { '@type': 'Service', name: 'Multi-page website design' },
+    },
+    {
+      '@type': 'Offer',
+      name: 'Online store',
+      priceCurrency: 'AED',
+      price: '4497',
+      priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'AED', minPrice: '4497' },
+      itemOffered: { '@type': 'Service', name: 'E-commerce website design' },
+    },
+    {
+      '@type': 'Offer',
+      name: 'Brand identity',
+      priceCurrency: 'AED',
+      price: '797',
+      priceSpecification: { '@type': 'PriceSpecification', priceCurrency: 'AED', minPrice: '797' },
+      itemOffered: { '@type': 'Service', name: 'Brand identity' },
+    },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Graphic Design' } },
   ],
 }
@@ -46,6 +77,7 @@ export default function Home() {
       <Hero />
       <Philosophy />
       <MobileProjects />
+      <Problems />
       <Services />
       <Process />
       <Packages />

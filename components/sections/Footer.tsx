@@ -1,17 +1,20 @@
 'use client'
 
 const navLinks = [
-  { label: 'Services', href: '#services' },
-  { label: 'Process',  href: '#process'  },
-  { label: 'Pricing',  href: '#packages' },
-  { label: 'Blog',     href: '/blog'     },
-  { label: 'FAQ',      href: '/faq'      },
+  { label: 'Services',        href: '#services' },
+  { label: 'Process',         href: '#process'  },
+  { label: 'Pricing',         href: '#packages' },
+  { label: 'Problems we solve', href: '/problems-we-solve' },
+  { label: 'Blog',            href: '/blog'     },
+  { label: 'FAQ',             href: '/faq'      },
 ]
 
 const seoLinks = [
   { label: 'Web design in Dubai',          href: '/web-design-dubai' },
+  { label: 'Web design in Abu Dhabi',      href: '/web-design-abu-dhabi' },
   { label: 'Web design in the UAE',        href: '/web-design-uae' },
   { label: 'Websites for Muslim businesses', href: '/websites-for-muslim-businesses' },
+  { label: 'Websites for Quran academies', href: '/websites-for-quran-academies' },
 ]
 
 const contactLinks = [
