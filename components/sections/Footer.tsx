@@ -4,12 +4,20 @@ const navLinks = [
   { label: 'Services', href: '#services' },
   { label: 'Process',  href: '#process'  },
   { label: 'Pricing',  href: '#packages' },
+  { label: 'Blog',     href: '/blog'     },
   { label: 'FAQ',      href: '/faq'      },
+]
+
+const seoLinks = [
+  { label: 'Web design in Dubai',          href: '/web-design-dubai' },
+  { label: 'Web design in the UAE',        href: '/web-design-uae' },
+  { label: 'Websites for Muslim businesses', href: '/websites-for-muslim-businesses' },
 ]
 
 const contactLinks = [
   { label: 'Get a quote', href: '/quote' },
   { label: 'WhatsApp',    href: 'https://wa.me/923165252296', external: true },
+  { label: 'Instagram',   href: 'https://www.instagram.com/withitqaan', external: true },
   { label: 'Email us',    href: 'mailto:hello@withitqaan.com' },
 ]
 
@@ -56,6 +64,13 @@ export default function Footer() {
               for established Muslim businesses that want
               a premium brand presence.
             </p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '8px 18px' }}>
+              {seoLinks.map(l => (
+                <li key={l.href}>
+                  <a href={l.href} className="footer-link" style={{ fontSize: '0.8rem' }}>{l.label}</a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* Nav */}
