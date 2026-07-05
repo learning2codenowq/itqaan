@@ -17,6 +17,7 @@ const services = [
     summary: 'Websites built from scratch, fast and conversion-focused.',
     description: 'Every site we build starts from a blank canvas. No templates, no page builders, just clean code shaped around your business. Fast to load, built for mobile, and designed to turn visitors into clients.',
     tags: ['Landing Pages', 'Business Sites', 'WordPress', 'Custom HTML/CSS', 'Mobile First', 'SEO Ready'],
+    href: '/services/web-design',
   },
   {
     num: '02',
@@ -24,6 +25,7 @@ const services = [
     summary: 'Logo, colour, type, and guidelines, your full visual system.',
     description: 'A brand is more than a logo. We build the complete visual system: mark, palette, typography, and brand guidelines that keep everything consistent whether it shows up on a business card or a billboard.',
     tags: ['Logo Design', 'Brand System', 'Guidelines', 'Typography', 'Colour Palette'],
+    href: '/services/branding',
   },
   {
     num: '03',
@@ -31,6 +33,7 @@ const services = [
     summary: 'Visuals that make your brand look like it means business.',
     description: 'Social media content, print materials, pitch decks, and document design, all consistent with your brand. We make sure every touchpoint your audience sees reflects the quality of what you actually offer.',
     tags: ['Social Media', 'Print', 'Pitch Decks', 'Document Design', 'Posters'],
+    href: '/services/graphic-design',
   },
 ]
 
@@ -139,6 +142,24 @@ function ServiceRow({ service }: { service: typeof services[0] }) {
                 <p style={{ fontSize: '0.95rem', fontWeight: 300, lineHeight: 1.8, color: 'var(--color-ink-48)', maxWidth: '560px', margin: '0 0 20px' }}>
                   {service.description}
                 </p>
+                <a
+                  href={service.href}
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    marginBottom: '20px',
+                    fontSize: '0.85rem',
+                    fontWeight: 500,
+                    color: 'var(--color-ember)',
+                    textDecoration: 'none',
+                  }}
+                >
+                  Learn more about this service
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <path d="M5 12h14" /><path d="m13 6 6 6-6 6" />
+                  </svg>
+                </a>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                   {service.tags.map(tag => (
                     <span key={tag} style={{

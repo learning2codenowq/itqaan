@@ -91,6 +91,7 @@ export const landings: Landing[] = [
     serviceName: 'Web Design in Dubai',
     areaServed: ['Dubai', 'United Arab Emirates'],
     related: [
+      { label: 'Our web design service', href: '/services/web-design' },
       { label: 'Web design in Abu Dhabi', href: '/web-design-abu-dhabi' },
       { label: 'Web design across the UAE', href: '/web-design-uae' },
       { label: 'Websites for Muslim businesses', href: '/websites-for-muslim-businesses' },
@@ -147,6 +148,7 @@ export const landings: Landing[] = [
     serviceName: 'Web Design in the UAE',
     areaServed: ['Dubai', 'Abu Dhabi', 'Sharjah', 'United Arab Emirates'],
     related: [
+      { label: 'Our web design service', href: '/services/web-design' },
       { label: 'Web design in Dubai', href: '/web-design-dubai' },
       { label: 'Web design in Abu Dhabi', href: '/web-design-abu-dhabi' },
       { label: 'Websites for Quran academies', href: '/websites-for-quran-academies' },
@@ -203,6 +205,7 @@ export const landings: Landing[] = [
     serviceName: 'Web Design for Muslim Businesses',
     areaServed: ['Dubai', 'United Arab Emirates', 'Worldwide'],
     related: [
+      { label: 'Our web design service', href: '/services/web-design' },
       { label: 'Web design in Dubai', href: '/web-design-dubai' },
       { label: 'Websites for Quran academies', href: '/websites-for-quran-academies' },
       { label: 'What makes a website halal?', href: '/blog/what-makes-a-website-halal' },
@@ -259,6 +262,7 @@ export const landings: Landing[] = [
     serviceName: 'Web Design in Abu Dhabi',
     areaServed: ['Abu Dhabi', 'United Arab Emirates'],
     related: [
+      { label: 'Our web design service', href: '/services/web-design' },
       { label: 'Web design in Dubai', href: '/web-design-dubai' },
       { label: 'Web design across the UAE', href: '/web-design-uae' },
       { label: 'Websites for Muslim businesses', href: '/websites-for-muslim-businesses' },
@@ -315,6 +319,7 @@ export const landings: Landing[] = [
     serviceName: 'Web Design for Quran Academies',
     areaServed: ['Dubai', 'United Arab Emirates', 'Worldwide'],
     related: [
+      { label: 'Our web design service', href: '/services/web-design' },
       { label: 'Websites for Muslim businesses', href: '/websites-for-muslim-businesses' },
       { label: 'Web design across the UAE', href: '/web-design-uae' },
       { label: 'What makes a website halal?', href: '/blog/what-makes-a-website-halal' },

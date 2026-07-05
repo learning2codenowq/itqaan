@@ -1,9 +1,11 @@
 'use client'
 
+import { readyServices } from '@/lib/serviceNav'
+
 const navLinks = [
-  { label: 'Services',        href: '#services' },
-  { label: 'Process',         href: '#process'  },
-  { label: 'Pricing',         href: '#packages' },
+  { label: 'Portfolio',       href: '/portfolio' },
+  { label: 'How we work',     href: '/how-we-work' },
+  { label: 'Pricing',         href: '/pricing'  },
   { label: 'Problems we solve', href: '/problems-we-solve' },
   { label: 'Blog',            href: '/blog'     },
   { label: 'FAQ',             href: '/faq'      },
@@ -54,11 +56,11 @@ export default function Footer() {
       `}</style>
 
       <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: '64px', marginBottom: '64px' }}>
+        <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '48px', marginBottom: '64px' }}>
 
           {/* Brand */}
           <div className="footer-brand">
-            <a href="#hero" style={{ textDecoration: "none", display: "inline-flex", alignItems: "baseline", gap: "8px", marginBottom: "16px" }}>
+            <a href="/#hero" style={{ textDecoration: "none", display: "inline-flex", alignItems: "baseline", gap: "8px", marginBottom: "16px" }}>
               <span style={{ fontFamily: "var(--font-display)", fontSize: "1rem", fontWeight: 800, letterSpacing: "0.12em", textTransform: "uppercase", color: "rgba(178,213,229,0.7)" }}>ITQAAN</span>
               <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.55rem", letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--color-ink-28)" }}>Creative Agency</span>
             </a>
@@ -73,6 +75,23 @@ export default function Footer() {
                   <a href={l.href} className="footer-link" style={{ fontSize: '0.8rem' }}>{l.label}</a>
                 </li>
               ))}
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-ink-28)', margin: '0 0 20px' }}>
+              Services
+            </p>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {readyServices.map(s => (
+                <li key={s.slug}>
+                  <a href={s.href} className="footer-link">{s.label}</a>
+                </li>
+              ))}
+              <li>
+                <a href="/services" className="footer-link">All services</a>
+              </li>
             </ul>
           </div>
 

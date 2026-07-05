@@ -3,11 +3,11 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
+import { readyServices } from '@/lib/serviceNav'
 
 const EASE_EXPO = [0.22, 1, 0.36, 1] as const
 
 const links = [
-  { label: 'Services', href: '/#services' },
   { label: 'Process',  href: '/#process'  },
   { label: 'Pricing',  href: '/#packages' },
 ]
@@ -15,6 +15,7 @@ const links = [
 export default function Navbar() {
   const [visible, setVisible]       = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [servicesOpen, setServicesOpen] = useState(false)
 
   useEffect(() => {
     const t = setTimeout(() => setVisible(true), 2900)
@@ -76,6 +77,65 @@ export default function Navbar() {
           white-space: nowrap;
         }
         .nav-link:hover { color: rgba(178,213,229,1); }
+        .nav-dd-wrap { position: relative; }
+        .nav-dd-panel {
+          position: absolute;
+          top: calc(100% + 14px);
+          left: 0;
+          min-width: 250px;
+          border-radius: 16px;
+          border: 1px solid rgba(178,213,229,0.1);
+          background: rgba(2,2,2,0.95);
+          backdrop-filter: blur(24px);
+          -webkit-backdrop-filter: blur(24px);
+          padding: 8px;
+          box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+        }
+        /* invisible bridge so hover survives the gap between pill and panel */
+        .nav-dd-panel::before {
+          content: '';
+          position: absolute;
+          top: -16px;
+          left: 0;
+          right: 0;
+          height: 16px;
+        }
+        .nav-dd-link {
+          display: block;
+          padding: 10px 14px;
+          border-radius: 10px;
+          font-size: 0.88rem;
+          font-weight: 500;
+          color: rgba(178,213,229,0.6);
+          text-decoration: none;
+          transition: color 0.2s ease, background 0.2s ease;
+          white-space: nowrap;
+        }
+        .nav-dd-link:hover { color: rgba(178,213,229,1); background: rgba(178,213,229,0.06); }
+        .nav-dd-all {
+          margin-top: 4px;
+          border-top: 1px solid rgba(178,213,229,0.08);
+          padding-top: 8px;
+        }
+        .mobile-group-label {
+          display: block;
+          padding: 14px 4px 6px;
+          font-family: var(--font-mono);
+          font-size: 0.58rem;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: rgba(178,213,229,0.28);
+        }
+        .mobile-sublink {
+          display: block;
+          padding: 10px 4px 10px 14px;
+          font-size: 0.92rem;
+          font-weight: 400;
+          color: rgba(178,213,229,0.55);
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+        .mobile-sublink:hover { color: rgba(178,213,229,1); }
         .nav-cta-btn {
           display: inline-flex;
           align-items: center;
@@ -169,6 +229,41 @@ export default function Navbar() {
                 gap: '3px',
               }}
             >
+              <div
+                className="nav-dd-wrap"
+                onMouseEnter={() => setServicesOpen(true)}
+                onMouseLeave={() => setServicesOpen(false)}
+              >
+                <a href="/#services" className="nav-link" aria-haspopup="true" aria-expanded={servicesOpen}>
+                  Services
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ marginLeft: '6px', transition: 'transform 0.2s ease', transform: servicesOpen ? 'rotate(180deg)' : 'none' }}>
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </a>
+                <AnimatePresence>
+                  {servicesOpen && (
+                    <motion.div
+                      key="services-dd"
+                      className="nav-dd-panel"
+                      initial={{ opacity: 0, y: -6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -6 }}
+                      transition={{ duration: 0.18, ease: EASE_EXPO }}
+                    >
+                      {readyServices.map(s => (
+                        <Link key={s.slug} href={s.href} className="nav-dd-link" onClick={() => setServicesOpen(false)}>
+                          {s.label}
+                        </Link>
+                      ))}
+                      <div className="nav-dd-all">
+                        <Link href="/services" className="nav-dd-link" onClick={() => setServicesOpen(false)}>
+                          All services
+                        </Link>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
               {links.map(link => (
                 <a key={link.href} href={link.href} className="nav-link">
                   {link.label}
@@ -232,6 +327,15 @@ export default function Navbar() {
                     padding: '8px 16px 16px',
                   }}
                 >
+                  <span className="mobile-group-label">Services</span>
+                  {readyServices.map(s => (
+                    <Link key={s.slug} href={s.href} className="mobile-sublink" onClick={() => setMobileOpen(false)}>
+                      {s.label}
+                    </Link>
+                  ))}
+                  <Link href="/services" className="mobile-sublink" onClick={() => setMobileOpen(false)}>
+                    All services
+                  </Link>
                   {links.map(link => (
                     <a key={link.href} href={link.href} className="mobile-link" onClick={() => setMobileOpen(false)}>
                       {link.label}
