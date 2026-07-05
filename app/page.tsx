@@ -5,7 +5,9 @@ import MobileProjects from '@/components/sections/MobileProjects'
 import Problems from '@/components/sections/Problems'
 import Services from '@/components/sections/Services'
 import Process from '@/components/sections/Process'
+import Testimonials from '@/components/sections/Testimonials'
 import Packages from '@/components/sections/Packages'
+import StickyMobileCta from '@/components/ui/StickyMobileCta'
 import Guarantees from '@/components/sections/Guarantees'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/sections/Footer'
@@ -80,10 +82,12 @@ export default function Home() {
       <Problems />
       <Services />
       <Process />
+      <Testimonials />
       <Packages />
       <Guarantees />
       <Contact />
       <Footer />
+      <StickyMobileCta />
     </main>
   )
 }

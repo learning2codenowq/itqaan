@@ -3,9 +3,8 @@
 // Project + testimonial registry, used by service pages and (later) /portfolio.
 // Each slug matches an image at public/projects/<slug>.webp (16:9).
 //
-// PLACEHOLDER TESTIMONIALS: every quote below is placeholder copy written to
-// show the layout. Replace each `quote` with the client's real words and each
-// `author` with their real name before pointing anyone at these pages.
+// Testimonials: `author` is the person's name, `role` is their business or
+// title. Shown on the homepage, /portfolio, and service pages.
 // Keep the no-female-imagery rule in mind if project images change.
 
 export type Project = {
@@ -30,8 +29,8 @@ export const projects: Project[] = [
     testimonial: {
       quote:
         'The site looks far more professional than what we had before, and customers now mention it when they call. The whole process took less than an hour of my time.',
-      author: 'Anas Marble',
-      role: 'Anas Aga',
+      author: 'Anas Aga',
+      role: 'Owner, Anas Marble',
     },
   },
   {
@@ -42,8 +41,8 @@ export const projects: Project[] = [
     testimonial: {
       quote:
         'I am super impressed by their work and work ethic. Ma shaa Allah! May Allah bless them immensely, despite my many changes they were full of patience.',
-      author: 'Halal Certification',
-      role: 'Dr. Umar Al Qadri',
+      author: 'Dr. Umar Al Qadri',
+      role: 'Halal Certification',
     },
   },
   {
@@ -53,9 +52,9 @@ export const projects: Project[] = [
     services: ['web-design'],
     testimonial: {
       quote:
-        'Alhamdulilah it was really good experience working with ITQAAN. They modified aspects of the websites I required and gave it a better structure. Within a week after completion I have recieved a few leads so far alhamdulilah. They are also very communicative and attentive to detail which is key.',
-      author: 'Math Tutor',
-      role: 'Shabib',
+        'Alhamdulilah it was really good experience working with ITQAAN. They modified aspects of the websites I required and gave it a better structure. Within a week after completion I have received a few leads so far alhamdulilah. They are also very communicative and attentive to detail which is key.',
+      author: 'Shabib',
+      role: 'Math Tutor',
     },
   },
   {
@@ -66,8 +65,8 @@ export const projects: Project[] = [
     testimonial: {
       quote:
         'The design feels calm, exactly right for teaching the Quran. Enrolment enquiries went up as soon as it launched.',
-      author: 'Quran Teaching',
-      role: 'Shayan Qureshi',
+      author: 'Shayan Qureshi',
+      role: 'Quran Teaching',
     },
   },
   {
@@ -78,8 +77,8 @@ export const projects: Project[] = [
     testimonial: {
       quote:
         'Fast, honest, and the store works beautifully on mobile. Feedback rounds continued until every detail was right, with no extra charges.',
-      author: 'Royal Thobes',
-      role: 'Mohamed Hersi',
+      author: 'Mohamed Hersi',
+      role: 'Royal Thobes',
     },
   },
   {
@@ -90,8 +89,8 @@ export const projects: Project[] = [
     testimonial: {
       quote:
         'A premium site that captures the attention of parents. ITQAAN paid very close attention to all the details and were super fast with their revisions.',
-      author: 'Tadabbur',
-      role: 'Um Abduallah',
+      author: 'Um Abduallah',
+      role: 'Tadabbur',
     },
   },
 ]

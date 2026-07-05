@@ -42,6 +42,14 @@ type State = {
 // WhatsApp with a country code: needs at least 10 digits.
 const isValidWhatsapp = (v: string) => v.replace(/\D/g, '').length >= 10
 
+const WA_FALLBACK_HREF = `https://wa.me/923165252296?text=${encodeURIComponent(
+  'Assalamu alaikum, I was building a quote on withitqaan.com and would rather talk it through.',
+)}`
+
+// Draft persistence: a refresh or accidental back-swipe should not wipe the
+// visitor's answers. Saved per change, restored on mount, cleared on submit.
+const DRAFT_KEY = 'itqaan-quote-draft'
+
 export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: string; choice?: string } }) {
   const [state, setState] = useState<State>({
     need: initialPlan?.need ?? null,
@@ -82,6 +90,30 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
     if (initialPlan?.need) markStart(initialPlan.need)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  // Restore a saved draft on mount (after hydration, to avoid SSR mismatch).
+  // An explicit ?plan= choice takes precedence over any old draft.
+  useEffect(() => {
+    if (initialPlan?.need) return
+    try {
+      const raw = localStorage.getItem(DRAFT_KEY)
+      if (!raw) return
+      const draft = JSON.parse(raw) as { v?: number; state?: Partial<State>; stepIndex?: number }
+      if (draft?.v !== 1 || !draft.state?.need) return
+      setState(s => ({ ...s, ...draft.state, hp: '' }))
+      setStepIndex(Math.min(draft.stepIndex ?? 0, stepsFor(draft.state.need).length - 1))
+    } catch { /* corrupt or unavailable storage: start fresh */ }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // Save the draft as answers change. Nothing is saved until a need is chosen.
+  useEffect(() => {
+    if (status === 'success' || !state.need) return
+    try {
+      const { hp: _hp, ...rest } = state
+      localStorage.setItem(DRAFT_KEY, JSON.stringify({ v: 1, state: rest, stepIndex }))
+    } catch { /* storage full or blocked: continue without saving */ }
+  }, [state, stepIndex, status])
 
   /* ── live estimate ── */
   const estimate = useMemo(() => {
@@ -178,6 +210,7 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
       const data = await res.json()
       if (!res.ok) throw new Error(data.error || 'Something went wrong.')
       setStatus('success')
+      try { localStorage.removeItem(DRAFT_KEY) } catch { /* nothing to clear */ }
       // GA4 conversion event. Fall back to the monthly value for plans with no
       // one-off (e.g. monthly SEO) so the lead value is never reported as 0.
       const leadValue = estimate.oneOff > 0 ? estimate.oneOff : estimate.monthly
@@ -358,6 +391,16 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
           )}
         </div>
 
+        {!isLast && state.need && (
+          <p className="qb-alt">
+            Prefer to talk it through instead?{' '}
+            <a href={WA_FALLBACK_HREF} target="_blank" rel="noopener noreferrer" data-wa-loc="quote_builder">
+              WhatsApp us
+            </a>
+            , we reply within 24 hours.
+          </p>
+        )}
+
         {isLast && (
           <div className="qb-reassure">
             {[
@@ -514,6 +557,10 @@ const qbCss = `
   .qb-next { display: inline-flex; align-items: center; gap: 8px; padding: 14px 30px; border-radius: 9999px; background: var(--color-ink); color: var(--color-void); font-size: 0.9rem; font-weight: 600; letter-spacing: 0.02em; border: none; cursor: pointer; font-family: var(--font-body); transition: box-shadow 0.3s ease, opacity 0.2s ease; }
   .qb-next:hover { box-shadow: 0 8px 40px rgba(178,213,229,0.16); }
   .qb-next:disabled { opacity: 0.35; cursor: not-allowed; box-shadow: none; }
+
+  .qb-alt { margin: 24px 0 0; padding-top: 20px; border-top: 1px solid var(--color-ink-8); font-size: 0.82rem; font-weight: 300; color: var(--color-ink-28); }
+  .qb-alt a { color: var(--color-ink-48); text-decoration: underline; text-underline-offset: 3px; transition: color 0.2s ease; }
+  .qb-alt a:hover { color: var(--color-ink); }
 
   .qb-reassure { display: flex; flex-wrap: wrap; gap: 10px 24px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--color-ink-8); }
   .qb-reassure-item { display: inline-flex; align-items: center; gap: 9px; font-size: 0.8rem; font-weight: 300; color: var(--color-ink-48); }

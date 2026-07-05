@@ -101,7 +101,7 @@ export default function PortfolioPage() {
                     &ldquo;{p.testimonial.quote}&rdquo;
                   </blockquote>
                   <figcaption style={{ marginTop: '10px', fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-ink-28)' }}>
-                    {p.testimonial.role}
+                    {p.testimonial.author}, {p.testimonial.role}
                   </figcaption>
                 </figure>
               )}
