@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import { siteTypes, formatPrice } from '@/lib/quote'
+
+const FROM_PRICE = siteTypes.find(s => s.id === 'one-page')?.price ?? 997
 
 /*
  * Mobile-only sticky bottom bar with the quote CTA. Appears after the visitor
@@ -95,10 +98,10 @@ export default function StickyMobileCta() {
 
       <div className={`sticky-cta ${visible ? 'show' : ''}`} aria-hidden={!visible}>
         <p className="sticky-cta-price" style={{ margin: 0 }}>
-          <strong>From AED 997</strong>
-          <span>Fixed price, no riba</span>
+          <strong>From {formatPrice(FROM_PRICE)}</strong>
+          <span>Fixed price.</span>
         </p>
-        <Link href="/quote" className="sticky-cta-btn" tabIndex={visible ? 0 : -1}>
+        <Link href="/quote" className="sticky-cta-btn" data-cta="sticky_mobile_bar" tabIndex={visible ? 0 : -1}>
           Get a quote
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <path d="M5 12h14" /><path d="m13 6 6 6-6 6" />

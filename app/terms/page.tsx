@@ -20,7 +20,7 @@ const sections = [
   {
     h2: 'Quotes and pricing',
     body: [
-      'Every project starts with a written quote at a fixed price. The price you accept is the price you pay: no riba, no hidden fees, and no charges added during the project. Work beyond the agreed scope, such as extra pages or new features, is quoted separately at a fixed price before it begins.',
+      'Every project starts with a written quote at a fixed price. The price you accept is the price you pay: no hidden fees, and no charges added during the project. Work beyond the agreed scope, such as extra pages or new features, is quoted separately at a fixed price before it begins.',
       'Quotes are valid for 30 days from the date they are issued.',
     ],
   },

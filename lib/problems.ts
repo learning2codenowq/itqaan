@@ -44,7 +44,7 @@ export const problems: Problem[] = [
     tag: 'Surprise invoices',
     pain: 'An agency quoted me one number, then added fee after fee. I no longer know what a website should actually cost.',
     cost: 'Hidden fees and vague quotes turn a simple decision into a stressful one, and often push the final bill far past what you agreed to.',
-    fix: 'One fixed price, agreed in writing before any work starts. No riba, no hidden fees, no surprise invoice at the end. You build a quote in a minute and see the number.',
+    fix: 'One fixed price, agreed in writing before any work starts. No hidden fees, no surprise invoice at the end. You build a quote in a minute and see the number.',
   },
   {
     id: 'looks-dated',
@@ -90,7 +90,7 @@ export const problemsPage = {
     },
     {
       q: 'How do I know I will not get surprise fees like last time?',
-      a: 'At ITQAAN there is one fixed price, agreed in writing before any work starts, with no riba and no hidden fees. You build a quote online in about a minute and see the starting number for yourself, then receive a firm fixed price within 24 hours.',
+      a: 'At ITQAAN there is one fixed price, agreed in writing before any work starts, with no hidden fees. You build a quote online in about a minute and see the starting number for yourself, then receive a firm fixed price within 24 hours.',
     },
     {
       q: 'Can my site reflect my values and still look premium?',

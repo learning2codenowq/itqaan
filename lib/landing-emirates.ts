@@ -12,7 +12,7 @@ export const emirateLandings: Landing[] = [
     slug: 'web-design-sharjah',
     metaTitle: 'Web Design in Sharjah for Muslim Businesses | ITQAAN | From 997 AED',
     metaDescription:
-      'Custom web design in Sharjah for Muslim businesses. Fixed prices from 997 AED, no riba, no hidden fees. Fast, mobile-first websites that turn visitors into customers.',
+      'Custom web design in Sharjah for Muslim businesses. Fixed prices from 997 AED, no hidden fees. Fast, mobile-first websites that turn visitors into customers.',
     eyebrow: 'Web design, Sharjah',
     h1: 'Web design in Sharjah for Muslim businesses',
     intro:
@@ -44,7 +44,7 @@ export const emirateLandings: Landing[] = [
     faqs: [
       {
         q: 'How much does a website cost in Sharjah?',
-        a: 'With ITQAAN, a one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Every price is fixed and agreed in writing before we begin, with no riba and no hidden fees.',
+        a: 'With ITQAAN, a one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Every price is fixed and agreed in writing before we begin, with no hidden fees.',
       },
       {
         q: 'Do you meet clients in Sharjah in person?',
@@ -68,7 +68,7 @@ export const emirateLandings: Landing[] = [
     slug: 'web-design-ajman',
     metaTitle: 'Web Design in Ajman for Small Businesses | ITQAAN | From 997 AED',
     metaDescription:
-      'Affordable custom web design in Ajman. Fixed prices from 997 AED, no riba, no hidden fees. Professional websites for Ajman businesses that want to compete beyond their size.',
+      'Affordable custom web design in Ajman. Fixed prices from 997 AED, no hidden fees. Professional websites for Ajman businesses that want to compete beyond their size.',
     eyebrow: 'Web design, Ajman',
     h1: 'Web design in Ajman that punches above its weight',
     intro:
@@ -124,7 +124,7 @@ export const emirateLandings: Landing[] = [
     slug: 'web-design-ras-al-khaimah',
     metaTitle: 'Web Design in Ras Al Khaimah | ITQAAN | From 997 AED',
     metaDescription:
-      'Custom web design in Ras Al Khaimah for Muslim businesses. Fixed prices from 997 AED, no riba, no hidden fees. Websites for RAK businesses in tourism, trades, and services.',
+      'Custom web design in Ras Al Khaimah for Muslim businesses. Fixed prices from 997 AED, no hidden fees. Websites for RAK businesses in tourism, trades, and services.',
     eyebrow: 'Web design, Ras Al Khaimah',
     h1: 'Web design in Ras Al Khaimah for a growing emirate',
     intro:
@@ -155,7 +155,7 @@ export const emirateLandings: Landing[] = [
     faqs: [
       {
         q: 'How much does a website cost in Ras Al Khaimah?',
-        a: 'With ITQAAN, a one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Fixed prices, agreed in writing before we begin, with no riba and no hidden fees.',
+        a: 'With ITQAAN, a one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Fixed prices, agreed in writing before we begin, with no hidden fees.',
       },
       {
         q: 'Can my RAK business rank on Google?',
@@ -179,7 +179,7 @@ export const emirateLandings: Landing[] = [
     slug: 'web-design-fujairah',
     metaTitle: 'Web Design in Fujairah | ITQAAN | From 997 AED',
     metaDescription:
-      'Custom web design in Fujairah for Muslim businesses. Fixed prices from 997 AED, no riba, no hidden fees. Websites for east coast businesses in trade, tourism, and services.',
+      'Custom web design in Fujairah for Muslim businesses. Fixed prices from 997 AED, no hidden fees. Websites for east coast businesses in trade, tourism, and services.',
     eyebrow: 'Web design, Fujairah',
     h1: 'Web design in Fujairah, the east coast done properly',
     intro:
@@ -234,7 +234,7 @@ export const emirateLandings: Landing[] = [
     slug: 'web-design-umm-al-quwain',
     metaTitle: 'Web Design in Umm Al Quwain | ITQAAN | From 997 AED',
     metaDescription:
-      'Custom web design in Umm Al Quwain for Muslim businesses. Fixed prices from 997 AED, no riba, no hidden fees. Professional websites for UAQ businesses of every size.',
+      'Custom web design in Umm Al Quwain for Muslim businesses. Fixed prices from 997 AED, no hidden fees. Professional websites for UAQ businesses of every size.',
     eyebrow: 'Web design, Umm Al Quwain',
     h1: 'Web design in Umm Al Quwain, without the big city prices',
     intro:
@@ -265,7 +265,7 @@ export const emirateLandings: Landing[] = [
     faqs: [
       {
         q: 'How much does a website cost in Umm Al Quwain?',
-        a: 'With ITQAAN, a one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Fixed prices in writing before we begin, with no riba and no hidden fees.',
+        a: 'With ITQAAN, a one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Fixed prices in writing before we begin, with no hidden fees.',
       },
       {
         q: 'Is my UAQ business too small for a website?',
@@ -289,7 +289,7 @@ export const emirateLandings: Landing[] = [
     slug: 'web-design-al-ain',
     metaTitle: 'Web Design in Al Ain for Muslim Businesses | ITQAAN | From 997 AED',
     metaDescription:
-      'Custom web design in Al Ain for Muslim businesses. Fixed prices from 997 AED, no riba, no hidden fees. Fast, mobile-first websites for the garden city.',
+      'Custom web design in Al Ain for Muslim businesses. Fixed prices from 997 AED, no hidden fees. Fast, mobile-first websites for the garden city.',
     eyebrow: 'Web design, Al Ain',
     h1: 'Web design in Al Ain for Muslim businesses',
     intro:
@@ -320,7 +320,7 @@ export const emirateLandings: Landing[] = [
     faqs: [
       {
         q: 'How much does a website cost in Al Ain?',
-        a: 'With ITQAAN, a one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Every price is fixed and agreed in writing before we begin, with no riba and no hidden fees.',
+        a: 'With ITQAAN, a one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Every price is fixed and agreed in writing before we begin, with no hidden fees.',
       },
       {
         q: 'Do you build websites for schools and clinics in Al Ain?',

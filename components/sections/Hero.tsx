@@ -8,6 +8,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import GeoPattern from '@/components/ui/GeoPattern'
 import HeroShowcase from '@/components/ui/HeroShowcase'
 import ItqaanCalligraphy from '@/components/ui/ItqaanCalligraphy'
+import { siteTypes, formatPrice } from '@/lib/quote'
+
+const HERO_FROM_PRICE = siteTypes.find(s => s.id === 'one-page')?.price ?? 997
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -197,20 +200,21 @@ export default function Hero() {
 
                 <h1 style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: 'clamp(42px, 5.2vw, 86px)',
+                  fontSize: 'clamp(34px, 4.3vw, 66px)',
                   fontWeight: 800,
-                  lineHeight: 1.03,
+                  lineHeight: 1.05,
                   letterSpacing: '-0.03em',
                   color: 'var(--color-ink)',
-                  margin: '0 0 32px',
+                  margin: '0 0 28px',
                 }}>
-                  <HeroLine delay={0.1}>Design done</HeroLine>
-                  <HeroLine delay={0.2}>
-                    with <span className="hero-excellence">excellence.</span>
+                  <HeroLine delay={0.1}>Professional websites,</HeroLine>
+                  <HeroLine delay={0.18}>without investing</HeroLine>
+                  <HeroLine delay={0.26}>
+                    <span className="hero-excellence">your time.</span>
                   </HeroLine>
                 </h1>
 
-                <HeroFade delay={0.45} style={{ marginBottom: '48px', maxWidth: '460px' }}>
+                <HeroFade delay={0.45} style={{ marginBottom: '40px', maxWidth: '480px' }}>
                   <p style={{
                     fontSize: '1rem',
                     fontWeight: 300,
@@ -218,13 +222,13 @@ export default function Hero() {
                     color: 'var(--color-ink-48)',
                     margin: 0,
                   }}>
-                    Web design, brand identity, and graphic design for
-                    established Muslim businesses that want a premium brand
-                    presence.
+                    Custom websites, branding, and design for Muslim businesses.
+                    One short conversation, a fixed price in writing, and your
+                    first design within days. We handle the rest.
                   </p>
                 </HeroFade>
 
-                <HeroFade delay={0.6} style={{ display: 'flex', alignItems: 'center', gap: '12px', flexWrap: 'wrap' }}>
+                <HeroFade delay={0.6} style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
                   <Link href="/quote" className="hero-cta-primary"
                     style={{
                       display: 'inline-flex',
@@ -248,6 +252,26 @@ export default function Hero() {
                       <path d="M5 12h14"/><path d="m13 6 6 6-6 6"/>
                     </svg>
                   </Link>
+                  <span style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                    <span style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: '0.95rem',
+                      fontWeight: 700,
+                      letterSpacing: '-0.01em',
+                      color: 'var(--color-ink)',
+                    }}>
+                      From {formatPrice(HERO_FROM_PRICE)}
+                    </span>
+                    <span style={{
+                      fontFamily: 'var(--font-mono)',
+                      fontSize: '0.55rem',
+                      letterSpacing: '0.14em',
+                      textTransform: 'uppercase',
+                      color: 'var(--color-ink-28)',
+                    }}>
+                      Fixed price.
+                    </span>
+                  </span>
                 </HeroFade>
 
                 <HeroFade delay={0.75} style={{ marginTop: '28px' }}>

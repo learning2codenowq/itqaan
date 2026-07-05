@@ -60,7 +60,7 @@ export const articles: Article[] = [
       {
         h2: 'The honest way to price a website',
         body: [
-          'At ITQAAN we serve Muslim businesses in Dubai, across the UAE, and worldwide, with fixed pricing and no riba or hidden fees. You own everything when the project is done.',
+          'At ITQAAN we serve Muslim businesses in Dubai, across the UAE, and worldwide, with fixed pricing and no hidden fees. You own everything when the project is done.',
           'The fastest way to get an exact number for your project is to build a quote online, which takes about a minute and returns a fixed price within 24 hours.',
         ],
       },
@@ -240,17 +240,17 @@ export const articles: Article[] = [
     title: 'What makes a website halal?',
     metaTitle: 'What Makes a Website Halal? A Simple Guide | ITQAAN',
     metaDescription:
-      'A plain-language explanation of what a halal website means: honest fixed pricing with no riba, appropriate content, and full ownership of your finished site.',
+      'A plain-language explanation of what a halal website means: honest fixed pricing with appropriate content, and full ownership of your finished site.',
     datePublished: '2026-07-04',
     dateModified: '2026-07-04',
     dek: 'It is about how the work is done, and what goes on the site.',
     quickAnswer:
-      'A halal website comes down to two things: how the work is done, and what appears on the site. That means honest, fixed pricing with no riba and no hidden fees, content that respects Islamic values such as avoiding music and images of women by default, and the client fully owning the finished website.',
+      'A halal website comes down to two things: how the work is done, and what appears on the site. That means honest, fixed pricing with no hidden fees, content that respects Islamic values such as avoiding music and images of women by default, and the client fully owning the finished website.',
     sections: [
       {
         h2: 'Honest dealing and fixed pricing',
         body: [
-          'The first part of a halal website is the transaction itself. The price should be clear and agreed before work starts, with no riba and no hidden fees added later.',
+          'The first part of a halal website is the transaction itself. The price should be clear and agreed before work starts, with no hidden fees added later.',
           'Both sides know exactly what is being delivered and for how much. That clarity is part of honest dealing in Islam.',
         ],
       },
@@ -456,7 +456,7 @@ export const articles: Article[] = [
     dateModified: '2026-07-05',
     dek: 'The traits that matter more than a flashy portfolio.',
     quickAnswer:
-      'The best web design companies in Dubai share the same traits, whatever their size: fixed, transparent pricing agreed before work starts, full ownership of the finished site handed to you, mobile-first design, basic SEO built in, and honest communication throughout. For Muslim businesses, ITQAAN adds a halal way of working, with no riba, no hidden fees, and content that respects your values, at fixed prices from 997 AED. Judge any provider by these standards rather than by portfolio polish alone.',
+      'The best web design companies in Dubai share the same traits, whatever their size: fixed, transparent pricing agreed before work starts, full ownership of the finished site handed to you, mobile-first design, basic SEO built in, and honest communication throughout. For Muslim businesses, ITQAAN adds a halal way of working, with no hidden fees, and content that respects your values, at fixed prices from 997 AED. Judge any provider by these standards rather than by portfolio polish alone.',
     sections: [
       {
         h2: 'Big agency, small studio, or independent designer?',
@@ -484,7 +484,7 @@ export const articles: Article[] = [
       {
         h2: 'Why Muslim businesses often choose a specialist',
         body: [
-          'A provider who understands your values saves you the awkward back-and-forth of explaining them. That means honest dealing with no riba or hidden fees, and content that respects Islamic values by default.',
+          'A provider who understands your values saves you the awkward back-and-forth of explaining them. That means honest dealing with no hidden fees, and content that respects Islamic values by default.',
           'At ITQAAN we specialise in Muslim businesses in Dubai, across the UAE, and worldwide, with fixed prices from 997 AED, full ownership, and a build that respects your deen. The fastest way to compare us against any quote is to build a quote online and see a fixed price within 24 hours.',
         ],
       },

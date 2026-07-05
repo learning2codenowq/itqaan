@@ -31,6 +31,6 @@ export const faqs = [
   },
   {
     q: 'Is it really halal?',
-    a: 'Yes. We build in line with Islamic values: no images of women and no music anywhere on your site. Pricing is simple and fixed, with no riba and no hidden fees.',
+    a: 'Yes. We build in line with Islamic values: no images of women and no music anywhere on your site. Pricing is simple and fixed, with no hidden fees.',
   },
 ]

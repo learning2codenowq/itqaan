@@ -76,7 +76,7 @@ export const services: ServicePageData[] = [
     slug: 'web-design',
     metaTitle: 'Web Design Service in Dubai | Fixed Prices From 997 AED | ITQAAN',
     metaDescription:
-      'Professional web design for Muslim businesses in Dubai and the UAE. Custom, mobile-first websites at fixed prices from 997 AED. No riba, no hidden fees, revisions until you are happy. First design in days.',
+      'Professional web design for Muslim businesses in Dubai and the UAE. Custom, mobile-first websites at fixed prices from 997 AED. No hidden fees, revisions until you are happy. First design in days.',
     eyebrow: 'Web design',
     h1: 'A website that sells for your business 24/7, without you touching the tech',
     intro:
@@ -126,7 +126,7 @@ export const services: ServicePageData[] = [
       doParagraphs: [
         'We build professional, conversion-focused websites for Muslim business owners in Dubai, the UAE, and worldwide. Not just a design: the structure, the words, and the technical setup are all built to turn visitors into enquiries.',
         'We think with you. How should your business be positioned online so it attracts the customers you actually want? That thinking is part of every project, not a paid add-on.',
-        'And we work the halal way: a fixed price agreed before we start, no riba, no music and no images of women on your site by default, and full ownership handed to you at the end.',
+        'And we work the halal way: a fixed price agreed before we start, no music and no images of women on your site by default, and full ownership handed to you at the end.',
       ],
     },
     processSteps: [
@@ -168,7 +168,7 @@ export const services: ServicePageData[] = [
         },
         {
           tag: 'Values',
-          forYou: 'You want a site and a working relationship that respect your deen: no riba, no music, no images of women.',
+          forYou: 'You want a site and a working relationship that respect your deen: no hidden fees, no music, no images of women.',
           notForYou: 'These values do not matter to your business either way.',
         },
       ],
@@ -227,7 +227,7 @@ export const services: ServicePageData[] = [
     faqs: [
       {
         q: 'How much does a website cost in Dubai?',
-        a: 'Agencies in Dubai commonly charge 10,000 AED or more. With ITQAAN, a custom one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Every price is fixed and agreed in writing before work begins, with no hidden fees and no riba.',
+        a: 'Agencies in Dubai commonly charge 10,000 AED or more. With ITQAAN, a custom one-page website starts from 997 AED, a multi-page business site from 2,497 AED, and an online store from 4,497 AED. Every price is fixed and agreed in writing before work begins, with no hidden fees.',
       },
       {
         q: 'What does a website cost per month?',
@@ -265,7 +265,7 @@ export const services: ServicePageData[] = [
     slug: 'ecommerce',
     metaTitle: 'E-commerce Website Development in Dubai | From 4,497 AED | ITQAAN',
     metaDescription:
-      'Custom online stores for Muslim businesses in Dubai and the UAE. Fixed price from 4,497 AED, no riba, no hidden fees. Product management, online payments, and a store that sells around the clock.',
+      'Custom online stores for Muslim businesses in Dubai and the UAE. Fixed price from 4,497 AED, no hidden fees. Product management, online payments, and a store that sells around the clock.',
     eyebrow: 'E-commerce',
     h1: 'An online store that sells for you around the clock',
     intro:
@@ -273,7 +273,7 @@ export const services: ServicePageData[] = [
     heroBullets: [
       'A store that takes orders while you sleep',
       'Online payments, product and order management included',
-      'Fixed price from 4,497 AED, no riba, no hidden fees',
+      'Fixed price from 4,497 AED, no hidden fees',
     ],
     quotePlan: 'store',
     problem: {
@@ -339,7 +339,7 @@ export const services: ServicePageData[] = [
     faqs: [
       {
         q: 'How much does an e-commerce website cost in Dubai?',
-        a: 'Agencies in Dubai often charge 15,000 AED or more for a store. With ITQAAN, a custom online store starts from 4,497 AED, fixed and agreed in writing before we begin, with no riba and no hidden fees. We do not take a percentage of your sales.',
+        a: 'Agencies in Dubai often charge 15,000 AED or more for a store. With ITQAAN, a custom online store starts from 4,497 AED, fixed and agreed in writing before we begin, with no hidden fees. We do not take a percentage of your sales.',
       },
       {
         q: 'Can I manage products and orders myself?',
@@ -355,7 +355,7 @@ export const services: ServicePageData[] = [
       },
       {
         q: 'Is an online store halal to run?',
-        a: 'The store itself is built the halal way: fixed pricing with no riba, no music, and no images of women by default. What you sell and how you finance your business are in your hands; we are happy to build around your requirements.',
+        a: 'The store itself is built the halal way: fixed pricing with no music, and no images of women by default. What you sell and how you finance your business are in your hands; we are happy to build around your requirements.',
       },
     ],
     projectSlugs: ['royalthobes'],

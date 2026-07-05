@@ -27,7 +27,7 @@ export type Landing = {
 export const VALUES_SECTION: LandingSection = {
   h2: 'Built the halal way, with no compromise on quality',
   body: [
-    'Every project comes with a fixed price agreed before we start. No riba, no hidden fees, and no surprise invoices at the end.',
+    'Every project comes with a fixed price agreed before we start. No hidden fees, and no surprise invoices at the end.',
     'The work itself respects your values too: no music and no images of women, by default. You get a site that looks premium and that you are comfortable sharing with your community.',
     'When the project is done, you own everything. The design, the code, the domain, and the content are all yours.',
   ],

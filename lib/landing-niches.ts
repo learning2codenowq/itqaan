@@ -11,7 +11,7 @@ export const nicheLandings: Landing[] = [
     slug: 'websites-for-restaurants',
     metaTitle: 'Websites for Restaurants in Dubai & UAE | ITQAAN | From 997 AED',
     metaDescription:
-      'Restaurant website design in Dubai and the UAE: menu, location, hours, and WhatsApp orders on a fast, mobile-first site. Fixed prices from 997 AED, no riba, no hidden fees.',
+      'Restaurant website design in Dubai and the UAE: menu, location, hours, and WhatsApp orders on a fast, mobile-first site. Fixed prices from 997 AED, no hidden fees.',
     eyebrow: 'For restaurants',
     h1: 'Restaurant websites that fill tables, not just feeds',
     intro:
@@ -36,7 +36,7 @@ export const nicheLandings: Landing[] = [
     faqs: [
       {
         q: 'How much does a restaurant website cost in Dubai?',
-        a: 'With ITQAAN, a one-page restaurant site with your menu, hours, location, and WhatsApp ordering starts from 997 AED fixed. Larger sites with online ordering are quoted clearly upfront. No riba, no hidden fees.',
+        a: 'With ITQAAN, a one-page restaurant site with your menu, hours, location, and WhatsApp ordering starts from 997 AED fixed. Larger sites with online ordering are quoted clearly upfront. No hidden fees.',
       },
       {
         q: 'Can customers order through the website?',
@@ -60,7 +60,7 @@ export const nicheLandings: Landing[] = [
     slug: 'websites-for-construction-companies',
     metaTitle: 'Websites for Construction Companies in UAE | ITQAAN | From 997 AED',
     metaDescription:
-      'Web design for construction companies, contractors, and trades in Dubai and the UAE. Show your projects, win bigger contracts. Fixed prices from 997 AED, no riba, no hidden fees.',
+      'Web design for construction companies, contractors, and trades in Dubai and the UAE. Show your projects, win bigger contracts. Fixed prices from 997 AED, no hidden fees.',
     eyebrow: 'For construction companies',
     h1: 'Construction websites that win bigger contracts',
     intro:
@@ -109,7 +109,7 @@ export const nicheLandings: Landing[] = [
     slug: 'websites-for-cleaning-companies',
     metaTitle: 'Websites for Cleaning Companies in Dubai & UAE | ITQAAN | From 997 AED',
     metaDescription:
-      'Web design for cleaning companies in Dubai and the UAE. Turn searches into bookings with a fast site and one-tap WhatsApp. Fixed prices from 997 AED, no riba, no hidden fees.',
+      'Web design for cleaning companies in Dubai and the UAE. Turn searches into bookings with a fast site and one-tap WhatsApp. Fixed prices from 997 AED, no hidden fees.',
     eyebrow: 'For cleaning companies',
     h1: 'Cleaning company websites that turn searches into bookings',
     intro:
@@ -134,7 +134,7 @@ export const nicheLandings: Landing[] = [
     faqs: [
       {
         q: 'How much does a cleaning company website cost?',
-        a: 'A one-page site with your services, prices, areas, and WhatsApp booking starts from 997 AED fixed with ITQAAN. A multi-page site with a page per service starts from 2,497 AED. No riba, no hidden fees.',
+        a: 'A one-page site with your services, prices, areas, and WhatsApp booking starts from 997 AED fixed with ITQAAN. A multi-page site with a page per service starts from 2,497 AED. No hidden fees.',
       },
       {
         q: 'Can customers book through the site?',
@@ -158,7 +158,7 @@ export const nicheLandings: Landing[] = [
     slug: 'websites-for-car-rental-companies',
     metaTitle: 'Websites for Car Rental Companies in Dubai | ITQAAN | From 997 AED',
     metaDescription:
-      'Web design for car rental companies in Dubai and the UAE. Show your fleet with clear daily rates and take bookings on WhatsApp. Fixed prices from 997 AED, no riba, no hidden fees.',
+      'Web design for car rental companies in Dubai and the UAE. Show your fleet with clear daily rates and take bookings on WhatsApp. Fixed prices from 997 AED, no hidden fees.',
     eyebrow: 'For car rental',
     h1: 'Car rental websites built around the fleet',
     intro:
@@ -305,7 +305,7 @@ export const nicheLandings: Landing[] = [
     slug: 'websites-for-real-estate',
     metaTitle: 'Websites for Real Estate Companies in Dubai | ITQAAN | From 997 AED',
     metaDescription:
-      'Web design for real estate agencies and brokers in Dubai and the UAE. Listings that look premium and capture leads. Fixed prices from 997 AED, no riba, no hidden fees.',
+      'Web design for real estate agencies and brokers in Dubai and the UAE. Listings that look premium and capture leads. Fixed prices from 997 AED, no hidden fees.',
     eyebrow: 'For real estate',
     h1: 'Real estate websites that capture serious buyers',
     intro:
@@ -330,7 +330,7 @@ export const nicheLandings: Landing[] = [
     faqs: [
       {
         q: 'How much does a real estate website cost in Dubai?',
-        a: 'A one-page broker or agency site starts from 997 AED fixed with ITQAAN. A multi-page site with listing pages starts from 2,497 AED. Every price is agreed in writing before we begin, with no riba and no hidden fees.',
+        a: 'A one-page broker or agency site starts from 997 AED fixed with ITQAAN. A multi-page site with listing pages starts from 2,497 AED. Every price is agreed in writing before we begin, with no hidden fees.',
       },
       {
         q: 'Can I add and update listings myself?',
@@ -354,7 +354,7 @@ export const nicheLandings: Landing[] = [
     slug: 'websites-for-ecommerce-brands',
     metaTitle: 'Websites for E-commerce Brands in UAE | ITQAAN | From 4,497 AED',
     metaDescription:
-      'Custom online stores for e-commerce brands in Dubai and the UAE. Own your store instead of renting an audience. Fixed price from 4,497 AED, no riba, no percentage of sales.',
+      'Custom online stores for e-commerce brands in Dubai and the UAE. Own your store instead of renting an audience. Fixed price from 4,497 AED, no percentage of sales.',
     eyebrow: 'For e-commerce brands',
     h1: 'Your brand deserves more than a marketplace listing',
     intro:
@@ -379,7 +379,7 @@ export const nicheLandings: Landing[] = [
     faqs: [
       {
         q: 'How much does an e-commerce website cost in the UAE?',
-        a: 'A custom online store starts from 4,497 AED fixed with ITQAAN, agreed in writing before we begin. There is no riba, no hidden fees, and no percentage of your sales, ever.',
+        a: 'A custom online store starts from 4,497 AED fixed with ITQAAN, agreed in writing before we begin. There is no hidden fees, and no percentage of your sales, ever.',
       },
       {
         q: 'Can I run the store myself after launch?',
@@ -407,7 +407,7 @@ export const nicheLandings: Landing[] = [
     eyebrow: 'For Islamic finance',
     h1: 'Websites for Islamic finance, built by people who share the values',
     intro:
-      'An Islamic finance brand has to prove two things at once: that it is professionally excellent, and that its shariah compliance is substance, not marketing. We build websites that carry both messages credibly, and we work the same halal way ourselves: fixed prices, no riba.',
+      'An Islamic finance brand has to prove two things at once: that it is professionally excellent, and that its shariah compliance is substance, not marketing. We build websites that carry both messages credibly, and we work the same halal way ourselves: fixed prices.',
     sections: [
       {
         h2: 'Trust is the entire product',
@@ -428,7 +428,7 @@ export const nicheLandings: Landing[] = [
     faqs: [
       {
         q: 'What does a website for an Islamic finance company cost?',
-        a: 'A focused company site starts from 2,497 AED with ITQAAN, and larger product-heavy sites are quoted at a fixed price after one conversation. The price is agreed in writing before we begin, with no riba and no hidden fees, which for this industry is not just a policy but the point.',
+        a: 'A focused company site starts from 2,497 AED with ITQAAN, and larger product-heavy sites are quoted at a fixed price after one conversation. The price is agreed in writing before we begin, with no hidden fees, which for this industry is not just a policy but the point.',
       },
       {
         q: 'Do you understand shariah-compliance requirements?',
@@ -550,7 +550,7 @@ export const nicheLandings: Landing[] = [
     slug: 'websites-for-architecture-firms',
     metaTitle: 'Websites for Architecture Firms in Dubai & UAE | ITQAAN',
     metaDescription:
-      'Web design for architecture firms in Dubai and the UAE. Portfolio-first websites with the restraint architects expect. Fixed prices, no riba, no hidden fees.',
+      'Web design for architecture firms in Dubai and the UAE. Portfolio-first websites with the restraint architects expect. Fixed prices, no hidden fees.',
     eyebrow: 'For architecture firms',
     h1: 'Architecture websites with the restraint the work deserves',
     intro:
@@ -624,7 +624,7 @@ export const nicheLandings: Landing[] = [
     faqs: [
       {
         q: 'What does an interior design website cost in Dubai?',
-        a: 'A one-page portfolio site starts from 997 AED fixed with ITQAAN, and a multi-page site with project and service pages starts from 2,497 AED. Prices are agreed in writing before we begin, with no riba and no hidden fees.',
+        a: 'A one-page portfolio site starts from 997 AED fixed with ITQAAN, and a multi-page site with project and service pages starts from 2,497 AED. Prices are agreed in writing before we begin, with no hidden fees.',
       },
       {
         q: 'Can the website work alongside our Instagram?',

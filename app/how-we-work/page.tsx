@@ -39,7 +39,7 @@ const steps = [
 const faqs = [
   {
     q: 'How does payment work?',
-    a: 'A 50% deposit to begin, and the remaining 50% once you approve the finished work, before it goes live. The price is fixed in writing before we start, with no riba and no hidden fees.',
+    a: 'A 50% deposit to begin, and the remaining 50% once you approve the finished work, before it goes live. The price is fixed in writing before we start and no hidden fees.',
   },
   {
     q: 'How much of my time does a project take?',
@@ -135,7 +135,7 @@ export default function HowWeWorkPage() {
             Payment, the halal way
           </h2>
           <p style={{ fontSize: '1rem', fontWeight: 300, lineHeight: 1.8, color: 'var(--color-ink-48)', margin: '0 0 16px' }}>
-            The price is fixed in writing before anything starts. You pay a 50% deposit to begin, and the remaining 50% only once you approve the finished work, before it goes live. No riba, no hidden fees, no surprise invoices at the end.
+            The price is fixed in writing before anything starts. You pay a 50% deposit to begin, and the remaining 50% only once you approve the finished work, before it goes live. No hidden fees, no surprise invoices at the end.
           </p>
           <p style={{ fontSize: '1rem', fontWeight: 300, lineHeight: 1.8, color: 'var(--color-ink-48)', margin: 0 }}>
             When the project is done, everything is handed to you: design files, code, accounts, and logins. You are never locked in.

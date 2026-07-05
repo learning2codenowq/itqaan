@@ -16,7 +16,7 @@ design, and SEO/care plans are also offered and configurable in the quote flow.
   on hold until he is back in the UAE.
 - Prices are in **AED**, charm-priced (all end in `…97`), starting from **997 AED**.
 - "Halal" positioning is concrete: sites are built with **no images of women and
-  no music**, and pricing is fixed with no riba / no hidden fees. (See FAQ copy.)
+  no music**, and pricing is fixed with no hidden fees. (See FAQ copy.)
 - WhatsApp: `wa.me/923165252296`. Email: `hello@withitqaan.com` (leads are
   delivered to the owner's inbox via Resend).
 
@@ -55,9 +55,9 @@ Rules:
   hardcode a hex/rgb that is not one of these (leftover hardcoded literals have
   caused hard-to-track palette bugs before).
 - To test another palette, change the token block only.
-- One deliberate off-token white exists: the **"excellence" gloss/shimmer** in
-  `Hero.tsx` uses `#ffffff`/`#d3ecf7` gradients so the word pops. That is
-  intentional; leave it.
+- One deliberate off-token white exists: the **hero gloss/shimmer**
+  (`.hero-excellence` in `Hero.tsx`, now applied to "your time.") uses
+  `#ffffff`/`#d3ecf7` gradients so the words pop. That is intentional; leave it.
 - Fonts: Plus Jakarta Sans (display), DM Sans (body), DM Mono (mono),
   DigitalKhatt (Arabic loader/word only, `@font-face` in `layout.tsx`,
   file at `public/fonts/DigitalKhattV2.otf`).
@@ -140,9 +140,11 @@ Each section uses a different scroll treatment; do not collapse them:
 
 - **Hero** (`Hero.tsx`): loader (~2.4s), then Framer entrance for the content,
   then a GSAP ScrollTrigger **pin** with background parallax + content fade-out.
-  Two-column layout: left = headline/CTA (title is intentionally **2 lines**:
-  "Design done" / "with excellence.", sized `clamp(42px, 5.2vw, 86px)` so it
-  fits), right = `HeroShowcase`. `refreshPriority: 3`.
+  Two-column layout: left = headline/CTA (title is intentionally **3 lines**:
+  "Professional websites," / "without investing" / "your time." with the
+  shimmer on the last line, sized `clamp(34px, 4.3vw, 66px)` so each line stays
+  single on desktop; the CTA row carries a "From AED 997" price anchor pulled
+  from lib/quote.ts), right = `HeroShowcase`. `refreshPriority: 3`.
 - **Philosophy** (`Philosophy.tsx`): desktop = GSAP pin + scrub reveal
   (blur-to-focus Arabic word, clip-path transliteration, self-drawing hadith
   line). **Mobile = play-once** (`toggleActions`, NOT scrub) so it finishes

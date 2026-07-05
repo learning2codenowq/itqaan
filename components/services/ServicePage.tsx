@@ -18,7 +18,7 @@ const WHATSAPP = 'https://wa.me/923165252296'
 const optionSets = { brandScopes, graphicItems, seoPlans } as const
 
 const guarantees = [
-  { title: 'Fixed price', desc: 'The price we agree on is the price you pay. No hidden fees, no scope games, no riba.' },
+  { title: 'Fixed price', desc: 'The price we agree on is the price you pay. No hidden fees, no scope games.' },
   { title: 'Not done until you are happy', desc: 'Your feedback shapes the process, and we keep refining within the agreed scope until you are happy with the outcome.' },
   { title: 'You own everything', desc: 'Files, code, accounts and logins. It is all handed to you and it is all yours.' },
   { title: 'Support after launch', desc: 'We stay reachable once your project is live. You are never left to figure it out alone.' },
@@ -173,7 +173,7 @@ export default function ServicePage({ slug }: { slug: string }) {
             <Link href="/pricing" className="svc-header-link">Pricing</Link>
             <Link href="/faq" className="svc-header-link">FAQ</Link>
           </nav>
-          <Link href={quoteHref} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '10px 20px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', whiteSpace: 'nowrap' }}>
+          <Link href={quoteHref} data-cta="service_header" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '10px 20px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', whiteSpace: 'nowrap' }}>
             Get a quote
           </Link>
         </div>
@@ -199,7 +199,7 @@ export default function ServicePage({ slug }: { slug: string }) {
             ))}
           </ul>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', alignItems: 'center' }}>
-            <Link href={quoteHref} className="svc-cta">
+            <Link href={quoteHref} className="svc-cta" data-cta="service_hero">
               Get your fixed price
               <ArrowIcon />
             </Link>
@@ -414,7 +414,7 @@ export default function ServicePage({ slug }: { slug: string }) {
                         </li>
                       ))}
                     </ul>
-                    <Link href={`/quote?plan=${p.id}`} className="svc-cta" style={{ marginTop: 'auto', justifyContent: 'center' }}>
+                    <Link href={`/quote?plan=${p.id}`} className="svc-cta" data-cta="service_pricing_card" style={{ marginTop: 'auto', justifyContent: 'center' }}>
                       Get your fixed price
                     </Link>
                   </div>
@@ -434,7 +434,7 @@ export default function ServicePage({ slug }: { slug: string }) {
                         {o.price ? formatPrice(o.price) : o.monthly ? `${formatPrice(o.monthly)} / mo` : ''}
                       </span>
                     </p>
-                    <Link href="/quote" className="svc-cta" style={{ marginTop: 'auto', justifyContent: 'center' }}>
+                    <Link href="/quote" className="svc-cta" data-cta="service_pricing_card" style={{ marginTop: 'auto', justifyContent: 'center' }}>
                       Get your fixed price
                     </Link>
                   </div>
@@ -453,7 +453,7 @@ export default function ServicePage({ slug }: { slug: string }) {
                       {carePlan.monthly ? `${formatPrice(carePlan.monthly)} / mo` : ''}
                     </span>
                   </p>
-                  <Link href="/quote" className="svc-cta" style={{ marginTop: 'auto', justifyContent: 'center' }}>
+                  <Link href="/quote" className="svc-cta" data-cta="service_pricing_card" style={{ marginTop: 'auto', justifyContent: 'center' }}>
                     Get your fixed price
                   </Link>
                 </div>
@@ -531,7 +531,7 @@ export default function ServicePage({ slug }: { slug: string }) {
                     </li>
                   ))}
                 </ul>
-                <Link href={quoteHref} className="svc-cta">
+                <Link href={quoteHref} className="svc-cta" data-cta="service_two_options">
                   Get your fixed price
                   <ArrowIcon />
                 </Link>
@@ -574,7 +574,7 @@ export default function ServicePage({ slug }: { slug: string }) {
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-ink)', margin: '0 0 10px' }}>Ready to start?</h2>
           <p style={{ fontSize: '0.9rem', fontWeight: 300, color: 'var(--color-ink-48)', margin: '0 0 24px' }}>Build your quote in under a minute and get a fixed price within 24 hours.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
-            <Link href={quoteHref} className="svc-cta">
+            <Link href={quoteHref} className="svc-cta" data-cta="service_bottom">
               Get a quote
               <ArrowIcon />
             </Link>

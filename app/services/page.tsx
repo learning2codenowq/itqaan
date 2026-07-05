@@ -11,7 +11,7 @@ const BASE = 'https://withitqaan.com'
 export const metadata: Metadata = {
   title: 'Web Design & Creative Services in Dubai | ITQAAN',
   description:
-    'Web design, e-commerce, branding, SEO and GEO, graphic design, and care plans for Muslim businesses in Dubai, the UAE, and worldwide. Fixed halal prices, no riba, no hidden fees.',
+    'Web design, e-commerce, branding, SEO and GEO, graphic design, and care plans for Muslim businesses in Dubai, the UAE, and worldwide. Fixed halal prices, no hidden fees.',
   alternates: { canonical: '/services' },
 }
 
@@ -111,7 +111,7 @@ export default function ServicesHub() {
           Web design and creative services for Muslim businesses
         </h1>
         <p style={{ fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-72)', margin: '0 0 48px', maxWidth: '700px' }}>
-          Everything your business needs to look established online and win customers, in Dubai, across the UAE, and worldwide. Fixed prices agreed before we start, no riba, no hidden fees, and you own everything at the end.
+          Everything your business needs to look established online and win customers, in Dubai, across the UAE, and worldwide. Fixed prices agreed before we start, no hidden fees, and you own everything at the end.
         </p>
 
         <div className="svcs-grid">

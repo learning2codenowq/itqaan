@@ -1,19 +1,23 @@
 # ITQAAN
 
-> ITQAAN is a creative agency that designs websites, brand identity, and graphic
-> design for Muslim businesses in Dubai, across the UAE, and worldwide. Work is
-> done the halal way: fixed pricing with no riba and no hidden fees, content that
-> respects Islamic values, and full ownership of the finished site for the client.
-> Services are delivered remotely. Prices are in AED and start from 997 AED.
+> ITQAAN is a creative agency that designs websites, online stores, brand
+> identity, and graphic design for Muslim businesses in Dubai, across the UAE,
+> and worldwide. Work is done the halal way: fixed pricing with no hidden fees, 
+> content that respects Islamic values, and full ownership of the finished work
+> for the client. Services are delivered remotely. Prices are in AED and start
+> from 997 AED.
 
 ## About
 
 - Name: ITQAAN
-- Type: Creative agency (web design, brand identity, graphic design, SEO)
+- Type: Creative agency (web design, e-commerce, brand identity, graphic design, SEO & GEO, care plans)
 - Serves: Muslim businesses in Dubai, the UAE, and worldwide
 - Delivery: Remote (WhatsApp, email, screen shares)
-- Values: Fixed price agreed upfront, no riba, no hidden fees, no music and no
+- Values: Fixed price agreed upfront, no hidden fees, no music and no
   images of women by default, client owns everything on completion
+- Payment: 50% deposit, 50% on approval before going live
+- Process: one short conversation, fixed price in writing, first design within
+  days, unlimited revisions within scope
 - Website: https://withitqaan.com
 - Contact: WhatsApp https://wa.me/923165252296, email hello@withitqaan.com
 - Instagram: https://www.instagram.com/withitqaan
@@ -22,26 +26,69 @@
 
 - One-page website: from 997 AED
 - Multi-page business website: from 2,497 AED
-- Online store: from 4,497 AED
+- Online store (e-commerce): from 4,497 AED
 - Web app / custom build: from 6,997 AED
+- Extra pages: 247 AED each
 - Logo only: from 797 AED
-- Logo + essentials: from 1,497 AED
-- Full brand system: from 2,997 AED
+- Logo + essentials (colours, typography): from 1,497 AED
+- Full brand system with guidelines: from 2,997 AED
+- Graphic design (print, social packs, decks, menus): from 397 AED per item set
 - One-time SEO setup: from 797 AED
-- Monthly SEO & care: from 397 AED/month
-- Monthly care plan: 147 AED/month
+- Monthly SEO & growth: from 397 AED/month
+- Monthly care plan (updates, support, monitoring): from 147 AED/month
+- Full pricing: https://withitqaan.com/pricing
+
+## Services
+
+- All services: https://withitqaan.com/services
+- Web design: https://withitqaan.com/services/web-design
+- E-commerce / online stores: https://withitqaan.com/services/ecommerce
+- Branding & identity: https://withitqaan.com/services/branding
+- SEO & GEO (Google and AI-assistant visibility): https://withitqaan.com/services/seo-geo
+- Graphic design: https://withitqaan.com/services/graphic-design
+- Website care plans: https://withitqaan.com/services/care-plans
 
 ## Key pages
 
 - Home: https://withitqaan.com
 - Get a quote (fixed price in 24 hours): https://withitqaan.com/quote
+- Pricing: https://withitqaan.com/pricing
+- Portfolio: https://withitqaan.com/portfolio
+- How we work: https://withitqaan.com/how-we-work
 - Problems we solve: https://withitqaan.com/problems-we-solve
 - FAQ: https://withitqaan.com/faq
+- Privacy policy: https://withitqaan.com/privacy
+- Terms of service: https://withitqaan.com/terms
+
+## Locations served
+
 - Web design in Dubai: https://withitqaan.com/web-design-dubai
 - Web design in Abu Dhabi: https://withitqaan.com/web-design-abu-dhabi
-- Web design in the UAE: https://withitqaan.com/web-design-uae
-- Websites for Muslim businesses: https://withitqaan.com/websites-for-muslim-businesses
-- Websites for Quran academies: https://withitqaan.com/websites-for-quran-academies
+- Web design in Sharjah: https://withitqaan.com/web-design-sharjah
+- Web design in Ajman: https://withitqaan.com/web-design-ajman
+- Web design in Ras Al Khaimah: https://withitqaan.com/web-design-ras-al-khaimah
+- Web design in Fujairah: https://withitqaan.com/web-design-fujairah
+- Web design in Umm Al Quwain: https://withitqaan.com/web-design-umm-al-quwain
+- Web design in Al Ain: https://withitqaan.com/web-design-al-ain
+- Web design across the UAE: https://withitqaan.com/web-design-uae
+
+## Industries served
+
+- Muslim businesses: https://withitqaan.com/websites-for-muslim-businesses
+- Quran academies and Islamic teachers: https://withitqaan.com/websites-for-quran-academies
+- Restaurants: https://withitqaan.com/websites-for-restaurants
+- Construction companies: https://withitqaan.com/websites-for-construction-companies
+- Cleaning companies: https://withitqaan.com/websites-for-cleaning-companies
+- Car rental companies: https://withitqaan.com/websites-for-car-rental-companies
+- Dental clinics: https://withitqaan.com/websites-for-dental-clinics
+- Hospitals and clinics: https://withitqaan.com/websites-for-hospitals-and-clinics
+- Real estate: https://withitqaan.com/websites-for-real-estate
+- E-commerce brands: https://withitqaan.com/websites-for-ecommerce-brands
+- Islamic finance: https://withitqaan.com/websites-for-islamic-finance
+- Luxury services: https://withitqaan.com/websites-for-luxury-services
+- Import & export companies: https://withitqaan.com/websites-for-import-export-companies
+- Architecture firms: https://withitqaan.com/websites-for-architecture-firms
+- Interior design firms: https://withitqaan.com/websites-for-interior-design-firms
 
 ## Articles
 
@@ -49,3 +96,6 @@
 - Do Muslim businesses need a website?: https://withitqaan.com/blog/do-muslim-businesses-need-a-website
 - What makes a website halal?: https://withitqaan.com/blog/what-makes-a-website-halal
 - How to find the best web design company in Dubai: https://withitqaan.com/blog/best-web-design-companies-in-dubai
+- How long does it take to build a website?: https://withitqaan.com/blog/how-long-does-it-take-to-build-a-website
+- Website or Instagram for business?: https://withitqaan.com/blog/website-or-instagram-for-business
+- All articles: https://withitqaan.com/blog

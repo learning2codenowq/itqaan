@@ -5,7 +5,7 @@
 // Google and AI assistants can lift a direct answer from it.
 //
 // Positioning: websites for Muslim businesses in Dubai, the UAE, and worldwide.
-// The halal values (fixed price, no riba, no music, no images of women, you own
+// The halal values (fixed price, no music, no images of women, you own
 // everything) are a differentiator, not the whole pitch.
 //
 // TO ADD A PAGE: add an entry here (or in lib/landing-emirates.ts /
@@ -23,7 +23,7 @@ const coreLandings: Landing[] = [
     slug: 'web-design-dubai',
     metaTitle: 'Web Design in Dubai for Muslim Businesses | ITQAAN | From 997 AED',
     metaDescription:
-      'Custom web design in Dubai for Muslim businesses. Fixed prices from 997 AED, no riba, no hidden fees. Mobile-first sites that turn visitors into customers. Get a quote in under a minute.',
+      'Custom web design in Dubai for Muslim businesses. Fixed prices from 997 AED, no hidden fees. Mobile-first sites that turn visitors into customers. Get a quote in under a minute.',
     eyebrow: 'Web design, Dubai',
     h1: 'Web design in Dubai for Muslim businesses',
     intro:
@@ -80,7 +80,7 @@ const coreLandings: Landing[] = [
     slug: 'web-design-uae',
     metaTitle: 'Web Design in the UAE | Websites for Muslim Businesses | ITQAAN',
     metaDescription:
-      'Web design across the UAE for Muslim businesses, from Dubai to Abu Dhabi and Sharjah. Fixed prices from 997 AED, no riba, no hidden fees. Fast, mobile-first websites that win customers.',
+      'Web design across the UAE for Muslim businesses, from Dubai to Abu Dhabi and Sharjah. Fixed prices from 997 AED, no hidden fees. Fast, mobile-first websites that win customers.',
     eyebrow: 'Web design, UAE',
     h1: 'Web design across the UAE',
     intro:
@@ -137,7 +137,7 @@ const coreLandings: Landing[] = [
     slug: 'websites-for-muslim-businesses',
     metaTitle: 'Websites for Muslim Businesses | Dubai, UAE & Worldwide | ITQAAN',
     metaDescription:
-      'Web design and brand identity for Muslim businesses in Dubai, the UAE, and worldwide. Fixed prices from 997 AED, no riba, no hidden fees, no music or images of women. You own everything.',
+      'Web design and brand identity for Muslim businesses in Dubai, the UAE, and worldwide. Fixed prices from 997 AED, no hidden fees, no music or images of women. You own everything.',
     eyebrow: 'For Muslim businesses',
     h1: 'Websites for Muslim businesses',
     intro:
@@ -147,7 +147,7 @@ const coreLandings: Landing[] = [
         h2: 'A designer who understands your values',
         body: [
           'You should not have to choose between a professional website and one that reflects your deen. We build both into the same project.',
-          'That means no riba in the pricing, no images of women, and no music, unless you ask otherwise. It also means honest dealing from the first message to the final handover.',
+          'That means no hidden fees in the pricing, no images of women, and no music. It also means honest dealing from the first message to the final handover.',
         ],
       },
       {
@@ -169,7 +169,7 @@ const coreLandings: Landing[] = [
     faqs: [
       {
         q: 'What makes a website "halal"?',
-        a: 'For us it means two things: how the work is done, and what goes on the site. The pricing is fixed with no riba and no hidden fees, and by default the site contains no music and no images of women. You also fully own the finished work.',
+        a: 'For us it means two things: how the work is done, and what goes on the site. The pricing is fixed with no hidden fees, and by default the site contains no music and no images of women. You also fully own the finished work.',
       },
       {
         q: 'Do you work with businesses outside the UAE?',
@@ -194,7 +194,7 @@ const coreLandings: Landing[] = [
     slug: 'web-design-abu-dhabi',
     metaTitle: 'Web Design in Abu Dhabi for Muslim Businesses | ITQAAN | From 997 AED',
     metaDescription:
-      'Custom web design in Abu Dhabi for Muslim businesses. Fixed prices from 997 AED, no riba, no hidden fees. Fast, mobile-first websites that turn visitors into customers. Get a quote in under a minute.',
+      'Custom web design in Abu Dhabi for Muslim businesses. Fixed prices from 997 AED, no hidden fees. Fast, mobile-first websites that turn visitors into customers. Get a quote in under a minute.',
     eyebrow: 'Web design, Abu Dhabi',
     h1: 'Web design in Abu Dhabi for Muslim businesses',
     intro:
@@ -251,7 +251,7 @@ const coreLandings: Landing[] = [
     slug: 'websites-for-quran-academies',
     metaTitle: 'Websites for Quran Academies & Islamic Teachers | ITQAAN | From 997 AED',
     metaDescription:
-      'Web design for Quran academies, Islamic schools, and online Quran teachers in the UAE and worldwide. Fixed prices from 997 AED, no riba, no music or images of women. Fill more student places online.',
+      'Web design for Quran academies, Islamic schools, and online Quran teachers in the UAE and worldwide. Fixed prices from 997 AED, no music or images of women. Fill more student places online.',
     eyebrow: 'For Quran academies',
     h1: 'Websites for Quran academies and Islamic teachers',
     intro:
@@ -291,7 +291,7 @@ const coreLandings: Landing[] = [
       },
       {
         q: 'Will the site respect Islamic values?',
-        a: 'Yes. By default your site carries no music and no images of women, the pricing is fixed with no riba or hidden fees, and you own everything when the project is done.',
+        a: 'Yes. By default your site carries no music and no images of women, the pricing is fixed with no hidden fees, and you own everything when the project is done.',
       },
     ],
     serviceName: 'Web Design for Quran Academies',

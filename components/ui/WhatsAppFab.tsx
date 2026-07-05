@@ -8,10 +8,13 @@ import { useEffect } from 'react'
  * way the Hero "excellence" gloss is: brand recognition drives taps here, so we
  * keep WhatsApp's own colour rather than the Onyx + Candy Blue tokens.
  *
- * This component also owns a single delegated click listener that fires a GA4
- * `whatsapp_click` event for EVERY wa.me link on the site (this button, plus the
- * Contact and Footer links). Add `data-wa-loc="..."` to a link to label where
- * the click came from in GA.
+ * This component also owns a single delegated click listener that fires GA4
+ * events for the whole site:
+ *  - `whatsapp_click` for every wa.me link. Label with `data-wa-loc="..."`.
+ *  - `cta_click` for every link into /quote, so GA shows which CTA actually
+ *    drives quote starts. Label with `data-cta="..."`; unlabeled links fall
+ *    back to the id of the section they sit in, then to 'page'. Every event
+ *    carries the pathname it fired on.
  */
 
 const WA_NUMBER = '923165252296'
@@ -21,10 +24,23 @@ const WA_HREF = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_TEXT)}`
 export default function WhatsAppFab() {
   useEffect(() => {
     const onDocClick = (e: MouseEvent) => {
-      const link = (e.target as HTMLElement | null)?.closest?.('a[href*="wa.me"]') as HTMLAnchorElement | null
-      if (!link) return
+      const target = e.target as HTMLElement | null
       const w = window as unknown as { gtag?: (...args: unknown[]) => void }
-      w.gtag?.('event', 'whatsapp_click', { location: link.dataset.waLoc || 'link' })
+
+      const wa = target?.closest?.('a[href*="wa.me"]') as HTMLAnchorElement | null
+      if (wa) {
+        w.gtag?.('event', 'whatsapp_click', { location: wa.dataset.waLoc || 'link', page: window.location.pathname })
+        return
+      }
+
+      const cta = target?.closest?.('a[href^="/quote"]') as HTMLAnchorElement | null
+      if (cta) {
+        const location =
+          cta.dataset.cta ||
+          (cta.closest('section[id], footer, header') as HTMLElement | null)?.id ||
+          (cta.closest('footer') ? 'footer' : cta.closest('header') ? 'header' : 'page')
+        w.gtag?.('event', 'cta_click', { location, page: window.location.pathname })
+      }
     }
     document.addEventListener('click', onDocClick)
     return () => document.removeEventListener('click', onDocClick)

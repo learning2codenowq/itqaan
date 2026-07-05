@@ -10,7 +10,7 @@ const BASE = 'https://withitqaan.com'
 export const metadata: Metadata = {
   title: 'Pricing | Fixed Halal Prices From 997 AED | ITQAAN',
   description:
-    'All ITQAAN prices in one place: websites from 997 AED, online stores from 4,497 AED, branding from 797 AED, SEO from 797 AED, graphic design from 397 AED, care plans from 147 AED per month. Fixed, no riba, no hidden fees.',
+    'All ITQAAN prices in one place: websites from 997 AED, online stores from 4,497 AED, branding from 797 AED, SEO from 797 AED, graphic design from 397 AED, care plans from 147 AED per month. Fixed, no hidden fees.',
   alternates: { canonical: '/pricing' },
 }
 
@@ -131,7 +131,7 @@ export default function PricingPage() {
           Every price, fixed and in the open
         </h1>
         <p style={{ fontSize: '1.1rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-72)', margin: '0 0 16px', maxWidth: '700px' }}>
-          These are the starting prices for everything we do. After one short conversation you get an exact fixed price for your situation, in writing. No riba, no hidden fees, and what we agree is what you pay.
+          These are the starting prices for everything we do. After one short conversation you get an exact fixed price for your situation, in writing. No hidden fees, and what we agree is what you pay.
         </p>
 
         {groups.map(g => (
@@ -146,7 +146,7 @@ export default function PricingPage() {
             <p style={{ fontSize: '0.95rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-48)', margin: '0 0 22px', maxWidth: '640px' }}>{g.blurb}</p>
             <div className="pr-grid">
               {g.options.map(o => (
-                <Link key={o.id} href={quoteHrefFor(o)} className="pr-card">
+                <Link key={o.id} href={quoteHrefFor(o)} className="pr-card" data-cta="pricing_page_card">
                   <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: 'var(--color-ink)', margin: '0 0 4px' }}>{o.label}</h3>
                   {o.desc && <p style={{ fontSize: '0.82rem', fontWeight: 300, color: 'var(--color-ink-48)', margin: '0 0 16px', lineHeight: 1.5 }}>{o.desc}</p>}
                   <p style={{ margin: 'auto 0 0', display: 'flex', alignItems: 'baseline', gap: '8px' }}>
