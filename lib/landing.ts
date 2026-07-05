@@ -8,39 +8,17 @@
 // The halal values (fixed price, no riba, no music, no images of women, you own
 // everything) are a differentiator, not the whole pitch.
 //
-// TO ADD A PAGE: add an entry here, create app/<slug>/page.tsx that renders
-// <LandingPage slug="<slug>" />, and add the slug to app/sitemap.ts.
+// TO ADD A PAGE: add an entry here (or in lib/landing-emirates.ts /
+// lib/landing-niches.ts). The dynamic route at app/[slug]/page.tsx and the
+// sitemap pick it up automatically; no per-page route file is needed.
 
-export type LandingSection = { h2: string; body: string[] }
-export type LandingFaq = { q: string; a: string }
-export type RelatedLink = { label: string; href: string }
+import { Landing, VALUES_SECTION } from './landing-shared'
+import { emirateLandings } from './landing-emirates'
+import { nicheLandings } from './landing-niches'
 
-export type Landing = {
-  slug: string
-  metaTitle: string
-  metaDescription: string
-  eyebrow: string
-  h1: string
-  intro: string
-  sections: LandingSection[]
-  faqs: LandingFaq[]
-  serviceName: string
-  areaServed: string[]
-  // Internal links to sibling pages / articles, for SEO and to help readers and
-  // AI assistants discover related intent. Rendered at the foot of the page.
-  related?: RelatedLink[]
-}
+export type { Landing, LandingSection, LandingFaq, RelatedLink } from './landing-shared'
 
-const VALUES_SECTION: LandingSection = {
-  h2: 'Built the halal way, with no compromise on quality',
-  body: [
-    'Every project comes with a fixed price agreed before we start. No riba, no hidden fees, and no surprise invoices at the end.',
-    'The work itself respects your values too: no music and no images of women, by default. You get a site that looks premium and that you are comfortable sharing with your community.',
-    'When the project is done, you own everything. The design, the code, the domain, and the content are all yours.',
-  ],
-}
-
-export const landings: Landing[] = [
+const coreLandings: Landing[] = [
   {
     slug: 'web-design-dubai',
     metaTitle: 'Web Design in Dubai for Muslim Businesses | ITQAAN | From 997 AED',
@@ -327,6 +305,8 @@ export const landings: Landing[] = [
     ],
   },
 ]
+
+export const landings: Landing[] = [...coreLandings, ...emirateLandings, ...nicheLandings]
 
 export function getLanding(slug: string): Landing | undefined {
   return landings.find(l => l.slug === slug)

@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Footer from '@/components/sections/Footer'
 import ScarcityBadge from '@/components/ui/ScarcityBadge'
 import { serviceNav } from '@/lib/serviceNav'
+import { landings } from '@/lib/landing'
 import { siteTypes, brandScopes, graphicItems, seoPlans, carePlan, formatPrice } from '@/lib/quote'
 
 const BASE = 'https://withitqaan.com'
@@ -134,6 +135,41 @@ export default function ServicesHub() {
             )
           })}
         </div>
+
+        {/* Who we build for + where we work (internal links to landing pages) */}
+        <section style={{ marginTop: '72px' }}>
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px, 3vw, 30px)', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--color-ink)', margin: '0 0 10px' }}>
+            Who we build for
+          </h2>
+          <p style={{ fontSize: '0.95rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-48)', margin: '0 0 20px', maxWidth: '640px' }}>
+            Every industry buys differently. These pages explain how we approach yours.
+          </p>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+            {landings.filter(l => l.slug.startsWith('websites-for-')).map(l => (
+              <li key={l.slug}>
+                <Link href={`/${l.slug}`} style={{ display: 'inline-flex', padding: '9px 16px', borderRadius: '9999px', border: '1px solid var(--color-ink-10)', background: 'var(--color-ink-3)', color: 'var(--color-ink-72)', fontSize: '0.8rem', fontWeight: 500, textDecoration: 'none' }}>
+                  {l.eyebrow.replace(/^For /, '')}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px, 3vw, 30px)', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--color-ink)', margin: '40px 0 10px' }}>
+            Where we work
+          </h2>
+          <p style={{ fontSize: '0.95rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-48)', margin: '0 0 20px', maxWidth: '640px' }}>
+            Serving every emirate remotely, and Muslim businesses worldwide.
+          </p>
+          <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+            {landings.filter(l => l.slug.startsWith('web-design-')).map(l => (
+              <li key={l.slug}>
+                <Link href={`/${l.slug}`} style={{ display: 'inline-flex', padding: '9px 16px', borderRadius: '9999px', border: '1px solid var(--color-ink-10)', background: 'var(--color-ink-3)', color: 'var(--color-ink-72)', fontSize: '0.8rem', fontWeight: 500, textDecoration: 'none' }}>
+                  {l.eyebrow.replace(/^Web design, /, '')}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
 
         {/* Bottom CTA */}
         <div style={{ marginTop: '64px', padding: '40px 36px', borderRadius: '16px', border: '1px solid var(--color-ink-10)', background: 'var(--color-ink-3)', textAlign: 'center' }}>

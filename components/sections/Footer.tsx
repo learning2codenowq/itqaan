@@ -140,6 +140,8 @@ export default function Footer() {
         <div style={{ paddingTop: '28px', borderTop: '1px solid rgba(178,213,229,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.12em', color: 'var(--color-ink-28)', margin: 0 }}>
             &copy; {year} ITQAAN. Built with excellence.
+            <a href="/privacy" className="footer-link" style={{ fontSize: '0.6rem', marginLeft: '14px' }}>Privacy</a>
+            <a href="/terms" className="footer-link" style={{ fontSize: '0.6rem', marginLeft: '10px' }}>Terms</a>
           </p>
           <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.12em', color: 'var(--color-ink-18)', margin: 0, fontStyle: 'italic' }}>
             The details matter.
