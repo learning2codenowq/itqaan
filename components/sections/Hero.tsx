@@ -274,22 +274,6 @@ export default function Hero() {
                   </span>
                 </HeroFade>
 
-                <HeroFade delay={0.75} style={{ marginTop: '28px' }}>
-                  <p style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px',
-                    fontFamily: 'var(--font-mono)',
-                    fontSize: '0.62rem',
-                    letterSpacing: '0.16em',
-                    textTransform: 'uppercase',
-                    color: 'var(--color-ink-28)',
-                    margin: 0,
-                  }}>
-                    <span aria-hidden="true" style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-ember)', flexShrink: 0 }} />
-                    Trusted by Muslim businesses in Dubai, the UAE and beyond
-                  </p>
-                </HeroFade>
               </div>
             )}
               </div>
