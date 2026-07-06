@@ -4,6 +4,7 @@ import { Plus_Jakarta_Sans, DM_Sans, DM_Mono } from 'next/font/google'
 import './globals.css'
 import LenisProvider from '@/components/ui/LenisProvider'
 import WhatsAppFab from '@/components/ui/WhatsAppFab'
+import FaviconController from '@/components/ui/FaviconController'
 
 /* Google Analytics 4 measurement ID */
 const GA_ID = 'G-FZG9CL5KHH'
@@ -57,6 +58,13 @@ export const metadata: Metadata = {
     images: ['/og-image.webp'],
   },
   robots: { index: true, follow: true },
+  icons: {
+    icon: [
+      { url: '/favicon-active.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico', sizes: 'any' },
+    ],
+    apple: [{ url: '/apple-touch-icon.png' }],
+  },
 }
 
 export default function RootLayout({
@@ -82,6 +90,7 @@ export default function RootLayout({
         `}</style>
       </head>
       <body>
+        <FaviconController />
         <LenisProvider>
           {children}
         </LenisProvider>

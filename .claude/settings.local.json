@@ -14,7 +14,9 @@
       "Bash(cp -r C:/Users/SHAYAN/AppData/Local/Temp/claude/C--Users-SHAYAN-Desktop-itqaan/28887f32-fe76-4058-957e-e9e856d684b0/scratchpad/skills-copywriting/copywriting 'C:\\\\Users\\\\SHAYAN/.claude/skills/copywriting')",
       "Read(//c/Users/SHAYAN/.claude/skills/**)",
       "WebFetch(domain:www.belgalink.be)",
-      "Bash(grep -oE 'href=\"https://www\\\\.belgalink\\\\.be[^\"]*\"' \"/c/Users/SHAYAN/Downloads/Professionele Website Laten Maken voor KMO's _ Belgalink.html\" | sort -u | head -60)"
+      "Bash(grep -oE 'href=\"https://www\\\\.belgalink\\\\.be[^\"]*\"' \"/c/Users/SHAYAN/Downloads/Professionele Website Laten Maken voor KMO's _ Belgalink.html\" | sort -u | head -60)",
+      "Bash(node scripts/generate-favicon-fallbacks.mjs)",
+      "Bash(npm run *)"
     ]
   }
 }
