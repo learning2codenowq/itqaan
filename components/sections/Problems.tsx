@@ -29,7 +29,7 @@ export default function Problems() {
             Problems we solve
           </p>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 4vw, 48px)', fontWeight: 700, lineHeight: 1.08, letterSpacing: '-0.02em', color: 'var(--color-ink)', margin: '0 0 20px' }}>
-            You are not looking for a website. You are trying to fix something.
+            Somewhere out there, a client just chose your competitor. Here is why...
           </h2>
           <p style={{ fontSize: '1rem', fontWeight: 300, lineHeight: 1.75, color: 'var(--color-ink-48)', margin: 0, maxWidth: '560px' }}>
             Most Muslim business owners we meet are stuck on the same handful of problems. Here is what we hear most often, and how we put it right.
