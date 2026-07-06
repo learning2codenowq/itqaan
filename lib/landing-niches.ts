@@ -413,7 +413,7 @@ export const nicheLandings: Landing[] = [
         h2: 'Trust is the entire product',
         body: [
           'Nobody moves their money to a company whose website feels improvised. Islamic finance sites need institutional polish: clear product explanations, visible shariah board and compliance credentials, and language that is precise about how the products actually work.',
-          'We design with that seriousness, and because we build halal by default, you will not spend review cycles removing music, imagery, or riba-adjacent wording an ordinary agency would put in.',
+          'We design with that seriousness, and because we build halal by default, you will not spend review cycles removing music, impermissible imagery of women.',
         ],
       },
       {

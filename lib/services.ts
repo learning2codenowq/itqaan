@@ -120,7 +120,7 @@ export const services: ServicePageData[] = [
         'Reply after three reminder messages',
         'Charge extra for every small change',
         'Disappear once the invoice is paid',
-        'Put riba, hidden fees, or surprise costs anywhere near your project',
+        'Put hidden fees, or surprise costs anywhere near your project',
       ],
       doHeading: 'What ITQAAN does',
       doParagraphs: [
