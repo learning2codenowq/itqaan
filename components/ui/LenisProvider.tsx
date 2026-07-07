@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -13,8 +14,13 @@ export default function LenisProvider({
   children: React.ReactNode
 }) {
   const lenisRef = useRef<Lenis | null>(null)
+  const pathname = usePathname()
 
   useEffect(() => {
+    // scrollRestoration is forced to 'manual' by an inline <head> script in
+    // layout.tsx (it must run before first paint to stop the browser restoring
+    // the previous page's scroll onto a freshly loaded page). Here we just own
+    // the smoothed scroll; the route-change effect below resets to top.
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -80,6 +86,17 @@ export default function LenisProvider({
       ;(window as unknown as { __lenis?: Lenis }).__lenis = undefined
     }
   }, [])
+
+  // On every route change (and initial load), start the new page at the top —
+  // unless the URL targets an in-page anchor. Skipping when a hash is present
+  // preserves deep-links like `/#services`. Runs separately from the Lenis
+  // init effect so navigating never tears down / recreates the instance.
+  useEffect(() => {
+    if (window.location.hash) return
+    const lenis = lenisRef.current
+    if (lenis) lenis.scrollTo(0, { immediate: true, force: true })
+    else window.scrollTo(0, 0)
+  }, [pathname])
 
   return <>{children}</>
 }

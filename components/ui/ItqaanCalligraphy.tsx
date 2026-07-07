@@ -27,10 +27,19 @@ const GLYPHS: [string, number, number][] = [
   ['M66.64 2.31C46.74 13.34 26.84 24.37 6.95 35.4C-0.38 39.46 -1.55 43.54 2.52 50.86C13.55 70.76 24.58 90.66 35.61 110.55C39.67 117.88 43.75 119.05 51.07 114.98C70.97 103.95 90.87 92.92 110.76 81.89C118.09 77.83 119.26 73.75 115.19 66.43C104.16 46.53 93.13 26.63 82.1 6.74C78.04 -0.59 73.96 -1.76 66.64 2.31Z', 148, 323],
 ]
 
-export default function ItqaanCalligraphy({ style }: { style?: React.CSSProperties }) {
+export default function ItqaanCalligraphy({
+  style,
+  animate = true,
+}: {
+  style?: React.CSSProperties
+  /** When false, render the finished (filled, no-stroke) word with no self-draw
+   *  animation. Used by Philosophy, which reveals it with its own blur/scale. */
+  animate?: boolean
+}) {
   const svgRef = useRef<SVGSVGElement>(null)
 
   useEffect(() => {
+    if (!animate) return
     const svg = svgRef.current
     if (!svg) return
     const paths = Array.from(svg.querySelectorAll<SVGPathElement>('path'))
@@ -58,7 +67,7 @@ export default function ItqaanCalligraphy({ style }: { style?: React.CSSProperti
     }, svg)
 
     return () => ctx.revert()
-  }, [])
+  }, [animate])
 
   return (
     <svg
@@ -69,7 +78,13 @@ export default function ItqaanCalligraphy({ style }: { style?: React.CSSProperti
       role="img"
       style={{ display: 'block', overflow: 'visible', ...style }}
     >
-      <g transform="scale(1,-1)" fill="var(--color-ember)" stroke="var(--color-ember)" strokeWidth="1.4" vectorEffect="non-scaling-stroke">
+      <g
+        transform="scale(1,-1)"
+        fill="var(--color-ember)"
+        stroke={animate ? 'var(--color-ember)' : 'none'}
+        strokeWidth={animate ? 1.4 : 0}
+        vectorEffect="non-scaling-stroke"
+      >
         {GLYPHS.map(([d, dx, dy], i) => (
           <path key={i} d={d} transform={`translate(${dx} ${dy})`} vectorEffect="non-scaling-stroke" />
         ))}

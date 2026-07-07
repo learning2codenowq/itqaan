@@ -78,16 +78,15 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${dmSans.variable} ${dmMono.variable}`}
     >
       <head>
-        {/* DigitalKhatt — self-hosted, used for loader Arabic text */}
-        <style>{`
-          @font-face {
-            font-family: 'DigitalKhatt';
-            src: url('/fonts/DigitalKhattV2.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
-          }
-        `}</style>
+        {/* Take scroll restoration off the browser's 'auto' default before first
+            paint, so navigating from the footer to a new page never lands on the
+            old scroll offset. Must be inline (runs before restoration); the
+            per-route reset lives in LenisProvider. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if('scrollRestoration' in history){history.scrollRestoration='manual';}`,
+          }}
+        />
       </head>
       <body>
         <FaviconController />

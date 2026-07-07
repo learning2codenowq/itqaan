@@ -58,9 +58,12 @@ Rules:
 - One deliberate off-token white exists: the **hero gloss/shimmer**
   (`.hero-excellence` in `Hero.tsx`, now applied to "your time.") uses
   `#ffffff`/`#d3ecf7` gradients so the words pop. That is intentional; leave it.
-- Fonts: Plus Jakarta Sans (display), DM Sans (body), DM Mono (mono),
-  DigitalKhatt (Arabic loader/word only, `@font-face` in `layout.tsx`,
-  file at `public/fonts/DigitalKhattV2.otf`).
+- Fonts: Plus Jakarta Sans (display), DM Sans (body), DM Mono (mono). There is
+  no Arabic web font: the word إتقان is rendered as inline SVG paths in
+  `components/ui/ItqaanCalligraphy.tsx` (paths extracted from DigitalKhatt).
+  The loader/hero uses the self-drawing variant; Philosophy uses
+  `<ItqaanCalligraphy animate={false} />` (static, filled). The old 500KB
+  `DigitalKhattV2.otf` was removed for mobile performance, do not reintroduce it.
 
 ## Copy rules
 

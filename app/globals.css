@@ -77,15 +77,6 @@ button { font-family: inherit; }
   will-change: opacity, transform;
 }
 
-/* ── Arabic display helper ── */
-.arabic {
-  font-family: 'DigitalKhatt', serif;
-  direction: rtl;
-  unicode-bidi: embed;
-  display: inline-block;
-  letter-spacing: 0;
-}
-
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

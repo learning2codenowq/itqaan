@@ -4,6 +4,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import ItqaanCalligraphy from '@/components/ui/ItqaanCalligraphy'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -46,7 +47,7 @@ export default function Philosophy() {
               ? {
                   trigger: wrapperRef.current,
                   start: 'top top',
-                  end: '+=160%',
+                  end: '+=115%',
                   scrub: 1,
                   pin: true,
                   anticipatePin: 1,
@@ -56,7 +57,7 @@ export default function Philosophy() {
                 }
               : {
                   trigger: wrapperRef.current,
-                  start: 'top 75%',
+                  start: 'top 85%',
                   toggleActions: 'play none none none',
                 },
           })
@@ -100,10 +101,9 @@ export default function Philosophy() {
 
           <span
             ref={arabicRef}
-            className="arabic"
-            style={{ display: 'block', fontSize: 'clamp(48px, 8vw, 84px)', color: 'var(--color-ember)', marginBottom: '12px' }}
+            style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '12px' }}
           >
-            إتقان
+            <ItqaanCalligraphy animate={false} style={{ height: 'clamp(48px, 8vw, 84px)', width: 'auto' }} />
           </span>
 
           <p
