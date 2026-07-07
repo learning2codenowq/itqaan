@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import Faq from '@/components/sections/Faq'
+import Footer from '@/components/sections/Footer'
 import { faqs } from '@/lib/faq'
 
 export const metadata: Metadata = {
@@ -66,6 +67,8 @@ export default function FaqPage() {
           </div>
         </div>
       </section>
+
+      <Footer />
     </main>
   )
 }
