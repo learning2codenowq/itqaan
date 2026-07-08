@@ -47,6 +47,33 @@ export const siteTypes: Option[] = [
   { id: 'webapp',   label: 'Web app / custom',        desc: 'Custom features and logic',     price: 6997, from: true },
 ]
 
+/* ── Step 2a-store: online store scope (only shown when siteType === 'store') ──
+   Product range is informational only: the Shopify store handles any number of
+   products, so it never changes the price. It just helps scope the project and
+   sets the expectation early. The paid features nudge the estimate; the
+   "included" list is display-only, to show what the base price already covers. */
+export const storeRanges: Option[] = [
+  { id: 'r25',   label: 'Up to 25 products' },
+  { id: 'r100',  label: '25 to 100 products' },
+  { id: 'r500',  label: '100 to 500 products' },
+  { id: 'r500p', label: '500+ products' },
+]
+
+export const storeIncluded: Option[] = [
+  { id: 'analytics', label: 'Analytics dashboard' },
+  { id: 'manage',    label: 'You manage products & orders' },
+  { id: 'payments',  label: 'Secure payments & checkout' },
+  { id: 'mobile',    label: 'Mobile-optimised store' },
+]
+
+export const storeFeatures: Option[] = [
+  { id: 'cart',    label: 'Abandoned-cart recovery',          desc: 'Follow up customers who did not check out', price: 297 },
+  { id: 'reviews', label: 'Product reviews',                  desc: 'Automated flows to build trust with customer testimonials',         price: 397 },
+  { id: 'loyalty', label: 'Loyalty & rewards',                desc: 'Points and rewards for repeat buyers',      price: 597 },
+  { id: 'lang',    label: 'Multi-language (Arabic + English)', desc: 'Serve customers in both languages',        price: 397 },
+  { id: 'cro',     label: 'Conversion rate optimisation',     desc: 'Tweaks that turn more visitors into buyers, e.g. a low-stock badge on product page', price: 497 },
+]
+
 /* ── Step 2b: brand identity scope ── */
 export const brandScopes: Option[] = [
   { id: 'logo',   label: 'Logo only',              desc: 'A single primary logo',            price: 797,  from: true },
@@ -115,7 +142,7 @@ export const packages: Package[] = [
   {
     id: 'store', name: 'Store', price: 4497, care: 147, need: 'website', choice: 'store',
     desc: 'A conversion-focused online store.',
-    features: ['Full store setup', 'Product & order management', 'Online payments', 'Customer accounts', 'Full SEO setup'],
+    features: ['Built on Shopify, you manage it', 'Unlimited products', 'Product & order management', 'Secure online payments', 'Full SEO setup'],
   },
   {
     id: 'brand', name: 'Brand', price: 1497, need: 'brand', choice: 'basics',

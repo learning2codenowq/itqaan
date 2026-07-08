@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server'
 import { Resend } from 'resend'
 import {
   primaryNeeds, siteTypes, brandScopes, graphicItems, seoPlans,
-  addons, timelines, formatPrice,
+  addons, timelines, storeRanges, storeFeatures, formatPrice,
 } from '@/lib/quote'
 
 const resend = new Resend(process.env.RESEND_API_KEY)
@@ -73,6 +73,8 @@ export async function POST(req: NextRequest) {
     const rows: [string, string][] = []
     if (need) rows.push(['Needs', need])
     const site = labelOf(siteTypes, selections?.siteType); if (site) rows.push(['Website type', site])
+    const storeRange = labelOf(storeRanges, selections?.storeRange); if (storeRange) rows.push(['Product range', storeRange])
+    if (selections?.storeFeatures?.length) rows.push(['Store features', selections.storeFeatures.map((id: string) => labelOf(storeFeatures, id)).filter(Boolean).join(', ')])
     const brand = labelOf(brandScopes, selections?.brandScope); if (brand) rows.push(['Brand scope', brand])
     const seo = labelOf(seoPlans, selections?.seoPlan); if (seo) rows.push(['SEO plan', seo])
     if (selections?.graphic?.length) rows.push(['Graphic items', selections.graphic.map((id: string) => labelOf(graphicItems, id)).filter(Boolean).join(', ')])

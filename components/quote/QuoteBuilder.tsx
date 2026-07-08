@@ -6,14 +6,21 @@ import { AnimatePresence, motion } from 'framer-motion'
 import {
   primaryNeeds, siteTypes, brandScopes, graphicItems, seoPlans,
   addons, carePlan, timelines, EXTRA_PAGE_PRICE, formatPrice,
+  storeRanges, storeIncluded, storeFeatures,
 } from '@/lib/quote'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
-type StepKey = 'need' | 'siteType' | 'brandScope' | 'graphicItems' | 'seoPlan' | 'websiteAddons' | 'timeline' | 'contact'
+type StepKey = 'need' | 'siteType' | 'storeScope' | 'brandScope' | 'graphicItems' | 'seoPlan' | 'websiteAddons' | 'timeline' | 'contact'
 
-function stepsFor(need: string | null): StepKey[] {
-  if (need === 'website') return ['need', 'siteType', 'websiteAddons', 'timeline', 'contact']
+function stepsFor(need: string | null, siteType?: string | null): StepKey[] {
+  if (need === 'website') {
+    const steps: StepKey[] = ['need', 'siteType']
+    // The store scope step (product range + Shopify features) only applies to stores.
+    if (siteType === 'store') steps.push('storeScope')
+    steps.push('websiteAddons', 'timeline', 'contact')
+    return steps
+  }
   if (need === 'brand')   return ['need', 'brandScope', 'timeline', 'contact']
   if (need === 'graphic') return ['need', 'graphicItems', 'timeline', 'contact']
   if (need === 'seo')     return ['need', 'seoPlan', 'timeline', 'contact']
@@ -24,6 +31,8 @@ function stepsFor(need: string | null): StepKey[] {
 type State = {
   need: string | null
   siteType: string | null
+  storeRange: string | null
+  storeFeatures: string[]
   brandScope: string | null
   graphic: string[]
   seoPlan: string | null
@@ -54,6 +63,8 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
   const [state, setState] = useState<State>({
     need: initialPlan?.need ?? null,
     siteType: initialPlan?.need === 'website' ? initialPlan.choice ?? null : null,
+    storeRange: null,
+    storeFeatures: [],
     brandScope: initialPlan?.need === 'brand' ? initialPlan.choice ?? null : null,
     graphic: [],
     seoPlan: initialPlan?.need === 'seo' ? initialPlan.choice ?? null : null,
@@ -70,7 +81,7 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [error, setError] = useState('')
 
-  const steps = stepsFor(state.need)
+  const steps = stepsFor(state.need, state.siteType)
   const stepKey = steps[Math.min(stepIndex, steps.length - 1)]
   const set = <K extends keyof State>(k: K, v: State[K]) => setState(s => ({ ...s, [k]: v }))
 
@@ -101,7 +112,7 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
       const draft = JSON.parse(raw) as { v?: number; state?: Partial<State>; stepIndex?: number }
       if (draft?.v !== 1 || !draft.state?.need) return
       setState(s => ({ ...s, ...draft.state, hp: '' }))
-      setStepIndex(Math.min(draft.stepIndex ?? 0, stepsFor(draft.state.need).length - 1))
+      setStepIndex(Math.min(draft.stepIndex ?? 0, stepsFor(draft.state.need, draft.state.siteType).length - 1))
     } catch { /* corrupt or unavailable storage: start fresh */ }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -125,6 +136,12 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
     if (state.need === 'website') {
       const t = siteTypes.find(x => x.id === state.siteType)
       if (t?.price) { oneOff += t.price; from = from || !!t.from; lines.push({ label: t.label, amount: formatPrice(t.price) }) }
+      if (state.siteType === 'store') {
+        state.storeFeatures.forEach(id => {
+          const f = storeFeatures.find(x => x.id === id)
+          if (f?.price) { oneOff += f.price; lines.push({ label: f.label, amount: formatPrice(f.price) }) }
+        })
+      }
       state.addons.forEach(id => {
         const a = addons.find(x => x.id === id)
         if (a?.price) { oneOff += a.price; lines.push({ label: a.label, amount: formatPrice(a.price) }) }
@@ -157,6 +174,7 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
     switch (stepKey) {
       case 'need': return !!state.need
       case 'siteType': return !!state.siteType
+      case 'storeScope': return !!state.storeRange
       case 'brandScope': return !!state.brandScope
       case 'graphicItems': return state.graphic.length > 0
       case 'seoPlan': return !!state.seoPlan
@@ -181,12 +199,21 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
   const chooseNeed = (id: string) => {
     markStart(id)
     // changing the primary need resets downstream choices
-    setState(s => ({ ...s, need: id, siteType: null, brandScope: null, graphic: [], seoPlan: null, addons: [], extraPages: 0, care: false }))
+    setState(s => ({ ...s, need: id, siteType: null, storeRange: null, storeFeatures: [], brandScope: null, graphic: [], seoPlan: null, addons: [], extraPages: 0, care: false }))
     setStepIndex(1)
     track('quote_step', { step: stepsFor(id)[1], index: 1 })
   }
 
-  const toggle = (key: 'graphic' | 'addons', id: string) =>
+  // Changing the website type clears store answers when moving away from a store.
+  const chooseSiteType = (id: string) =>
+    setState(s => ({
+      ...s,
+      siteType: id,
+      storeRange: id === 'store' ? s.storeRange : null,
+      storeFeatures: id === 'store' ? s.storeFeatures : [],
+    }))
+
+  const toggle = (key: 'graphic' | 'addons' | 'storeFeatures', id: string) =>
     setState(s => ({ ...s, [key]: s[key].includes(id) ? s[key].filter(x => x !== id) : [...s[key], id] }))
 
   const submit = async () => {
@@ -201,6 +228,7 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
           contact: { name: state.name, email: state.email, business: state.business, whatsapp: state.whatsapp, message: state.message },
           selections: {
             need: state.need, siteType: state.siteType, brandScope: state.brandScope,
+            storeRange: state.storeRange, storeFeatures: state.storeFeatures,
             graphic: state.graphic, seoPlan: state.seoPlan, addons: state.addons,
             extraPages: state.extraPages, care: state.care, timeline: state.timeline,
           },
@@ -270,7 +298,37 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
               <Step title="What kind of website?" sub="A rough idea is fine, we'll refine it together.">
                 <div className="qb-cards">
                   {siteTypes.map(o => (
-                    <OptionCard key={o.id} option={o} selected={state.siteType === o.id} onClick={() => set('siteType', o.id)} showPrice />
+                    <OptionCard key={o.id} option={o} selected={state.siteType === o.id} onClick={() => chooseSiteType(o.id)} showPrice />
+                  ))}
+                </div>
+              </Step>
+            )}
+
+            {stepKey === 'storeScope' && (
+              <Step title="Tell us about your store" sub="This helps us scope your Shopify store. Your price stays from AED 4,497 for any product range.">
+                <p className="qb-group-label">How many products?</p>
+                <div className="qb-cards">
+                  {storeRanges.map(o => (
+                    <OptionCard key={o.id} option={o} selected={state.storeRange === o.id} onClick={() => set('storeRange', o.id)} />
+                  ))}
+                </div>
+
+                <div className="qb-included">
+                  <p className="qb-group-label">Included as standard</p>
+                  <div className="qb-included-grid">
+                    {storeIncluded.map(o => (
+                      <span key={o.id} className="qb-included-item">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-ember)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5" /></svg>
+                        {o.label}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <p className="qb-group-label">Add store features (optional)</p>
+                <div className="qb-cards">
+                  {storeFeatures.map(o => (
+                    <OptionCard key={o.id} option={o} selected={state.storeFeatures.includes(o.id)} onClick={() => toggle('storeFeatures', o.id)} showPrice multi />
                   ))}
                 </div>
               </Step>
@@ -449,7 +507,11 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
             )}
           </div>
 
-          <p className="qb-note">This is an estimate. You'll receive a fixed price, confirmed in writing, within 24 hours.</p>
+          <p className="qb-note">
+            {state.need === 'website' && state.siteType === 'store'
+              ? 'Store pricing starts from AED 4,497 for any product range. Your final fixed price depends on the features you choose, confirmed in writing within 24 hours.'
+              : "This is an estimate. You'll receive a fixed price, confirmed in writing, within 24 hours."}
+          </p>
         </div>
       </aside>
 
@@ -512,6 +574,16 @@ const qbCss = `
 
   .qb-title { font-family: var(--font-display); font-size: clamp(26px, 3.4vw, 40px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.1; color: var(--color-ink); margin: 0 0 12px; }
   .qb-sub { font-size: 0.95rem; font-weight: 300; line-height: 1.7; color: var(--color-ink-48); margin: 0 0 32px; max-width: 460px; }
+
+  .qb-group-label { font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-ink-48); margin: 0 0 12px; }
+  .qb-cards + .qb-group-label { margin-top: 28px; }
+  .qb-included + .qb-group-label { margin-top: 28px; }
+  .qb-included { margin-top: 28px; padding: 18px 20px; border-radius: 12px; border: 1px solid var(--color-ink-8); background: var(--color-ink-3); }
+  .qb-included .qb-group-label { margin-bottom: 14px; }
+  .qb-included-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; }
+  @media (max-width: 560px) { .qb-included-grid { grid-template-columns: 1fr; } }
+  .qb-included-item { display: inline-flex; align-items: center; gap: 9px; font-size: 0.85rem; font-weight: 300; color: var(--color-ink-72); }
+  .qb-included-item svg { flex-shrink: 0; }
 
   .qb-cards { display: flex; flex-direction: column; gap: 12px; }
   .qb-card { display: flex; align-items: center; gap: 16px; width: 100%; text-align: left; padding: 18px 20px; border-radius: 12px; border: 1px solid var(--color-ink-10); background: var(--color-ink-3); cursor: pointer; transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease; }

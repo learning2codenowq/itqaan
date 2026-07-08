@@ -14,6 +14,10 @@ export const faqs = [
     a: 'We do not limit you to a fixed number of revision rounds. We keep refining the work within the agreed project scope until you are happy with the outcome.',
   },
   {
+    q: 'Why is the online store price higher than the 997 AED starting price?',
+    a: 'The 997 AED is the starting price for a one-page website. An online store is a different, larger build: product listings, categories, a cart, secure payments and order management, so it starts from 4,497 AED. There is no limit on how many products you can add, and the store is built on Shopify so you can manage it yourself. Your final fixed price depends only on the extra features you choose, and it is confirmed in writing before any work begins.',
+  },
+  {
     q: 'Do I own everything?',
     a: 'Yes. All files, code, accounts and logins are handed over to you at the end. It is all yours.',
   },
