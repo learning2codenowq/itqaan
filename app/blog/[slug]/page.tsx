@@ -31,14 +31,17 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
     '@context': 'https://schema.org',
     '@graph': [
       {
-        '@type': 'Article',
+        '@type': 'BlogPosting',
         headline: a.title,
         description: a.metaDescription,
         datePublished: a.datePublished,
         dateModified: a.dateModified,
+        inLanguage: 'en',
+        image: `${BASE}/og-image.webp`,
         author: { '@type': 'Organization', name: 'ITQAAN', url: BASE },
         publisher: {
           '@type': 'Organization',
+          '@id': `${BASE}/#organization`,
           name: 'ITQAAN',
           logo: { '@type': 'ImageObject', url: `${BASE}/og-image.webp` },
         },

@@ -12,10 +12,13 @@ import Guarantees from '@/components/sections/Guarantees'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/sections/Footer'
 
-/* Structured data — tells Google who/what/where you are (local + service SEO) */
-const orgSchema = {
-  '@context': 'https://schema.org',
+/* Structured data, tells Google who/what/where you are (local + service SEO).
+   Nodes share stable @ids so Google/AI resolve them to one entity graph. */
+const BASE = 'https://withitqaan.com'
+
+const professionalService = {
   '@type': 'ProfessionalService',
+  '@id': `${BASE}/#organization`,
   name: 'ITQAAN',
   description:
     'Custom websites, brand identity, and graphic design for Muslim businesses in Dubai and the UAE. Fixed prices from 997 AED.',
@@ -68,6 +71,23 @@ const orgSchema = {
       itemOffered: { '@type': 'Service', name: 'Brand identity' },
     },
     { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Graphic Design' } },
+  ],
+}
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    professionalService,
+    {
+      '@type': 'WebSite',
+      '@id': `${BASE}/#website`,
+      url: BASE,
+      name: 'ITQAAN',
+      description:
+        'Websites, brand identity, and graphic design for Muslim businesses in Dubai, the UAE, and worldwide.',
+      inLanguage: 'en',
+      publisher: { '@id': `${BASE}/#organization` },
+    },
   ],
 }
 

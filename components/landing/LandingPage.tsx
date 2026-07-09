@@ -22,7 +22,7 @@ export default function LandingPage({ slug }: { slug: string }) {
         '@type': 'Service',
         name: page.serviceName,
         serviceType: page.serviceName,
-        provider: { '@type': 'ProfessionalService', name: 'ITQAAN', url: BASE },
+        provider: { '@type': 'ProfessionalService', '@id': `${BASE}/#organization`, name: 'ITQAAN', url: BASE },
         areaServed: page.areaServed,
         url: `${BASE}/${page.slug}`,
         description: page.metaDescription,

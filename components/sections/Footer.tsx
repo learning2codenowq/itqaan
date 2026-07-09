@@ -26,6 +26,45 @@ const columns = [
   { heading: 'Connect',  links: contactLinks },
 ]
 
+// Internal-link belt: surfaces every SEO landing page (lib/landing.ts,
+// landing-emirates.ts, landing-niches.ts) sitewide so they receive internal
+// links and homepage authority, instead of being reachable only via the
+// sitemap. If you add a landing page, add its link here too.
+const areaLinks = [
+  { label: 'Dubai',           href: '/web-design-dubai' },
+  { label: 'Abu Dhabi',       href: '/web-design-abu-dhabi' },
+  { label: 'Sharjah',         href: '/web-design-sharjah' },
+  { label: 'Ajman',           href: '/web-design-ajman' },
+  { label: 'Ras Al Khaimah',  href: '/web-design-ras-al-khaimah' },
+  { label: 'Fujairah',        href: '/web-design-fujairah' },
+  { label: 'Umm Al Quwain',   href: '/web-design-umm-al-quwain' },
+  { label: 'Al Ain',          href: '/web-design-al-ain' },
+  { label: 'All of the UAE',  href: '/web-design-uae' },
+]
+
+const industryLinks = [
+  { label: 'Muslim businesses', href: '/websites-for-muslim-businesses' },
+  { label: 'Quran academies',   href: '/websites-for-quran-academies' },
+  { label: 'Restaurants',       href: '/websites-for-restaurants' },
+  { label: 'Construction',      href: '/websites-for-construction-companies' },
+  { label: 'Cleaning services', href: '/websites-for-cleaning-companies' },
+  { label: 'Car rental',        href: '/websites-for-car-rental-companies' },
+  { label: 'Dental clinics',    href: '/websites-for-dental-clinics' },
+  { label: 'Clinics & hospitals', href: '/websites-for-hospitals-and-clinics' },
+  { label: 'Real estate',       href: '/websites-for-real-estate' },
+  { label: 'E-commerce brands',  href: '/websites-for-ecommerce-brands' },
+  { label: 'Islamic finance',   href: '/websites-for-islamic-finance' },
+  { label: 'Luxury services',   href: '/websites-for-luxury-services' },
+  { label: 'Import & export',   href: '/websites-for-import-export-companies' },
+  { label: 'Architecture firms', href: '/websites-for-architecture-firms' },
+  { label: 'Interior design',   href: '/websites-for-interior-design-firms' },
+]
+
+const beltGroups = [
+  { heading: 'Web design by emirate', links: areaLinks },
+  { heading: 'Websites by industry',  links: industryLinks },
+]
+
 export default function Footer() {
   const year = new Date().getFullYear()
 
@@ -105,6 +144,35 @@ export default function Footer() {
         .footer-cta:hover {
           transform: translateY(-2px);
           box-shadow: 0 12px 30px -12px rgba(178,213,229,0.5);
+        }
+        .footer-belt {
+          position: relative;
+          z-index: 1;
+          margin-top: 44px;
+          padding-top: 36px;
+          border-top: 1px solid var(--color-ink-8);
+          display: grid;
+          grid-template-columns: 1fr 1.4fr;
+          gap: 44px;
+        }
+        .footer-belt-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px 18px;
+        }
+        .footer-belt-link {
+          font-size: 0.82rem;
+          font-weight: 300;
+          color: var(--color-ink-28);
+          text-decoration: none;
+          transition: color 0.22s ease;
+        }
+        .footer-belt-link:hover { color: var(--color-ink); }
+        @media (max-width: 720px) {
+          .footer-belt { grid-template-columns: 1fr; gap: 32px; }
         }
         .footer-wordmark {
           position: relative;
@@ -205,6 +273,22 @@ export default function Footer() {
           ))}
 
         </div>
+
+        {/* Internal-link belt (SEO): all city + industry landing pages */}
+        <nav className="footer-belt" aria-label="Web design by area and industry">
+          {beltGroups.map(group => (
+            <div key={group.heading}>
+              <p className="footer-colhead">{group.heading}</p>
+              <ul className="footer-belt-list">
+                {group.links.map(l => (
+                  <li key={l.href}>
+                    <a href={l.href} className="footer-belt-link">{l.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
 
         {/* Ghost wordmark */}
         <div className="footer-wordmark" aria-hidden="true">ITQAAN</div>
