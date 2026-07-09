@@ -78,6 +78,10 @@ export default function RootLayout({
       className={`${plusJakarta.variable} ${dmSans.variable} ${dmMono.variable}`}
     >
       <head>
+        {/* Warm up the analytics origins so the lazy-loaded GA4 request is faster
+            when it fires. */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
         {/* Take scroll restoration off the browser's 'auto' default before first
             paint, so navigating from the footer to a new page never lands on the
             old scroll offset. Must be inline (runs before restoration); the
@@ -95,9 +99,12 @@ export default function RootLayout({
         </LenisProvider>
         <WhatsAppFab />
 
-        {/* Google Analytics 4 */}
-        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
-        <Script id="ga4-init" strategy="afterInteractive">
+        {/* Google Analytics 4 — lazyOnload so the ~160KB gtag bundle loads on
+            browser idle after the page is interactive, instead of blocking the
+            main thread during load. Conversion events fire on user action (quote
+            submit), well after this, so nothing is lost. */}
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="lazyOnload" />
+        <Script id="ga4-init" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

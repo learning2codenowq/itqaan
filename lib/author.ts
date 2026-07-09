@@ -31,7 +31,9 @@ export const authorSchemaNode = {
   jobTitle: AUTHOR.role,
   description: AUTHOR.fullBio,
   image: `${BASE}${AUTHOR.image}`,
-  url: BASE,
+  url: `${BASE}/about`,
+  mainEntityOfPage: `${BASE}/about`,
   worksFor: { '@id': `${BASE}/#organization` },
-  knowsAbout: ['Web design', 'Brand identity', 'Graphic design', 'Web design for Muslim businesses'],
+  homeLocation: { '@type': 'Place', name: 'Sharjah, United Arab Emirates' },
+  knowsAbout: ['Web design', 'Web development', 'Brand identity', 'Graphic design', 'Video editing', 'Halal web design for Muslim businesses'],
 }

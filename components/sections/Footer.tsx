@@ -3,6 +3,7 @@
 import { readyServices } from '@/lib/serviceNav'
 
 const navLinks = [
+  { label: 'About',             href: '/about' },
   { label: 'Portfolio',         href: '/portfolio' },
   { label: 'How we work',       href: '/how-we-work' },
   { label: 'Pricing',           href: '/pricing'  },
