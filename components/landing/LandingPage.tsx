@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Footer from '@/components/sections/Footer'
 import ScarcityBadge from '@/components/ui/ScarcityBadge'
+import ProofStrip from '@/components/ui/ProofStrip'
 import { getLanding } from '@/lib/landing'
 
 const BASE = 'https://withitqaan.com'
@@ -127,6 +128,9 @@ export default function LandingPage({ slug }: { slug: string }) {
               </ul>
             </section>
           )}
+
+          {/* Social proof */}
+          <ProofStrip />
 
           {/* Bottom CTA */}
           <div style={{ marginTop: '56px', padding: '36px', borderRadius: '16px', border: '1px solid var(--color-ink-10)', background: 'var(--color-ink-3)', textAlign: 'center' }}>

@@ -11,6 +11,7 @@ import StickyMobileCta from '@/components/ui/StickyMobileCta'
 import Guarantees from '@/components/sections/Guarantees'
 import Contact from '@/components/sections/Contact'
 import Footer from '@/components/sections/Footer'
+import { authorSchemaNode, AUTHOR_ID } from '@/lib/author'
 
 /* Structured data, tells Google who/what/where you are (local + service SEO).
    Nodes share stable @ids so Google/AI resolve them to one entity graph. */
@@ -26,6 +27,7 @@ const professionalService = {
   image: 'https://withitqaan.com/og-image.webp',
   logo: 'https://withitqaan.com/og-image.webp',
   priceRange: 'From AED 997',
+  founder: { '@id': AUTHOR_ID },
   currenciesAccepted: 'AED',
   areaServed: ['Dubai', 'United Arab Emirates', 'Worldwide'],
   knowsAbout: [
@@ -78,6 +80,7 @@ const orgSchema = {
   '@context': 'https://schema.org',
   '@graph': [
     professionalService,
+    authorSchemaNode,
     {
       '@type': 'WebSite',
       '@id': `${BASE}/#website`,

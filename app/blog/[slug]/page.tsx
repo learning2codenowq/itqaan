@@ -2,7 +2,9 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Footer from '@/components/sections/Footer'
+import ProofStrip from '@/components/ui/ProofStrip'
 import { articles, getArticle } from '@/lib/articles'
+import { AUTHOR, AUTHOR_ID, authorSchemaNode } from '@/lib/author'
 
 const BASE = 'https://withitqaan.com'
 
@@ -38,7 +40,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         dateModified: a.dateModified,
         inLanguage: 'en',
         image: `${BASE}/og-image.webp`,
-        author: { '@type': 'Organization', name: 'ITQAAN', url: BASE },
+        author: { '@id': AUTHOR_ID },
         publisher: {
           '@type': 'Organization',
           '@id': `${BASE}/#organization`,
@@ -48,6 +50,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         mainEntityOfPage: `${BASE}/blog/${a.slug}`,
         url: `${BASE}/blog/${a.slug}`,
       },
+      authorSchemaNode,
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
@@ -85,7 +88,16 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(30px, 4.6vw, 48px)', fontWeight: 800, lineHeight: 1.08, letterSpacing: '-0.03em', color: 'var(--color-ink)', margin: '0 0 18px' }}>
             {a.title}
           </h1>
-          <p style={{ fontSize: '1.15rem', fontWeight: 300, lineHeight: 1.6, color: 'var(--color-ink-48)', margin: '0 0 36px' }}>{a.dek}</p>
+          <p style={{ fontSize: '1.15rem', fontWeight: 300, lineHeight: 1.6, color: 'var(--color-ink-48)', margin: '0 0 28px' }}>{a.dek}</p>
+
+          {/* Author byline (E-E-A-T) */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', margin: '0 0 40px' }}>
+            <img src={AUTHOR.image} alt={AUTHOR.name} width={40} height={40} loading="lazy" style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--color-ink-10)' }} />
+            <div>
+              <span style={{ display: 'block', fontFamily: 'var(--font-display)', fontSize: '0.9rem', fontWeight: 600, color: 'var(--color-ink)' }}>{AUTHOR.name}</span>
+              <span style={{ display: 'block', fontSize: '0.78rem', fontWeight: 300, color: 'var(--color-ink-48)', marginTop: '2px' }}>{AUTHOR.role}, ITQAAN</span>
+            </div>
+          </div>
 
           {/* Quick answer box (AEO-friendly direct answer) */}
           <div style={{ padding: '24px 26px', borderRadius: '14px', border: '1px solid var(--color-ember-18)', background: 'var(--color-ember-dim)', margin: '0 0 40px' }}>
@@ -101,6 +113,18 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               ))}
             </section>
           ))}
+
+          {/* About the author (E-E-A-T) */}
+          <aside style={{ marginTop: '56px', paddingTop: '40px', borderTop: '1px solid var(--color-ink-8)', display: 'flex', gap: '18px', alignItems: 'flex-start' }}>
+            <img src={AUTHOR.image} alt={AUTHOR.name} width={56} height={56} loading="lazy" style={{ width: '56px', height: '56px', borderRadius: '50%', objectFit: 'cover', border: '1px solid var(--color-ink-10)', flexShrink: 0 }} />
+            <div>
+              <p style={{ fontFamily: 'var(--font-mono)', fontSize: '0.58rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--color-ink-48)', margin: '0 0 8px' }}>About the author</p>
+              <p style={{ fontSize: '0.95rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-72)', margin: 0 }}>{AUTHOR.fullBio}</p>
+            </div>
+          </aside>
+
+          {/* Social proof */}
+          <ProofStrip />
 
           {/* CTA */}
           <div style={{ marginTop: '48px', padding: '36px', borderRadius: '16px', border: '1px solid var(--color-ink-10)', background: 'var(--color-ink-3)', textAlign: 'center' }}>
