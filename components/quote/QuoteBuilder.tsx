@@ -6,8 +6,13 @@ import { AnimatePresence, motion } from 'framer-motion'
 import {
   primaryNeeds, siteTypes, brandScopes, graphicItems, seoPlans,
   addons, carePlan, timelines, EXTRA_PAGE_PRICE, formatPrice,
-  storeRanges, storeIncluded, storeFeatures,
+  storeRanges, storeIncluded, storeFeatures, capacity,
 } from '@/lib/quote'
+
+// When slots are full, /quote becomes a soft-gated application: same form and
+// live estimate, but the CTA and confirmation are reframed so a lead knows
+// they are applying for the next opening, not booking an open slot.
+const soldOut = capacity.slotsLeft <= 0
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -257,8 +262,12 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
         <div className="qb-check">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--color-ink)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6 9 17l-5-5" /></svg>
         </div>
-        <h2>Request received</h2>
-        <p>JazakAllahu khayran, {state.name.split(' ')[0]}. We have your details and your estimate. You will get a fixed-price proposal within 24 hours, inshaa Allah.</p>
+        <h2>{soldOut ? 'Application received' : 'Request received'}</h2>
+        <p>
+          {soldOut
+            ? <>JazakAllahu khayran, {state.name.split(' ')[0]}. Your application is in. We review new applications as the next intake opens and will be in touch, inshaa Allah. No payment until we confirm.</>
+            : <>JazakAllahu khayran, {state.name.split(' ')[0]}. We have your details and your estimate. You will get a fixed-price proposal within 24 hours, inshaa Allah.</>}
+        </p>
         <Link href="/" className="qb-home">Back to home</Link>
         <style>{qbCss}</style>
       </div>
@@ -405,7 +414,7 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
             )}
 
             {stepKey === 'contact' && (
-              <Step title="Where do we send your quote?" sub="We reply with a fixed price within 24 hours, inshaa Allah.">
+              <Step title={soldOut ? 'A few details to finish' : 'Where do we send your quote?'} sub={soldOut ? 'We will be in touch about next steps, inshaa Allah.' : 'We reply with a fixed price within 24 hours, inshaa Allah.'}>
                 <div className="qb-fields">
                   <div className="qb-two">
                     <Field label="Full name" required><input className="qb-input" value={state.name} onChange={e => set('name', e.target.value)} placeholder="Yusuf Al-Amin" /></Field>
@@ -438,7 +447,7 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
           </button>
           {isLast ? (
             <button type="button" className="qb-next" onClick={submit} disabled={!canProceed || status === 'loading'}>
-              {status === 'loading' ? 'Sending…' : 'Send my request'}
+              {status === 'loading' ? 'Sending…' : soldOut ? 'Submit application' : 'Send my request'}
               {status !== 'loading' && <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>}
             </button>
           ) : (
@@ -455,14 +464,14 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
             <a href={WA_FALLBACK_HREF} target="_blank" rel="noopener noreferrer" data-wa-loc="quote_builder">
               WhatsApp us
             </a>
-            , we reply within 24 hours.
+            {soldOut ? '.' : ', we reply within 24 hours.'}
           </p>
         )}
 
         {isLast && (
           <div className="qb-reassure">
             {[
-              { d: 'M12 8v4l3 2 M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z', text: 'Fixed quote on WhatsApp within 24 hours' },
+              { d: 'M12 8v4l3 2 M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0z', text: soldOut ? 'Every application is read personally' : 'Fixed quote on WhatsApp within 24 hours' },
               { d: 'M20 6 9 17l-5-5', text: 'No payment and no obligation to proceed' },
               { d: 'M19 11H5a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2z M7 11V7a5 5 0 0 1 10 0v4', text: 'Your details stay private, never shared' },
             ].map(item => (
@@ -478,7 +487,7 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
       {/* ── Right: live estimate ── */}
       <aside className="qb-side">
         <div className="qb-estimate">
-          <p className="qb-eyebrow"><span className="qb-eyebrow-dot" />Your estimate</p>
+          <p className="qb-eyebrow"><span className="qb-eyebrow-dot" />{soldOut ? 'Indicative price' : 'Your estimate'}</p>
           {estimate.lines.length === 0 ? (
             <p className="qb-empty">Make a selection to see your estimate build up here.</p>
           ) : (
@@ -509,8 +518,12 @@ export default function QuoteBuilder({ initialPlan }: { initialPlan?: { need: st
 
           <p className="qb-note">
             {state.need === 'website' && state.siteType === 'store'
-              ? 'Store pricing starts from AED 4,497 for any product range. Your final fixed price depends on the features you choose, confirmed in writing within 24 hours.'
-              : "This is an estimate. You'll receive a fixed price, confirmed in writing, within 24 hours."}
+              ? (soldOut
+                  ? 'Store pricing starts from AED 4,497 for any product range. If your application is accepted, we confirm a fixed price in writing.'
+                  : 'Store pricing starts from AED 4,497 for any product range. Your final fixed price depends on the features you choose, confirmed in writing within 24 hours.')
+              : (soldOut
+                  ? 'An indicative price to help you plan. If your application is accepted, we confirm a fixed price in writing.'
+                  : "This is an estimate. You'll receive a fixed price, confirmed in writing, within 24 hours.")}
           </p>
         </div>
       </aside>

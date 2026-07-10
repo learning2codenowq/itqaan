@@ -95,7 +95,7 @@ export default function HowWeWorkPage() {
             <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.55rem', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--color-ink-28)' }}>Creative Agency</span>
           </Link>
           <Link href="/quote" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '10px 20px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none' }}>
-            Get a quote
+            Work with us
           </Link>
         </div>
       </header>
@@ -161,7 +161,7 @@ export default function HowWeWorkPage() {
           <p style={{ fontSize: '0.9rem', fontWeight: 300, color: 'var(--color-ink-48)', margin: '0 0 24px' }}>Build your quote in under a minute, or message us directly on WhatsApp.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
             <Link href="/quote" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none' }}>
-              Get a quote
+              Work with us
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
             </Link>
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" data-wa-loc="how_we_work" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '9999px', border: '1px solid var(--color-ink-18)', background: 'var(--color-ink-3)', color: 'var(--color-ink-72)', fontSize: '0.9rem', fontWeight: 500, textDecoration: 'none' }}>

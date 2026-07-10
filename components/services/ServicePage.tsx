@@ -174,7 +174,7 @@ export default function ServicePage({ slug }: { slug: string }) {
             <Link href="/faq" className="svc-header-link">FAQ</Link>
           </nav>
           <Link href={quoteHref} data-cta="service_header" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', padding: '10px 20px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.82rem', fontWeight: 600, textDecoration: 'none', whiteSpace: 'nowrap' }}>
-            Get a quote
+            Work with us
           </Link>
         </div>
       </header>
@@ -575,7 +575,7 @@ export default function ServicePage({ slug }: { slug: string }) {
           <p style={{ fontSize: '0.9rem', fontWeight: 300, color: 'var(--color-ink-48)', margin: '0 0 24px' }}>Build your quote in under a minute and get a fixed price within 24 hours.</p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
             <Link href={quoteHref} className="svc-cta" data-cta="service_bottom">
-              Get a quote
+              Work with us
               <ArrowIcon />
             </Link>
             <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" data-wa-loc={`service_${page.slug}_bottom`} className="svc-cta-ghost">

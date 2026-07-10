@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import QuoteBuilder from '@/components/quote/QuoteBuilder'
 import ScarcityBadge from '@/components/ui/ScarcityBadge'
-import { packages } from '@/lib/quote'
+import { packages, capacity } from '@/lib/quote'
 
 export const metadata: Metadata = {
   title: 'Get a quote, ITQAAN',
@@ -18,6 +18,8 @@ export default async function QuotePage({
   const { plan } = await searchParams
   const pkg = plan ? packages.find(p => p.id === plan) : undefined
   const initialPlan = pkg ? { need: pkg.need, choice: pkg.choice } : undefined
+  const soldOut = capacity.slotsLeft <= 0
+  const nextMonth = capacity.nextAvailable
 
   return (
     <main style={{ minHeight: '100svh', background: 'var(--color-void)' }}>
@@ -44,13 +46,15 @@ export default async function QuotePage({
           <ScarcityBadge style={{ marginBottom: '24px' }} />
           <p style={{ display: 'flex', alignItems: 'center', gap: '12px', fontFamily: 'var(--font-mono)', fontSize: '0.65rem', letterSpacing: '0.22em', textTransform: 'uppercase', color: 'var(--color-ink-48)', margin: '0 0 20px' }}>
             <span aria-hidden="true" style={{ width: '4px', height: '4px', borderRadius: '50%', background: 'var(--color-ember)' }} />
-            Build your quote
+            {soldOut ? 'By application' : 'Build your quote'}
           </p>
           <h1 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(34px, 5vw, 60px)', fontWeight: 800, lineHeight: 1.05, letterSpacing: '-0.03em', color: 'var(--color-ink)', margin: '0 0 20px', maxWidth: '640px' }}>
-            Tell us what you need.
+            {soldOut ? 'Apply to work with us.' : 'Tell us what you need.'}
           </h1>
           <p style={{ fontSize: '1.05rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-48)', margin: '0 0 56px', maxWidth: '520px' }}>
-            A few quick questions and you'll see a live estimate. We follow up with a fixed price within 24 hours, no obligation.
+            {soldOut
+              ? <>We take on a handful of projects at a time so each one gets our full attention, which is why we are fully booked right now. Tell us about yours and see an indicative price. We review new applications as the next intake opens{nextMonth ? <> in {nextMonth}</> : null} and will be in touch, inshaa Allah.</>
+              : <>A few quick questions and you'll see a live estimate. We follow up with a fixed price within 24 hours, no obligation.</>}
           </p>
 
           <QuoteBuilder initialPlan={initialPlan} />

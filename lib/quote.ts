@@ -10,15 +10,30 @@ export function formatPrice(n: number): string {
 }
 
 /* ── Scarcity ──
-   Update `slotsLeft` as you book projects. When it hits 0 the badge shows
-   a waitlist message instead. `perMonth` is your total monthly capacity. */
+   Update `slotsLeft` as you book projects. When it hits 0 the site switches
+   to "fully booked" mode: badges flip, and /quote becomes a soft-gated
+   application (still captures leads, framed as "apply, reviewed when the next
+   intake opens"). `perMonth` is your total monthly capacity. `nextAvailable`
+   is computed automatically as the next calendar month, so it stays correct
+   without editing. */
 export const capacity = {
-  slotsLeft: 2,
+  slotsLeft: 0,
   perMonth: 4,
+  get nextAvailable(): string {
+    return nextMonthLabel()
+  },
 }
 
 export function currentMonthLabel(): string {
   return new Date().toLocaleString('en-US', { month: 'long' })
+}
+
+/* Next calendar month, e.g. "August" in July, "January" in December.
+   Building the date from (year, month + 1, 1) handles the year rollover. */
+export function nextMonthLabel(): string {
+  const now = new Date()
+  return new Date(now.getFullYear(), now.getMonth() + 1, 1)
+    .toLocaleString('en-US', { month: 'long' })
 }
 
 export type Option = {

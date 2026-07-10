@@ -134,7 +134,7 @@ GA4 `generate_lead` conversion event.
 
 `components/Navbar.tsx` renders after the loader (~2.9s): a **brand lockup
 top-left** ("ITQAAN / Creative Agency", links to `#hero`) and a **floating pill
-top-right** (Services, Process, Pricing links + "Get a quote" → `/quote`). Mobile
+top-right** (Services, Process, Pricing links + "Work with us" → `/quote`). Mobile
 collapses the pill to a hamburger and hides the brand subtitle.
 
 ## Animation architecture (per section)

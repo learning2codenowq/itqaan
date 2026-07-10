@@ -8,7 +8,7 @@ import { capacity, currentMonthLabel } from '@/lib/quote'
  * waitlist message.
  */
 export default function ScarcityBadge({ style }: { style?: React.CSSProperties }) {
-  const { slotsLeft, perMonth } = capacity
+  const { slotsLeft, perMonth, nextAvailable } = capacity
   const month = currentMonthLabel()
   const soldOut = slotsLeft <= 0
 
@@ -34,7 +34,7 @@ export default function ScarcityBadge({ style }: { style?: React.CSSProperties }
         <span style={{ position: 'relative', display: 'inline-block', width: '8px', height: '8px', borderRadius: '50%', background: 'var(--color-ember)' }} />
       </span>
       {soldOut
-        ? <>Fully booked for {month} · join the waitlist</>
+        ? <>Fully booked for {month}{nextAvailable ? <> · next intake opens {nextAvailable}</> : <> · join the waitlist</>}</>
         : <>Only <strong style={{ fontWeight: 700 }}>{slotsLeft}</strong> of {perMonth} project slots left for {month}</>}
       <style>{`
         @keyframes scarcity-ping {
