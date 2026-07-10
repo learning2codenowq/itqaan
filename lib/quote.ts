@@ -17,7 +17,7 @@ export function formatPrice(n: number): string {
    is computed automatically as the next calendar month, so it stays correct
    without editing. */
 export const capacity = {
-  slotsLeft: 0,
+  slotsLeft: 1,
   perMonth: 4,
   get nextAvailable(): string {
     return nextMonthLabel()
