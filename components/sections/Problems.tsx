@@ -58,11 +58,11 @@ export default function Problems() {
         </div>
 
         <div style={{ marginTop: '48px', display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
-          <Link href="/problems-we-solve" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 26px', borderRadius: '9999px', border: '1px solid var(--color-ink-18)', color: 'var(--color-ink)', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+          <Link href="/problems-we-solve" className="cta-arrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 26px', borderRadius: '9999px', border: '1px solid var(--color-ink-18)', color: 'var(--color-ink)', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
             See how we solve each one
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
           </Link>
-          <Link href="/quote" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 26px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
+          <Link href="/quote" className="cta-arrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '13px 26px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.85rem', fontWeight: 600, textDecoration: 'none' }}>
             Work with us
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
           </Link>

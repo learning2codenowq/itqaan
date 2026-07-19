@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { projects } from '@/lib/projects'
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -14,6 +14,7 @@ const EASE = [0.22, 1, 0.36, 1] as const
 export default function Testimonials() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px 0px' })
+  const prefersReduced = useReducedMotion()
   const items = projects.filter(p => p.testimonial)
 
   return (
@@ -21,6 +22,8 @@ export default function Testimonials() {
       <style>{`
         @media (max-width: 900px) { #testimonials { padding: 90px 28px !important; } .tst-grid { grid-template-columns: 1fr 1fr !important; } }
         @media (max-width: 600px) { #testimonials { padding: 72px 24px !important; } .tst-grid { grid-template-columns: 1fr !important; } }
+        .tst-card { margin: 0; display: flex; flex-direction: column; gap: 18px; padding: 28px 24px; border-radius: 16px; border: 1px solid var(--color-ink-10); background: var(--color-ink-3); transition: border-color 0.25s ease, background 0.25s ease; }
+        .tst-card:hover { border-color: var(--color-ink-28); background: var(--color-ink-5); }
       `}</style>
 
       <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: '64px', right: '64px', height: '1px', background: 'linear-gradient(90deg, rgba(178,213,229,0) 0%, rgba(178,213,229,0.08) 50%, rgba(178,213,229,0) 100%)' }} />
@@ -40,10 +43,11 @@ export default function Testimonials() {
           {items.map((p, i) => (
             <motion.figure
               key={p.slug}
+              className="tst-card"
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileHover={prefersReduced ? undefined : { y: -4 }}
               transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
-              style={{ margin: 0, display: 'flex', flexDirection: 'column', gap: '18px', padding: '28px 24px', borderRadius: '16px', border: '1px solid var(--color-ink-10)', background: 'var(--color-ink-3)' }}
             >
               <svg width="20" height="20" viewBox="0 0 24 24" fill="var(--color-ember-18)" aria-hidden="true">
                 <path d="M10 8c-3.3 0-6 2.7-6 6v2h5v-6H6.5C6.8 8.9 8.2 8 10 8zm10 0c-3.3 0-6 2.7-6 6v2h5v-6h-2.5c.3-1.1 1.7-2 3.5-2z" transform="translate(0,1)" />

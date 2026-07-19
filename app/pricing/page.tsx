@@ -55,6 +55,19 @@ function quoteHrefFor(option: Option): string {
   return pkg ? `/quote?plan=${pkg.id}` : '/quote'
 }
 
+/* Pricing-page-local descriptions for the website tiers, so this page tells the
+   same story as the homepage Packages section: the multi-page site ladders onto
+   the one-page site (chunking, "everything in X plus"), while Store (ecommerce)
+   and Web app are distinct products with their own deliverables. Kept here rather
+   than on siteTypes.desc, which the quote builder shares and wants to keep short.
+   Keyed by option id, which is unique to siteTypes, so it never collides. */
+const websiteDesc: Record<string, string> = {
+  'one-page': 'A single, focused page. Custom design, mobile-first build, and basic SEO.',
+  'business': 'Everything in a one-page site, plus 5 to 10 pages, enquiry forms, full SEO and copywriting. For services businesses like rentals or clinics.',
+  'store':    'A store to sell products online. Shopify, unlimited products, secure payments, and order management.',
+  'webapp':   'Custom features and app-like logic, built around how your business works.',
+}
+
 function priceLabel(o: Option): string {
   if (o.price) return formatPrice(o.price)
   if (o.monthly) return `${formatPrice(o.monthly)} / mo`
@@ -138,23 +151,26 @@ export default function PricingPage() {
           <section key={g.title} style={{ marginTop: '56px' }}>
             <div style={{ display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', gap: '16px', flexWrap: 'wrap', marginBottom: '8px' }}>
               <h2 style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(22px, 3vw, 30px)', fontWeight: 700, letterSpacing: '-0.02em', color: 'var(--color-ink)', margin: 0 }}>{g.title}</h2>
-              <Link href={g.serviceHref} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', fontWeight: 500, color: 'var(--color-ember)', textDecoration: 'none' }}>
+              <Link href={g.serviceHref} className="cta-arrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '0.82rem', fontWeight: 500, color: 'var(--color-ember)', textDecoration: 'none' }}>
                 About this service
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
               </Link>
             </div>
             <p style={{ fontSize: '0.95rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-48)', margin: '0 0 22px', maxWidth: '640px' }}>{g.blurb}</p>
             <div className="pr-grid">
-              {g.options.map(o => (
+              {g.options.map(o => {
+                const desc = websiteDesc[o.id] ?? o.desc
+                return (
                 <Link key={o.id} href={quoteHrefFor(o)} className="pr-card" data-cta="pricing_page_card">
                   <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1rem', fontWeight: 700, color: 'var(--color-ink)', margin: '0 0 4px' }}>{o.label}</h3>
-                  {o.desc && <p style={{ fontSize: '0.82rem', fontWeight: 300, color: 'var(--color-ink-48)', margin: '0 0 16px', lineHeight: 1.5 }}>{o.desc}</p>}
+                  {desc && <p style={{ fontSize: '0.82rem', fontWeight: 300, color: 'var(--color-ink-48)', margin: '0 0 16px', lineHeight: 1.5 }}>{desc}</p>}
                   <p style={{ margin: 'auto 0 0', display: 'flex', alignItems: 'baseline', gap: '8px' }}>
                     {o.from && <span style={{ fontFamily: 'var(--font-mono)', fontSize: '0.6rem', letterSpacing: '0.14em', textTransform: 'uppercase', color: 'var(--color-ink-28)' }}>From</span>}
                     <span style={{ fontFamily: 'var(--font-display)', fontSize: '1.3rem', fontWeight: 800, color: 'var(--color-ink)', letterSpacing: '-0.02em' }}>{priceLabel(o)}</span>
                   </p>
                 </Link>
-              ))}
+                )
+              })}
             </div>
             {g.title === 'Websites' && (
               <p style={{ fontSize: '0.85rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-48)', margin: '18px 0 0' }}>
@@ -168,7 +184,7 @@ export default function PricingPage() {
         <div style={{ marginTop: '72px', padding: '40px 36px', borderRadius: '16px', border: '1px solid var(--color-ink-10)', background: 'var(--color-ink-3)', textAlign: 'center' }}>
           <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-ink)', margin: '0 0 10px' }}>Get your exact price</h2>
           <p style={{ fontSize: '0.9rem', fontWeight: 300, color: 'var(--color-ink-48)', margin: '0 0 24px' }}>Build your quote in under a minute and get a fixed price in writing within 24 hours.</p>
-          <Link href="/quote" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none' }}>
+          <Link href="/quote" className="cta-arrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '14px 30px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none' }}>
             Work with us
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
           </Link>

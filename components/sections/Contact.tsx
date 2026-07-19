@@ -120,7 +120,7 @@ export default function Contact() {
               <h3 style={{ fontFamily: 'var(--font-display)', fontSize: '1.5rem', fontWeight: 700, color: 'var(--color-ink)', margin: '0 0 12px', lineHeight: 1.25 }}>Build your quote</h3>
               <p style={{ fontSize: '0.9rem', fontWeight: 300, lineHeight: 1.7, color: 'var(--color-ink-48)', margin: '0 0 28px' }}>Tell us what you need and watch the estimate build up as you go.</p>
 
-              <Link href="/quote" className="cta-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 32px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.02em', textDecoration: 'none', transition: 'box-shadow 0.3s ease' }}>
+              <Link href="/quote" className="cta-primary cta-arrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '15px 32px', borderRadius: '9999px', background: 'var(--color-ink)', color: 'var(--color-void)', fontSize: '0.9rem', fontWeight: 600, letterSpacing: '0.02em', textDecoration: 'none', transition: 'box-shadow 0.3s ease' }}>
                 Start your quote
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
               </Link>

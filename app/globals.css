@@ -77,6 +77,16 @@ button { font-family: inherit; }
   will-change: opacity, transform;
 }
 
+/* ── CTA micro-interactions ──
+   Shared across every primary call-to-action. The trailing arrow slides right
+   on hover (MAYA: expected, pleasant), and the whole control dips slightly on
+   press for tactile feedback. Transition-driven, so the global reduced-motion
+   rule below neutralises it automatically. Only add .cta-arrow to controls
+   whose single inner <svg> is the forward arrow. */
+.cta-arrow svg { transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1); }
+.cta-arrow:hover svg { transform: translateX(4px); }
+.cta-arrow:active { transform: scale(0.97); }
+
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

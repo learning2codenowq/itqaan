@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { SplitText } from 'gsap/SplitText'
 import GeoPattern from '@/components/ui/GeoPattern'
 import HeroShowcase from '@/components/ui/HeroShowcase'
 import ItqaanCalligraphy from '@/components/ui/ItqaanCalligraphy'
@@ -12,7 +13,7 @@ import { siteTypes, formatPrice } from '@/lib/quote'
 
 const HERO_FROM_PRICE = siteTypes.find(s => s.id === 'one-page')?.price ?? 997
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, SplitText)
 
 const EASE_EXPO = [0.22, 1, 0.36, 1] as const
 
@@ -27,20 +28,6 @@ const loaderLineVariants = {
   hidden:  { scaleX: 0, opacity: 0 },
   visible: { scaleX: 1, opacity: 0.4, transition: { duration: 0.55, ease: EASE_EXPO, delay: 1.25 } },
   exit:    { opacity: 0, transition: { duration: 0.3 } },
-}
-
-function HeroLine({ children, delay }: { children: React.ReactNode; delay: number }) {
-  return (
-    <div style={{ overflow: 'hidden', paddingBottom: '0.05em' }}>
-      <motion.div
-        initial={{ y: '110%' }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.9, ease: EASE_EXPO, delay }}
-      >
-        {children}
-      </motion.div>
-    </div>
-  )
 }
 
 function HeroFade({ children, delay, style }: { children: React.ReactNode; delay: number; style?: React.CSSProperties }) {
@@ -64,6 +51,7 @@ export default function Hero() {
   const wrapperRef = useRef<HTMLDivElement>(null)
   const geoRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
+  const headlineRef = useRef<HTMLHeadingElement>(null)
 
   useEffect(() => {
     if (prefersReduced) {
@@ -75,6 +63,33 @@ export default function Hero() {
     const t2 = setTimeout(() => setShowContent(true), 2800)
     return () => { clearTimeout(t1); clearTimeout(t2) }
   }, [prefersReduced])
+
+  // Headline entrance. SplitText splits the two plain lines into words for a
+  // masked stagger reveal; the shimmer line ("your time.") is NOT split (that
+  // would break its background-clip gradient) and slides up as one unit.
+  // Guarded on !prefersReduced, so when reduced the text just renders in place.
+  useEffect(() => {
+    if (!showContent || prefersReduced || !headlineRef.current) return
+
+    const el = headlineRef.current
+    let split: SplitText | null = null
+
+    const ctx = gsap.context(() => {
+      const plainLines = el.querySelectorAll<HTMLElement>('[data-split]')
+      const shimmer = el.querySelector<HTMLElement>('[data-shimmer]')
+
+      split = new SplitText(plainLines, { type: 'words', wordsClass: 'hero-word' })
+
+      const tl = gsap.timeline({ defaults: { ease: 'expo.out' } })
+      tl.from(split.words, { yPercent: 120, duration: 0.9, stagger: 0.055 }, 0.05)
+      if (shimmer) tl.from(shimmer, { yPercent: 120, duration: 0.95 }, 0.28)
+    }, headlineRef)
+
+    return () => {
+      ctx.revert()
+      split?.revert()
+    }
+  }, [showContent, prefersReduced])
 
   useEffect(() => {
     if (!showContent || prefersReduced) return
@@ -198,7 +213,7 @@ export default function Hero() {
             {showContent && (
               <div ref={contentRef} style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
 
-                <h1 style={{
+                <h1 ref={headlineRef} style={{
                   fontFamily: 'var(--font-display)',
                   fontSize: 'clamp(34px, 4.3vw, 66px)',
                   fontWeight: 800,
@@ -207,11 +222,11 @@ export default function Hero() {
                   color: 'var(--color-ink)',
                   margin: '0 0 28px',
                 }}>
-                  <HeroLine delay={0.1}>Professional websites,</HeroLine>
-                  <HeroLine delay={0.18}>without investing</HeroLine>
-                  <HeroLine delay={0.26}>
-                    <span className="hero-excellence">your time.</span>
-                  </HeroLine>
+                  <span className="hero-line"><span data-split>Professional websites,</span></span>
+                  <span className="hero-line"><span data-split>without investing</span></span>
+                  <span className="hero-line">
+                    <span data-shimmer className="hero-excellence">your time.</span>
+                  </span>
                 </h1>
 
                 <HeroFade delay={0.45} style={{ marginBottom: '40px', maxWidth: '480px' }}>
@@ -229,7 +244,7 @@ export default function Hero() {
                 </HeroFade>
 
                 <HeroFade delay={0.6} style={{ display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap' }}>
-                  <Link href="/quote" className="hero-cta-primary"
+                  <Link href="/quote" className="hero-cta-primary cta-arrow"
                     style={{
                       display: 'inline-flex',
                       alignItems: 'center',
@@ -294,6 +309,13 @@ export default function Hero() {
         .hero-cta-primary:hover {
           box-shadow: 0 8px 40px rgba(178,213,229,0.15);
         }
+        /* Per-line mask for the SplitText word reveal. Words/shimmer slide up
+           from below and are clipped by this overflow. paddingBottom keeps
+           descenders (the g in "investing") from clipping mid-animation. */
+        .hero-line { display: block; overflow: hidden; padding-bottom: 0.05em; }
+        .hero-line > [data-split] { display: inline-block; }
+        .hero-word { will-change: transform; }
+        .hero-excellence { display: inline-block; }
         @media (max-width: 980px) {
           .hero-inner { grid-template-columns: 1fr !important; }
           .hero-right { display: none !important; }

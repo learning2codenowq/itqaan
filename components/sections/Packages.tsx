@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import Link from 'next/link'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 import { packages, formatPrice } from '@/lib/quote'
 import ScarcityBadge from '@/components/ui/ScarcityBadge'
 
@@ -11,6 +11,7 @@ const EASE = [0.22, 1, 0.36, 1] as const
 export default function Packages() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px 0px' })
+  const prefersReduced = useReducedMotion()
 
   return (
     <section id="packages" style={{ position: 'relative', padding: '140px 64px', background: 'var(--color-void)', overflow: 'hidden' }}>
@@ -69,16 +70,28 @@ export default function Packages() {
 
               <p style={{ fontSize: '0.85rem', fontWeight: 300, lineHeight: 1.6, color: 'var(--color-ink-48)', margin: '0 0 20px' }}>{p.desc}</p>
 
+              {p.buildsOn && (
+                <p style={{ fontSize: '0.8rem', fontWeight: 400, lineHeight: 1.5, color: 'var(--color-ink-72)', margin: '0 0 14px' }}>
+                  Everything in <span style={{ color: 'var(--color-ember)', fontWeight: 600 }}>{p.buildsOn}</span>, plus:
+                </p>
+              )}
+
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 28px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-                {p.features.map(f => (
-                  <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.82rem', color: 'var(--color-ink-72)', fontWeight: 300 }}>
+                {p.features.map((f, fi) => (
+                  <motion.li
+                    key={f}
+                    initial={prefersReduced ? false : { opacity: 0, x: -16 }}
+                    animate={inView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.45, ease: EASE, delay: prefersReduced ? 0 : 0.55 + i * 0.08 + fi * 0.12 }}
+                    style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', fontSize: '0.82rem', color: 'var(--color-ink-72)', fontWeight: 300 }}
+                  >
                     <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="var(--color-ember)" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" style={{ flexShrink: 0, marginTop: '3px' }}><path d="M20 6 9 17l-5-5" /></svg>
                     {f}
-                  </li>
+                  </motion.li>
                 ))}
               </ul>
 
-              <Link href={`/quote?plan=${p.id}`} className={`pkg-cta ${p.popular ? 'pkg-cta-solid' : 'pkg-cta-ghost'}`}>
+              <Link href={`/quote?plan=${p.id}`} className={`pkg-cta cta-arrow ${p.popular ? 'pkg-cta-solid' : 'pkg-cta-ghost'}`}>
                 Start with {p.name}
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
               </Link>
@@ -90,7 +103,7 @@ export default function Packages() {
           <p style={{ fontSize: '0.9rem', fontWeight: 300, color: 'var(--color-ink-48)', margin: '0 0 16px' }}>
             Not sure which fits? Build a quote in under a minute.
           </p>
-          <Link href="/quote" className="pkg-cta pkg-cta-solid" style={{ display: 'inline-flex' }}>
+          <Link href="/quote" className="pkg-cta cta-arrow pkg-cta-solid" style={{ display: 'inline-flex' }}>
             Build a custom quote
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
           </Link>

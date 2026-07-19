@@ -138,26 +138,33 @@ export type Package = {
   care?: number
   desc: string
   features: string[]
+  buildsOn?: string   // name of the tier this one inherits (renders "Everything in X, plus")
   popular?: boolean
   need: string        // primary need this preselects
   choice?: string     // sub-choice id (site type / brand scope / seo plan)
 }
 
+/* Starter and Business are the same kind of product (a brochure/services site),
+   so Business ladders onto Starter with `buildsOn` and lists only what it ADDS
+   (chunking: the difference reads at a glance). Store and Brand are separate
+   products with their own deliverables (ecommerce; visual identity), so they
+   keep their own self-contained lists rather than inheriting. */
 export const packages: Package[] = [
   {
     id: 'one-page', name: 'Starter', price: 997, care: 147, need: 'website', choice: 'one-page',
     desc: 'A professional one-page website.',
-    features: ['Custom design', 'Mobile-first', 'Contact form', 'Basic SEO', 'Live in days, not weeks'],
+    features: ['Custom one-page design', 'Mobile-first & fast', 'Contact form', 'Basic SEO', 'Live in days, not weeks'],
   },
   {
     id: 'business', name: 'Business', price: 2497, care: 147, need: 'website', choice: 'business', popular: true,
-    desc: 'A multi-page site for a growing business.',
-    features: ['Up to 10 custom pages', 'Custom design', 'Contact + enquiry forms', 'Full SEO setup', 'Copywriting help'],
+    desc: 'A multi-page site for a services business.',
+    buildsOn: 'Starter',
+    features: ['Up to 10 custom pages', 'Enquiry forms', 'Full SEO setup', 'Copywriting help'],
   },
   {
     id: 'store', name: 'Store', price: 4497, care: 147, need: 'website', choice: 'store',
-    desc: 'A conversion-focused online store.',
-    features: ['Built on Shopify, you manage it', 'Unlimited products', 'Product & order management', 'Secure online payments', 'Full SEO setup'],
+    desc: 'A conversion-focused store to sell products online.',
+    features: ['Online store on Shopify', 'Unlimited products', 'Secure online payments', 'Product & order management', 'Full SEO setup'],
   },
   {
     id: 'brand', name: 'Brand', price: 1497, need: 'brand', choice: 'basics',

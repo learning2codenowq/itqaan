@@ -1,7 +1,7 @@
 'use client'
 
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion, useInView, useReducedMotion } from 'framer-motion'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -39,12 +39,17 @@ const guarantees = [
 export default function Guarantees() {
   const ref = useRef<HTMLDivElement>(null)
   const inView = useInView(ref, { once: true, margin: '-80px 0px' })
+  const prefersReduced = useReducedMotion()
 
   return (
     <section id="guarantees" style={{ position: 'relative', padding: '120px 64px', background: 'var(--color-void)', overflow: 'hidden' }}>
       <style>{`
         @media (max-width: 900px) { #guarantees { padding: 90px 28px !important; } .grt-grid { grid-template-columns: 1fr 1fr !important; } }
         @media (max-width: 600px) { #guarantees { padding: 72px 24px !important; } .grt-grid { grid-template-columns: 1fr !important; } }
+        .grt-card { padding: 28px 24px; border-radius: 16px; border: 1px solid var(--color-ink-10); background: var(--color-ink-3); transition: border-color 0.25s ease, background 0.25s ease; }
+        .grt-card:hover { border-color: var(--color-ink-28); background: var(--color-ink-5); }
+        .grt-icon { width: 42px; height: 42px; border-radius: 10px; border: 1px solid var(--color-ember-18); background: var(--color-ember-dim); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; transition: transform 0.3s cubic-bezier(0.22,1,0.36,1), background 0.25s ease, border-color 0.25s ease; }
+        .grt-card:hover .grt-icon { transform: scale(1.08); background: var(--color-ember-18); border-color: var(--color-ember); }
       `}</style>
 
       <div aria-hidden="true" style={{ position: 'absolute', top: 0, left: '64px', right: '64px', height: '1px', background: 'linear-gradient(90deg, rgba(178,213,229,0) 0%, rgba(178,213,229,0.08) 50%, rgba(178,213,229,0) 100%)' }} />
@@ -64,12 +69,13 @@ export default function Guarantees() {
           {guarantees.map((g, i) => (
             <motion.div
               key={g.title}
+              className="grt-card"
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
+              whileHover={prefersReduced ? undefined : { y: -4 }}
               transition={{ duration: 0.6, ease: EASE, delay: i * 0.08 }}
-              style={{ padding: '28px 24px', borderRadius: '16px', border: '1px solid var(--color-ink-10)', background: 'var(--color-ink-3)' }}
             >
-              <div style={{ width: '42px', height: '42px', borderRadius: '10px', border: '1px solid var(--color-ember-18)', background: 'var(--color-ember-dim)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '20px' }}>
+              <div className="grt-icon">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-ember)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                   {g.icon}
                 </svg>

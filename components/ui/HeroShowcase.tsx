@@ -65,7 +65,9 @@ export default function HeroShowcase() {
         .hero-col--down { animation: hero-marq-down 18s linear infinite; animation-delay: -9s; }
         @keyframes hero-marq-up   { from { transform: translateY(0); }                to { transform: translateY(calc(-50% - 9px)); } }
         @keyframes hero-marq-down { from { transform: translateY(calc(-50% - 9px)); } to { transform: translateY(0); } }
-        .hero-showcase:hover .hero-col { animation-play-state: paused; }
+        /* Pause only the column you're pointing at, so the other keeps drifting
+           and the board still feels alive while you inspect one card. */
+        .hero-col:hover { animation-play-state: paused; }
 
         /* each card is a clean 16:9 rectangle; the image fills it with no squish */
         .hero-shot {
@@ -78,6 +80,13 @@ export default function HeroShowcase() {
           border: 1px solid var(--color-ink-10);
           background: var(--color-ink-5);
           box-shadow: 0 18px 44px rgba(0,0,0,0.45);
+          transition: border-color 0.3s ease, box-shadow 0.4s ease;
+        }
+        /* The card frame stays put (so it can't clip against the column edge),
+           the photo inside zooms toward you and the border brightens. */
+        .hero-shot:hover {
+          border-color: var(--color-ink-28);
+          box-shadow: 0 22px 52px rgba(0,0,0,0.5);
         }
         .hero-shot img {
           position: absolute;
@@ -86,9 +95,12 @@ export default function HeroShowcase() {
           height: 100%;
           object-fit: cover;
           display: block;
+          transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
         }
+        .hero-shot:hover img { transform: scale(1.06); }
         @media (prefers-reduced-motion: reduce) {
           .hero-col--up, .hero-col--down { animation: none; }
+          .hero-shot:hover img { transform: none; }
         }
       `}</style>
     </div>
