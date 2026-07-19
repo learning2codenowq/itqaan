@@ -18,7 +18,8 @@
       "Bash(node scripts/generate-favicon-fallbacks.mjs)",
       "Bash(npm run *)",
       "Bash(node extract.js)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }

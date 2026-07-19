@@ -39,7 +39,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
         datePublished: a.datePublished,
         dateModified: a.dateModified,
         inLanguage: 'en',
-        image: `${BASE}/og-image.webp`,
+        image: `${BASE}/blog/${a.slug}/opengraph-image`,
         author: { '@id': AUTHOR_ID },
         publisher: {
           '@type': 'Organization',

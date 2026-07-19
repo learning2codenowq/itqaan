@@ -5,33 +5,41 @@ import { services } from '@/lib/services'
 
 const BASE = 'https://withitqaan.com'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date()
+// Stable content-update dates. Google learns to distrust <lastmod> when it moves
+// on every deploy, so we pin real dates here and bump them only when the copy for
+// that group actually changes. Articles and landings can carry their own date;
+// these are the fallbacks for pages that don't.
+const SITE_UPDATED = new Date('2026-07-10')      // core + service pillar pages
+const LANDINGS_UPDATED = new Date('2026-07-10')  // landings without their own dateModified
 
+export default function sitemap(): MetadataRoute.Sitemap {
   const core: MetadataRoute.Sitemap = [
-    { url: BASE,            lastModified: now, changeFrequency: 'weekly',  priority: 1 },
-    { url: `${BASE}/quote`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${BASE}/services`, lastModified: now, changeFrequency: 'monthly', priority: 0.9 },
-    { url: `${BASE}/pricing`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/portfolio`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE}/how-we-work`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE}/problems-we-solve`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${BASE}/about`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE}/faq`,   lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
-    { url: `${BASE}/blog`,  lastModified: now, changeFrequency: 'weekly',  priority: 0.7 },
-    { url: `${BASE}/privacy`, lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
-    { url: `${BASE}/terms`,   lastModified: now, changeFrequency: 'yearly', priority: 0.3 },
+    { url: BASE,            lastModified: SITE_UPDATED, changeFrequency: 'weekly',  priority: 1 },
+    { url: `${BASE}/quote`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/services`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.9 },
+    { url: `${BASE}/pricing`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/portfolio`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/how-we-work`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/problems-we-solve`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.8 },
+    { url: `${BASE}/about`, lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/faq`,   lastModified: SITE_UPDATED, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${BASE}/blog`,  lastModified: SITE_UPDATED, changeFrequency: 'weekly',  priority: 0.7 },
+    { url: `${BASE}/privacy`, lastModified: SITE_UPDATED, changeFrequency: 'yearly', priority: 0.3 },
+    { url: `${BASE}/terms`,   lastModified: SITE_UPDATED, changeFrequency: 'yearly', priority: 0.3 },
   ]
 
   const serviceUrls: MetadataRoute.Sitemap = services.map(s => ({
     url: `${BASE}/services/${s.slug}`,
-    lastModified: now,
+    lastModified: SITE_UPDATED,
     changeFrequency: 'monthly',
     priority: s.slug === 'web-design' ? 0.9 : 0.8,
   }))
 
   const landingUrls: MetadataRoute.Sitemap = landings.map(l => ({
-    url: `${BASE}/${l.slug}`, lastModified: now, changeFrequency: 'monthly', priority: 0.8,
+    url: `${BASE}/${l.slug}`,
+    lastModified: l.dateModified ? new Date(l.dateModified) : LANDINGS_UPDATED,
+    changeFrequency: 'monthly',
+    priority: 0.8,
   }))
 
   const articleUrls: MetadataRoute.Sitemap = articles.map(a => ({

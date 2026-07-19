@@ -19,6 +19,9 @@ export type Landing = {
   faqs: LandingFaq[]
   serviceName: string
   areaServed: string[]
+  // ISO date the page copy last changed. Feeds <lastmod> in the sitemap. Set it
+  // when you meaningfully edit a page; omit it to inherit the shared fallback.
+  dateModified?: string
   // Internal links to sibling pages / articles, for SEO and to help readers and
   // AI assistants discover related intent. Rendered at the foot of the page.
   related?: RelatedLink[]

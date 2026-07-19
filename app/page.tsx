@@ -10,6 +10,7 @@ import Packages from '@/components/sections/Packages'
 import StickyMobileCta from '@/components/ui/StickyMobileCta'
 import Guarantees from '@/components/sections/Guarantees'
 import Contact from '@/components/sections/Contact'
+import ServeIndex from '@/components/sections/ServeIndex'
 import Footer from '@/components/sections/Footer'
 import { authorSchemaNode, AUTHOR_ID } from '@/lib/author'
 
@@ -109,6 +110,7 @@ export default function Home() {
       <Packages />
       <Guarantees />
       <Contact />
+      <ServeIndex />
       <Footer />
       <StickyMobileCta />
     </main>
