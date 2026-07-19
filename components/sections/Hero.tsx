@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion'
 import gsap from 'gsap'
@@ -16,6 +16,11 @@ const HERO_FROM_PRICE = siteTypes.find(s => s.id === 'one-page')?.price ?? 997
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
 const EASE_EXPO = [0.22, 1, 0.36, 1] as const
+
+// Runs synchronously before the browser paints on the client (so the reveal can
+// hide the headline before it's ever shown), and falls back to useEffect on the
+// server to avoid React's SSR useLayoutEffect warning.
+const useIsomorphicLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 // The line and label follow the calligraphy draw-on (~1.4s), so their delays
 // sit after it rather than at loader start.
@@ -68,7 +73,9 @@ export default function Hero() {
   // masked stagger reveal; the shimmer line ("your time.") is NOT split (that
   // would break its background-clip gradient) and slides up as one unit.
   // Guarded on !prefersReduced, so when reduced the text just renders in place.
-  useEffect(() => {
+  // Layout effect (not useEffect) so SplitText hides the words BEFORE the first
+  // paint — otherwise the full headline flashes for a frame before animating in.
+  useIsomorphicLayoutEffect(() => {
     if (!showContent || prefersReduced || !headlineRef.current) return
 
     const el = headlineRef.current
