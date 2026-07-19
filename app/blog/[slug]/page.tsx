@@ -24,10 +24,32 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 }
 
+// Evergreen destinations rotated across articles so link equity spreads to the
+// landings (the pages stuck in "Discovered - not indexed"), not just one page.
+const EVERGREEN_LINKS = [
+  { label: 'Web design in Dubai', href: '/web-design-dubai' },
+  { label: 'Websites for Muslim businesses', href: '/websites-for-muslim-businesses' },
+  { label: 'Web design across the UAE', href: '/web-design-uae' },
+  { label: 'Our web design service', href: '/services/web-design' },
+  { label: 'See our pricing', href: '/pricing' },
+]
+
 export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params
   const a = getArticle(slug)
   if (!a) notFound()
+
+  // "Related reading": 3 sibling articles (rotated by position so each page shows
+  // a different set) + 2 evergreen landing/service links. Auto-derived, so new
+  // articles get related links without any per-article config.
+  const idx = articles.findIndex(x => x.slug === a.slug)
+  const others = articles.filter(x => x.slug !== a.slug)
+  const relatedArticles = [0, 1, 2].map(k => others[(idx + k) % others.length])
+  const relatedLinks = [
+    ...relatedArticles.map(r => ({ label: r.title, href: `/blog/${r.slug}` })),
+    EVERGREEN_LINKS[idx % EVERGREEN_LINKS.length],
+    EVERGREEN_LINKS[(idx + 1) % EVERGREEN_LINKS.length],
+  ]
 
   const schema = {
     '@context': 'https://schema.org',
@@ -113,6 +135,23 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
               ))}
             </section>
           ))}
+
+          {/* Related reading (internal links for crawl + discovery) */}
+          <section style={{ marginTop: '48px' }}>
+            <h2 style={{ fontFamily: 'var(--font-display)', fontSize: '1.1rem', fontWeight: 700, color: 'var(--color-ink)', margin: '0 0 20px' }}>
+              Related reading
+            </h2>
+            <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+              {relatedLinks.map(r => (
+                <li key={r.href}>
+                  <Link href={r.href} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 18px', borderRadius: '9999px', border: '1px solid var(--color-ink-10)', background: 'var(--color-ink-3)', color: 'var(--color-ink-72)', fontSize: '0.82rem', fontWeight: 500, textDecoration: 'none' }}>
+                    {r.label}
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"><path d="M5 12h14" /><path d="m13 6 6 6-6 6" /></svg>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </section>
 
           {/* About the author (E-E-A-T) */}
           <aside style={{ marginTop: '56px', paddingTop: '40px', borderTop: '1px solid var(--color-ink-8)', display: 'flex', gap: '18px', alignItems: 'flex-start' }}>

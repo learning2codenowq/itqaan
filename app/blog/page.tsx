@@ -3,6 +3,8 @@ import type { Metadata } from 'next'
 import Footer from '@/components/sections/Footer'
 import { articles } from '@/lib/articles'
 
+const BASE = 'https://withitqaan.com'
+
 export const metadata: Metadata = {
   title: 'Blog | Web Design for Muslim Businesses | ITQAAN',
   description:
@@ -13,8 +15,30 @@ export const metadata: Metadata = {
 export default function BlogIndex() {
   const sorted = [...articles].sort((a, b) => b.datePublished.localeCompare(a.datePublished))
 
+  // Blog + ItemList schema: tells Google this is a content hub and enumerates
+  // every post, so the listing can be understood and surfaced as a set.
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${BASE}/blog#blog`,
+    name: 'ITQAAN Blog',
+    description:
+      'Honest, practical articles on web design, pricing, and growing online for Muslim businesses in Dubai, the UAE, and worldwide.',
+    url: `${BASE}/blog`,
+    inLanguage: 'en',
+    publisher: { '@id': `${BASE}/#organization` },
+    blogPost: sorted.map(a => ({
+      '@type': 'BlogPosting',
+      headline: a.title,
+      url: `${BASE}/blog/${a.slug}`,
+      datePublished: a.datePublished,
+      dateModified: a.dateModified,
+    })),
+  }
+
   return (
     <main style={{ minHeight: '100svh', background: 'var(--color-void)' }}>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
       <header style={{ position: 'sticky', top: 0, zIndex: 10, borderBottom: '1px solid var(--color-ink-8)', background: 'rgba(2,2,2,0.72)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}>
         <div style={{ maxWidth: '820px', margin: '0 auto', padding: '18px 32px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link href="/" style={{ display: 'inline-flex', alignItems: 'baseline', gap: '8px', textDecoration: 'none' }}>
